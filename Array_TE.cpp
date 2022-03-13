@@ -50,22 +50,39 @@ void arr(){
 	        break; /* quit on blank line */
 	}
 	
-	printf("\nIsi teks\n");
-	for(i = 0; i < t; i++) {
-	   for(j = 0; text[ i ][ j ]; j++) 
-	       putchar(text[ i ][ j ]);
-	 	  putchar('\n');
-	}
-	
+//	printf("\nIsi teks\n");
+//	for(i = 0; i < t; i++) {
+//	   for(j = 0; text[ i ][ j ]; j++) 
+//	       putchar(text[ i ][ j ]);
+//	 	  putchar('\n');
+//	}
+	 printf("\n\n");
+	 char inpedit;
+	 printf("selesai, mau edit file ? (Y/N) ");
+	 scanf("%s",&inpedit);
+	 if(inpedit == 'y' || inpedit == 'Y'){
+	 	int inp;
+    	printf("Pilih index yang mau di edit ");
+    	scanf("%d",&inp);
+    	for(j = 0; text[ inp ][ j ]; j++){
+			putchar(text[ inp ][ j ]);
+		}
+	 }else{
+	ulang:
 	printf("\nApakah Akan kembali Menulis y/t : ");
-	scanf("%c",&pil);
+	scanf("%s",&pil);
 	
 	if(pil == 'y' || pil == 'Y'){
 		goto start1;
 	}
-	else{
+	else if(pil == 'n' || pil == 'N'){
 		main();
 	}
+	else{
+		printf("invalid input");
+		goto ulang;
+	}
+	} 			
 }
 
 void Total_Char(){
@@ -85,16 +102,13 @@ void Total_Char(){
 	main();
 }
 
-void display(){
-	
-	register int t, i, j;
-	
+void display(){	
+	register int t, i, j;	
 	printf("\nIsi teks\n");
 	for(i = 0; i < t; i++) {
 	   for(j = 0; text[ i ][ j ]; j++) 
 	       putchar(text[ i ][ j ]);
 	 	  putchar('\n');
-	}
-	
+	}	
 	main();
 }

@@ -58,24 +58,41 @@ void arr(){
 //	}
 	 printf("\n\n");
 	 char inpedit;
+	 tambah:
 	 printf("selesai, mau edit file ? (Y/N) ");
 	 scanf("%s",&inpedit);
 	 if(inpedit == 'y' || inpedit == 'Y'){
-	 	int inp;
-    	printf("Pilih index yang mau di edit ");
+	 int inp;
+    	printf("Pilih index yang mau di edit :  ");
     	scanf("%d",&inp);
+    	
+    	printf("Data Lama : ");
     	for(j = 0; text[ inp ][ j ]; j++){
-			putchar(text[ inp ][ j ]);
-		}
+		putchar(text[ inp ][ j ]);}
+		printf ("\ninput Data baru :");
+		
+	//	gets(text[t]);
+    	
+		scanf("%s",text[inp]);
+    
+    	printf("Data setelah Update : \n%s", text[t]);
+	    	// JANGAN DIHAPUS, CODE ASLI
+	 	for(i = 0; i < t; i++) {
+	   for(j = 0; text[ i ][ j ]; j++) 
+	      putchar(text[ i ][ j ]);
+	   putchar('\n');
+ }
+ goto tambah;
 	 }else{
 	ulang:
-	printf("\nApakah Akan kembali Menulis y/t : ");
+	printf("\nApakah Akan kembali Menulis y/n: ");
 	scanf("%s",&pil);
 	
 	if(pil == 'y' || pil == 'Y'){
 		goto start1;
 	}
 	else if(pil == 'n' || pil == 'N'){
+		system ("cls");
 		main();
 	}
 	else{

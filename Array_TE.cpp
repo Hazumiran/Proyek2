@@ -39,6 +39,8 @@ int main(void)
 void arr(){
 	
 	start1:
+	FILE *fp;
+	fp = fopen("baru.txt","wb+");
 	char pil;
 	register int t, i, j;
 	fflush(stdin);
@@ -46,6 +48,7 @@ void arr(){
   	for(t = 0; t < MAX; t++){
 	    printf("%d: ", t);
 	    gets(text[t]);
+	    fprintf(fp,"%s \n",text[t]);
 	    if(!*text[t]) 
 	        break; /* quit on blank line */
 	}
@@ -56,6 +59,8 @@ void arr(){
 //	       putchar(text[ i ][ j ]);
 //	 	  putchar('\n');
 //	}
+	fclose(fp);
+	
 	 printf("\n\n");
 	 char inpedit;
 	 tambah:
@@ -66,6 +71,7 @@ void arr(){
     	printf("Pilih index yang mau di edit :  ");
     	scanf("%d",&inp);
     	
+    	fp = fopen("baru.txt","at+");
     	printf("Data Lama : ");
     	for(j = 0; text[ inp ][ j ]; j++){
 		putchar(text[ inp ][ j ]);}
@@ -74,15 +80,17 @@ void arr(){
 	//	gets(text[t]);
     	
 		scanf("%s",text[inp]);
-    
+    	fprintf(fp,"%s \n",text[t]);
+    	
     	printf("Data setelah Update : \n%s", text[t]);
 	    	// JANGAN DIHAPUS, CODE ASLI
 	 	for(i = 0; i < t; i++) {
 	   for(j = 0; text[ i ][ j ]; j++) 
 	      putchar(text[ i ][ j ]);
 	   putchar('\n');
- }
- goto tambah;
+ 		}
+ 		goto tambah;
+ 		fclose(fp);
 	 }else{
 	ulang:
 	printf("\nApakah Akan kembali Menulis y/n: ");

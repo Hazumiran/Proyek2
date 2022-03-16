@@ -110,6 +110,7 @@ void display(){
 	}	
 	main();
 }
+<<<<<<< HEAD
 
 void edit_file(){
 	
@@ -172,3 +173,31 @@ void edit_file(){
 //		edit_file();
 //	}	
 //}
+=======
+void Delete(){
+	FILE *fp;
+	char fn[15];
+	
+	fp=fopen("temp.txt","w");
+	printf("\n\tEnter the file name: ");
+	scanf("%s",fn);
+	fp=fopen(fn,"r");
+	
+	if(fp==NULL){
+		printf("\n\tFile not found!");
+		goto end2;
+	}
+	
+	fclose(fp);
+	
+	if(remove(fn)==0){
+		printf("\n\n\tFile has been deleted successfully!");
+	goto end2;
+	}
+	else
+	
+	printf("\n\tError!\n");
+	end2: printf("\n\n\tPress any key to continue\n");
+	
+}
+>>>>>>> Nauval

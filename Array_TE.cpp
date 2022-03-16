@@ -3,7 +3,7 @@
 #include <conio.h>
 
 #define MAX 100
-#define LEN 80
+#define LEN 80	
 
 char text[MAX][LEN];
 void arr();
@@ -55,32 +55,32 @@ void arr(){
 	scanf("%s",fn);
 	fp=fopen(fn,"wb+");
 
-	
+	input_again:
 	fflush(stdin);
   	for(t = 0; t < MAX; t++){
   		
 	    printf("%d: ", t);
 	    gets(text[t]);
 	    
-//	    t = getchar();
 			
 			fprintf(fp,"%s \n",text[t]);
 	    	if(!*text[t]) 
-	        break; /* quit on blank line */	        
-	    
-	        
-	}
+	        break; /* quit on blank line */	        	    	        
+	}	
+	fclose(fp);	
+	char pilihan;
+	retry:
+	printf("input data lagi ga ?(Y/N)");
+	scanf("%s",&pilihan);
+		if(pilihan == 'Y' || pilihan == 'y'){
+			goto input_again;				
+		}else if(pilihan == 'S' || pilihan == 'n'){
+			edit_file();	 
+		}else{
+			printf("invalid input");
+			goto retry;
+		}
 	
-//	printf("\nIsi teks\n");
-//	for(i = 0; i < t; i++) {
-//	   for(j = 0; text[ i ][ j ]; j++) 
-//	       putchar(text[ i ][ j ]);
-//	 	  putchar('\n');
-//	}
-
-	fclose(fp);
-	
-	edit_file();	 
 }
 
 void Total_Char(){
@@ -110,7 +110,6 @@ void display(){
 	}	
 	main();
 }
-<<<<<<< HEAD
 
 void edit_file(){
 	
@@ -173,7 +172,6 @@ void edit_file(){
 //		edit_file();
 //	}	
 //}
-=======
 void Delete(){
 	FILE *fp;
 	char fn[15];
@@ -200,4 +198,4 @@ void Delete(){
 	end2: printf("\n\n\tPress any key to continue\n");
 	
 }
->>>>>>> Nauval
+

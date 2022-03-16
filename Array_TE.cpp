@@ -62,10 +62,7 @@ void arr(){
 //	       putchar(text[ i ][ j ]);
 //	 	  putchar('\n');
 //	}
-<<<<<<< HEAD
 
-=======
->>>>>>> dc7a6be685b353dc5f7bffd555ffe7c03a112262
 	fclose(fp);
 	
 	 printf("\n\n");
@@ -78,7 +75,6 @@ void arr(){
     	printf("Pilih index yang mau di edit :  ");
     	scanf("%d",&inp);
     	
-<<<<<<< HEAD
     	fp = fopen("baru.txt","wt+");
     	printf("Data Lama : ");
     	for(j = 0; text[ inp ][ j ]; j++){
@@ -90,23 +86,10 @@ void arr(){
 		scanf("%s",text[inp]);
 //		fscanf(fp,"%s",text[inp]);
     	
-=======
-    	fp = fopen("baru.txt","at+");
-    	printf("Data Lama : ");
-    	for(j = 0; text[ inp ][ j ]; j++){
-		putchar(text[ inp ][ j ]);}
-		printf ("\ninput Data baru :");
-		
-	//	gets(text[t]);
-    	
-		scanf("%s",text[inp]);
-    	fprintf(fp,"%s \n",text[t]);
->>>>>>> dc7a6be685b353dc5f7bffd555ffe7c03a112262
     	
     	printf("Data setelah Update : \n%s", text[t]);
 	    	// JANGAN DIHAPUS, CODE ASLI
 	 	for(i = 0; i < t; i++) {
-<<<<<<< HEAD
 		   for(j = 0; text[ i ][ j ]; j++) 
 		      putchar(text[ i ][ j ]);
 		      fprintf(fp,"%s \n",text[ i ][ j ]);
@@ -133,31 +116,6 @@ void arr(){
 		}
 	} 
 	Total_Char();			
-=======
-	   for(j = 0; text[ i ][ j ]; j++) 
-	      putchar(text[ i ][ j ]);
-	   putchar('\n');
- 		}
- 		goto tambah;
- 		fclose(fp);
-	 }else{
-	ulang:
-	printf("\nApakah Akan kembali Menulis y/n: ");
-	scanf("%s",&pil);
-	
-	if(pil == 'y' || pil == 'Y'){
-		goto start1;
-	}
-	else if(pil == 'n' || pil == 'N'){
-		system ("cls");
-		main();
-	}
-	else{
-		printf("invalid input");
-		goto ulang;
-	}
-	} 			
->>>>>>> dc7a6be685b353dc5f7bffd555ffe7c03a112262
 }
 
 void Total_Char(){
@@ -178,10 +136,7 @@ void Total_Char(){
 }
 
 void display(){	
-<<<<<<< HEAD
 
-=======
->>>>>>> dc7a6be685b353dc5f7bffd555ffe7c03a112262
 	register int t, i, j;	
 	printf("\nIsi teks\n");
 	for(i = 0; i < t; i++) {

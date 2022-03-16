@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 
 #define MAX 100
 #define LEN 80
@@ -9,6 +10,12 @@ void arr();
 int edit();
 void Total_Char();
 void display();
+void shortcut(char isi);
+void edit_file();
+
+	FILE *fp;
+	char fn[15];
+	int i,j,t;
 
 int main(void)
 {
@@ -39,20 +46,28 @@ int main(void)
 void arr(){
 	
 	system("cls");
-	start1:
-	FILE *fp;
-	fp = fopen("baru.txt","wb+");
-	char pil;
-	register int t, i, j;
-	fflush(stdin);
+//	start1:
+//	fp = fopen("baru.txt","wb+");
+
+	printf("Ctrl+S : Save\tCtrl+E : Edit\t\n");
 	
+	printf("\n\tEnter the file name: ");
+	scanf("%s",fn);
+	fp=fopen(fn,"wb+");
+
+	
+	fflush(stdin);
   	for(t = 0; t < MAX; t++){
   		
 	    printf("%d: ", t);
 	    gets(text[t]);
-	    fprintf(fp,"%s \n",text[t]);
-	    if(!*text[t]) 
-	        break; /* quit on blank line */
+	    
+//	    t = getchar();
+			
+			fprintf(fp,"%s \n",text[t]);
+	    	if(!*text[t]) 
+	        break; /* quit on blank line */	        
+	    
 	        
 	}
 	
@@ -65,7 +80,42 @@ void arr(){
 
 	fclose(fp);
 	
-	 printf("\n\n");
+	edit_file();	 
+}
+
+void Total_Char(){
+	int total;
+	
+	for(i = 0; i < MAX; i++) {
+	   for(j = 0; text[ i ][ j ]; j++) {
+	       total+=1;
+		}
+	 	
+		if(!*text[i]) 
+	    	break;
+	}
+	printf("\nTotal Character : %i",total);
+	printf("\nTotal Baris	 : %i\n\n",i);
+	main();
+}
+
+void display(){	
+
+	register int t, i, j;	
+	printf("\nIsi teks\n");
+	for(i = 0; i < t; i++) {
+	   for(j = 0; text[ i ][ j ]; j++) 
+	       putchar(text[ i ][ j ]);
+	 	  putchar('\n');
+	}	
+	main();
+}
+
+void edit_file(){
+	
+	char pil;
+	
+	printf("\n\n");
 	 char inpedit;
 	 tambah:
 	 printf("selesai, mau edit file ? (Y/N) ");
@@ -104,7 +154,7 @@ void arr(){
 		scanf("%s",&pil);
 		
 		if(pil == 'y' || pil == 'Y'){
-			goto start1;
+			arr();//start1;
 		}
 		else if(pil == 'n' || pil == 'N'){
 			system ("cls");
@@ -114,35 +164,11 @@ void arr(){
 			printf("invalid input");
 			goto ulang;
 		}
-	} 
-	Total_Char();			
+	} 		
 }
 
-void Total_Char(){
-	int total;
-	int i,j,t;
-	
-	for(i = 0; i < MAX; i++) {
-	   for(j = 0; text[ i ][ j ]; j++) {
-	       total+=1;
-		}
-	 	
-		if(!*text[i]) 
-	    	break;
-	}
-	printf("\nTotal Character : %i",total);
-	printf("\nTotal Baris	 : %i\n\n",i);
-	main();
-}
-
-void display(){	
-
-	register int t, i, j;	
-	printf("\nIsi teks\n");
-	for(i = 0; i < t; i++) {
-	   for(j = 0; text[ i ][ j ]; j++) 
-	       putchar(text[ i ][ j ]);
-	 	  putchar('\n');
-	}	
-	main();
-}
+//void shortcut(char isi){
+//	if(isi == 4){
+//		edit_file();
+//	}	
+//}

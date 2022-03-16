@@ -15,7 +15,7 @@ void edit_file();
 
 	FILE *fp;
 	char fn[15];
-	int i,j,t;
+	int i,j,t,k,l,m,temp_m;
 
 int main(void)
 {
@@ -55,14 +55,11 @@ void arr(){
 	scanf("%s",fn);
 	fp=fopen(fn,"wb+");
 
-	input_again:
+	
 	fflush(stdin);
-  	for(t = 0; t < MAX; t++){
-  		
+  	for(t = 0; t < MAX; t++){  		
 	    printf("%d: ", t);
-	    gets(text[t]);
-	    
-			
+	    gets(text[t]);	    			
 			fprintf(fp,"%s \n",text[t]);
 	    	if(!*text[t]) 
 	        break; /* quit on blank line */	        	    	        
@@ -72,16 +69,38 @@ void arr(){
 	retry:
 	printf("input data lagi ga ?(Y/N)");
 	scanf("%s",&pilihan);
+	
+//LAGI DI OPREK KU DIAZ JANGAN DI ACAK ACAK
+//BUBUKA OPREK
 		if(pilihan == 'Y' || pilihan == 'y'){
-//			goto input_again;
-			int k,l;														
-		for(k = 0; k < MAX; k++) {
-		   for(l = 0; text[ k ][ l ]; l++) 
+		fp = fopen(fn,"wt+");				
+		
+		for(k = 0; k < t; k++) {
+//			for(m = 0; text[ k ][ m ]; m++){
+//				temp_m = temp_m + m;
+//			}
+			
+		   for(l = 0; text[ k ][ l ]; l++){		   	 
+		      printf("%d: ", k);
 		      putchar(text[ k ][ l ]);
-		      printf("\n");
 //		      fprintf(fp,"%s \n",text[ k ][ l ]);
-		      
-		   }
+			  		   putchar('\n');
+		   } 		     	         	    	
+ 		}
+ 		printf("masukin data");
+// 		printf("%d",temp_m);
+//	    int temp_inputagain;
+//	    for(temp_inputagain = temp_inputagain + t; temp_inputagain < MAX; ++temp_inputagain){  		
+//	    printf("%d: ", temp_inputagain);
+//	    gets(text[temp_inputagain]);	    			
+//			fprintf(fp,"%s \n",text[temp_inputagain]);
+//	    	if(!*text[temp_inputagain]) 
+//	        break; /* quit on blank line */	        	    	        
+//	}	
+	fclose(fp);	
+	
+//PANUTUP OPREK
+				
 				
 				
 		}else if(pilihan == 'S' || pilihan == 'n'){

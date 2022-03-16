@@ -45,7 +45,7 @@ int main(void)
 
 void arr(){
 	
-	system("cls");
+//	system("cls");
 //	start1:
 //	fp = fopen("baru.txt","wb+");
 
@@ -73,7 +73,17 @@ void arr(){
 	printf("input data lagi ga ?(Y/N)");
 	scanf("%s",&pilihan);
 		if(pilihan == 'Y' || pilihan == 'y'){
-			goto input_again;				
+//			goto input_again;
+			int k,l;														
+		for(k = 0; k < MAX; k++) {
+		   for(l = 0; text[ k ][ l ]; l++) 
+		      putchar(text[ k ][ l ]);
+		      printf("\n");
+//		      fprintf(fp,"%s \n",text[ k ][ l ]);
+		      
+		   }
+				
+				
 		}else if(pilihan == 'S' || pilihan == 'n'){
 			edit_file();	 
 		}else{

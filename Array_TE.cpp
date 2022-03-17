@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <string.h>
 
 #define MAX 100
 #define LEN 80	
@@ -11,7 +12,7 @@ int edit();
 void Total_Char();
 void display();
 void shortcut(char isi);
-void edit_file();
+void edit_file(char fn[]);
 
 	FILE *fp;
 	char fn[15];
@@ -53,18 +54,18 @@ void arr(){
 	
 	printf("\n\tEnter the file name: ");
 	scanf("%s",fn);
-	fp=fopen(fn,"wb+");
+	fp=fopen(fn,"w+");
 
-	
 	fflush(stdin);
   	for(t = 0; t < MAX; t++){  		
-	    printf("%d: ", t);
+	    printf("%d: ", t);fflush(stdin);
 	    gets(text[t]);	    			
-			fprintf(fp,"%s \n",text[t]);
-	    	if(!*text[t]) 
+		fprintf(fp,"%s \n",text[t]);
+	    if(!*text[t]) 
 	        break; /* quit on blank line */	        	    	        
 	}	
-	fclose(fp);	
+	fclose(fp);
+	
 	char pilihan;
 	retry:
 	printf("input data lagi ga ?(Y/N)");
@@ -104,7 +105,7 @@ void arr(){
 				
 				
 		}else if(pilihan == 'S' || pilihan == 'n'){
-			edit_file();	 
+			edit_file(fn);	 
 		}else{
 			printf("invalid input");
 			goto retry;
@@ -128,54 +129,99 @@ void Total_Char(){
 	main();
 }
 
-void display(){	
+void display(){
+	char fname[20];
+    FILE *fptr = NULL; 
+    int i = 0;
+    int j = 0;
+    int tot = 0;
+	printf("Input the filename to be opened : ");
+	scanf("%s",fname);	
 
-	register int t, i, j;	
-	printf("\nIsi teks\n");
-	for(i = 0; i < t; i++) {
-	   for(j = 0; text[ i ][ j ]; j++) 
-	       putchar(text[ i ][ j ]);
-	 	  putchar('\n');
-	}	
-	main();
+    fptr = fopen(fname, "r");
+    while(fgets(text[i], LEN, fptr)) 
+	{
+        text[i][strlen(text[i]) - 1] = '\0';
+        i++;
+    }
+    tot = i;
+	printf("\nIsi File : \n",fname);
+	printf("\n");    
+    for(i = 0; i < tot-1; ++i)
+    {
+        printf("\t %d :%s\n", i, text[i]);
+    }
+    printf("\n");
+    printf("Press any key...");
+    getch();
+    system("cls");
+    main();
 }
 
-void edit_file(){
+void edit_file(char fn[]){
 	
 	char pil;
+	char inpedit;
+	char newword[LEN];
+	char buffer[LEN];
+	FILE *fpt;
 	
-	printf("\n\n");
-	 char inpedit;
-	 tambah:
-	 printf("selesai, mau edit file ? (Y/N) ");
+	printf("\n");
+	tambah:
+	
+	 printf("\nselesai, mau edit file ? (Y/N) ");
 	 scanf("%s",&inpedit);
-	 if(inpedit == 'y' || inpedit == 'Y'){
-	 int inp;
+	 
+	 //Edit Kembali line
+	 if(inpedit == 'y' || inpedit == 'Y')
+	 {
+		int inp;
+		fflush(stdin);
+		
     	printf("Pilih index yang mau di edit :  ");
     	scanf("%d",&inp);
+    	fflush(stdin);
     	
-    	fp = fopen("baru.txt","wt+");
+    	//Tampil Data Lama
     	printf("Data Lama : ");
-    	for(j = 0; text[ inp ][ j ]; j++){
-			putchar(text[ inp ][ j ]);}
+    	for(j = 0; text[ inp ][ j ]; j++)
+		{
+			putchar(text[ inp ][ j ]);
+		}
+			
+		//Ganti Data
+		fp = fopen(fn,"r");	
+		fpt = fopen("temp.txt","w");
 		printf ("\ninput Data baru :");
-		
-//	gets(text[t]);
-    	
-		scanf("%s",text[inp]);
-//		fscanf(fp,"%s",text[inp]);
-    	
-    	
-    	printf("Data setelah Update : \n%s", text[t]);
-	    	// JANGAN DIHAPUS, CODE ASLI
-	 	for(i = 0; i < t; i++) {
-		   for(j = 0; text[ i ][ j ]; j++) 
-		      putchar(text[ i ][ j ]);
-		      fprintf(fp,"%s \n",text[ i ][ j ]);
-		   putchar('\n');
- 		}
+
+		fflush(stdin);
+		fgets(newword, LEN, stdin);	
+
+		i = 0;
+			while ((fgets(buffer, LEN, fp)) != NULL)
+			{
+			
+			    if (i == inp)
+			        fputs(newword, fpt);
+			    else
+			        fputs(buffer, fpt);
+			            
+			        i++;
+			}
+    	fclose(fp);
+		fclose(fpt);
+		remove(fn);
+		rename("temp.txt", fn);
  		goto tambah;
- 		fclose(fp);
+//    	printf("Data setelah Update : \n%s", text[t]);
+//	    	// JANGAN DIHAPUS, CODE ASLI
+//	 	for(i = 0; i < t; i++) {
+//		   for(j = 0; text[ i ][ j ]; j++) 
+//		      putchar(text[ i ][ j ]);
+//		      fprintf(fp,"%s \n",text[ i ][ j ]);
+//		   putchar('\n');
+// 		}
+
 	 }
 	 else{
 		ulang:

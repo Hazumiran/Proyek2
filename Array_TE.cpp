@@ -13,6 +13,7 @@ void Total_Char();
 void display();
 void shortcut(char isi);
 void edit_file(char fn[]);
+void DeleteLine(char fn[]);
 
 	FILE *fp;
 	char fn[15];
@@ -121,13 +122,12 @@ edit_file(fn);
 }
 
 void Total_Char(){
-	int total;
+	int total = 0;
 	
 	for(i = 0; i < MAX; i++) {
 	   for(j = 0; text[ i ][ j ]; j++) {
 	       total+=1;
 		}
-	 	
 		if(!*text[i]) 
 	    	break;
 	}
@@ -138,7 +138,8 @@ void Total_Char(){
 
 void display(){
 	char fname[20];
-    FILE *fptr = NULL; 
+    FILE *fptr = NULL;
+    char inpedit;
     int i = 0;
     int j = 0;
     int tot = 0;
@@ -158,6 +159,22 @@ void display(){
     {
         printf("\t %d :%s\n", i, text[i]);
     }
+    fclose(fp);
+    
+    kembali :
+	printf("\nWant to delete line? (Y/N)");fflush(stdin);
+	scanf("%s",&inpedit);fflush(stdin);
+	if(inpedit == 'y' || inpedit == 'Y'){
+	 	DeleteLine(fname);
+	}else if(inpedit == 'n' || inpedit == 'N'){
+		main();
+	} else{
+		printf("\ninvalid input !!");
+		goto kembali; 
+	}
+	
+	fclose(fp);
+	main();
     printf("\n");
     printf("Press any key...");
     getch();
@@ -280,3 +297,69 @@ void Delete(){
 	end2: printf("\n\n\tPress any key to continue\n");
 	
 }
+<<<<<<< HEAD
+=======
+
+
+void DeleteLine(char fn[]){
+	FILE *fp1;
+	int delete_line, temp = 1, k;
+	char ch, p;
+	
+	system("cls");
+	fp = fopen(fn, "r");
+    ch = getc(fp);fflush(stdin);
+  	while (ch != EOF){
+  		
+        printf("%c", ch);
+        ch = getc(fp);
+        fflush(stdin);
+    }
+    //rewind
+    rewind(fp);
+    printf("\nEnter line number of the line to be deleted:");
+    scanf("%d", &delete_line);fflush(stdin);
+    //open new file in write mode
+    fp1 = fopen("temp.txt", "w");
+    ch = 'A';
+    while (ch != EOF)
+    {
+        ch = getc(fp); fflush(stdin);
+        if (temp != delete_line)
+        {
+            putc(ch, fp1);
+        }
+        if (ch == '\n')
+        {
+            temp++;
+        }
+    }
+    fclose(fp);
+    fclose(fp1);
+    remove(fn);
+    rename("temp.txt", fn);
+    printf("\nAfter Delete:\n");
+    fp = fopen(fn, "r");fflush(stdin);
+    ch = getc(fp);
+    while (ch != EOF){
+        printf("%c", ch);
+        ch = getc(fp);
+    }
+    
+    fclose(fp);
+    
+    Ulang :
+    printf("\nWant to delete again? (Y/N)");
+    scanf("%s", &p);
+    	if(p == 'y' || p == 'Y'){
+    		DeleteLine(fn);
+		}
+		else if(p == 'n' || p == 'N'){
+			main();
+		}
+		else{
+			printf("invalid input");
+			goto Ulang;
+		}
+}
+>>>>>>> origin/Nazwa

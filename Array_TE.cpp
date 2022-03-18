@@ -84,7 +84,6 @@ void arr(){
 //	printf("input data lagi ga ?(Y/N)");
 //	scanf("%s",&pilihan);
 //	
-//
 //	if(pilihan == 'Y' || pilihan == 'y' ){
 //		fp = fopen(fn,"wt+");			
 //								 																
@@ -101,15 +100,9 @@ void arr(){
 //				fprintf(fp,"%s \n",text[w]);
 //	    			if(!*text[w]) {
 //	    				goto retry; /* quit on blank line */	   	
-//					}	
-//						        		     	    	        
+//					}			        		     	    	        
 //		}
-//		fclose(fp);	  
-//	 			   
-//		
-//	
-//	
-//												
+//		fclose(fp);	  											
 //		}else if(pilihan == 'S' || pilihan == 'n'){
 //			edit_file(fn);	 
 //		}else{
@@ -297,9 +290,6 @@ void Delete(){
 	end2: printf("\n\n\tPress any key to continue\n");
 	
 }
-<<<<<<< HEAD
-=======
-
 
 void DeleteLine(char fn[]){
 	FILE *fp1;
@@ -362,4 +352,3 @@ void DeleteLine(char fn[]){
 			goto Ulang;
 		}
 }
->>>>>>> origin/Nazwa

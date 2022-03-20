@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include <iostream>
+ 
 
 #define MAX 100
 #define LEN 80	
-
+#define BUFFER_SIZE 1000
 char text[MAX][LEN];
 void arr();
 int edit();
@@ -13,6 +15,9 @@ void Total_Char();
 void display();
 void shortcut(char isi);
 void edit_file(char fn[]);
+void Delete();
+void find();
+void replaceAll(char *str, const char *oldWord, const char *newWord);
 
 	FILE *fp;
 	char fn[15];
@@ -20,7 +25,7 @@ void edit_file(char fn[]);
 
 int main(void)
 {
-	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n");
+	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
 	int pil;
 	scanf("%i",&pil);
   	do{
@@ -36,6 +41,14 @@ int main(void)
 			}
 			case 3:{
 				Total_Char();
+				break;
+			}
+			case 4:{
+				Delete();
+				break;
+			}
+				case 5:{
+				find();
 				break;
 			}
 		}
@@ -151,6 +164,7 @@ void display(){
     {
         printf("\t %d :%s\n", i, text[i]);
     }
+    
     printf("\n");
     printf("Press any key...");
     getch();
@@ -213,14 +227,6 @@ void edit_file(char fn[]){
 		remove(fn);
 		rename("temp.txt", fn);
  		goto tambah;
-//    	printf("Data setelah Update : \n%s", text[t]);
-//	    	// JANGAN DIHAPUS, CODE ASLI
-//	 	for(i = 0; i < t; i++) {
-//		   for(j = 0; text[ i ][ j ]; j++) 
-//		      putchar(text[ i ][ j ]);
-//		      fprintf(fp,"%s \n",text[ i ][ j ]);
-//		   putchar('\n');
-// 		}
 
 	 }
 	 else{
@@ -273,4 +279,108 @@ void Delete(){
 	end2: printf("\n\n\tPress any key to continue\n");
 	
 }
+void find()
+{
+   FILE * fPtr;
+    FILE * fTemp;
+    char path[100];
+    
+    char buffer[BUFFER_SIZE];
+    char oldWord[100], newWord[100];
 
+
+    printf("masukan nama file: ");
+    scanf("%s", path);
+
+    printf("find: ");
+    scanf("%s", oldWord);
+
+    printf("replace ");
+    scanf("%s", newWord);
+
+
+    /*  Open all required files */
+    fPtr  = fopen(path, "r");
+    fTemp = fopen("replace.tmp", "w"); 
+
+    /* fopen() return NULL if unable to open file in given mode. */
+    if (fPtr == NULL || fTemp == NULL)
+    {
+        /* Unable to open file hence exit */
+        printf("\nUnable to open file.\n");
+        printf("Please check whether file exists and you have read/write privilege.\n");
+        exit(EXIT_SUCCESS);
+    }
+
+
+    /*
+     * Read line from source file and write to destination 
+     * file after replacing given word.
+     */
+    while ((fgets(buffer, BUFFER_SIZE, fPtr)) != NULL)
+    {
+        // Replace all occurrence of word from current line
+        replaceAll(buffer, oldWord, newWord);
+
+        // After replacing write it to temp file.
+        fputs(buffer, fTemp);
+    }
+
+
+    /* Close all files to release resource */
+    fclose(fPtr);
+    fclose(fTemp);
+
+
+    /* Delete original source file */
+    remove(path);
+
+    /* Rename temp file as original file */
+    rename("replace.tmp", path);
+
+    printf("\nSukses dirubah dari '%s' menjadi '%s'.", oldWord, newWord);
+
+
+}
+
+
+
+/**
+ * Replace all occurrences of a given a word in string.
+ */
+void replaceAll(char *str, const char *oldWord, const char *newWord)
+{
+    char *pos, temp[BUFFER_SIZE];
+    int index = 0;
+    int owlen;
+
+    owlen = strlen(oldWord);
+
+    // Fix: If oldWord and newWord are same it goes to infinite loop
+    if (!strcmp(oldWord, newWord)) {
+        return;
+    }
+
+
+    /*
+     * Repeat till all occurrences are replaced. 
+     */
+    while ((pos = strstr(str, oldWord)) != NULL)
+    {
+        // Backup current line
+        strcpy(temp, str);
+
+        // Index of current found word
+        index = pos - str;
+
+        // Terminate str after word found index
+        str[index] = '\0';
+
+        // Concatenate str with new word 
+        strcat(str, newWord);
+        
+        // Concatenate str with remaining words after 
+        // oldword found index.
+        strcat(str, temp + index + owlen);
+    }
+}

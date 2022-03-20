@@ -93,49 +93,44 @@ void arr(){
 	
 	char pilihan;
 	retry:
+	system("cls");
+		for(k = 0; k < t; k++) {
+					printf("%d: ", k);
+		    		for(l = 0; text[ k ][ l ]; l++){		   	 		      
+		        		putchar(text[ k ][ l ]);			  		   
+		   			} putchar('\n');		     	         	    	
+ 				}
+	
 	printf("input data lagi ga ?(Y/N)");
 	scanf("%s",&pilihan);
 	
-//LAGI DI OPREK KU DIAZ JANGAN DI ACAK ACAK
-//BUBUKA OPREK
-//		if(pilihan == 'Y' || pilihan == 'y'){
-//		fp = fopen(fn,"wt+");				
-//		
-//		for(k = 0; k < t; k++) {
-////			for(m = 0; text[ k ][ m ]; m++){
-////				temp_m = temp_m + m;
-////			}
-//			
-//		   for(l = 0; text[ k ][ l ]; l++){		   	 
-//		      printf("%d: ", k);
-//		      putchar(text[ k ][ l ]);
-////		      fprintf(fp,"%s \n",text[ k ][ l ]);
-//			  		   putchar('\n');
-//		   } 		     	         	    	
-// 		}
-// 		printf("masukin data");
-//// 		printf("%d",temp_m);
-////	    int temp_inputagain;
-////	    for(temp_inputagain = temp_inputagain + t; temp_inputagain < MAX; ++temp_inputagain){  		
-////	    printf("%d: ", temp_inputagain);
-////	    gets(text[temp_inputagain]);	    			
-////			fprintf(fp,"%s \n",text[temp_inputagain]);
-////	    	if(!*text[temp_inputagain]) 
-////	        break; /* quit on blank line */	        	    	        
-////	}	
-//	fclose(fp);	
-//	
-////PANUTUP OPREK
-//				
-//				
-//				
-//		}else if(pilihan == 'S' || pilihan == 'n'){
-//			edit_file(fn);	 
-//		}else{
-//			printf("invalid input");
-//			goto retry;
-//		}
-	
+	if(pilihan == 'Y' || pilihan == 'y' ){
+		fp = fopen(fn,"wt+");			
+								 																
+ 			int w; 		
+			for(; k < t; k++) {
+					printf("%d: ", k);
+		    	for(; text[ k ][ l ]; l++){		   	 		      
+		        	putchar(text[ k ][ l ]);			  		   
+		   		} putchar('\n');		     	         	    	
+ 			}
+			for(w = k; w < MAX; w++){  		
+	    		printf("%d: ", w);fflush(stdin);
+	    		gets(text[w]);	    			
+				fprintf(fp,"%s \n",text[w]);
+	    			if(!*text[w]) {
+	    				goto retry; /* quit on blank line */	   	
+					}			        		     	    	        
+		}
+		fclose(fp);	  											
+		}else if(pilihan == 'S' || pilihan == 'n'){
+			edit_file(fn);	 
+		}else{
+			printf("invalid input");
+			goto retry;
+		}
+//PANUTUP OPREK	
+	edit_file(fn);	
 }
 
 void Total_Char(){

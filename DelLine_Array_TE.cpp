@@ -220,7 +220,7 @@ void DeleteLine(){
     scanf("%d", &delete_line);
     //open new file in write mode
     fp1 = fopen("temp.txt", "w");
-    ch = 'A';
+//    ch = 'A';
     while (ch != EOF)
     {
         ch = getc(fp);

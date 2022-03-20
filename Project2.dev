@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=1
 CompilerSettings=0000000000000000001000000
-UnitCount=8
+UnitCount=6
 
 [VersionInfo]
 Major=1
@@ -111,13 +111,14 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=Untitled3
+FileName=totalchar.cpp
 Folder=
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+CompileCpp=1
 
 [Unit8]
 FileName=Untitled5

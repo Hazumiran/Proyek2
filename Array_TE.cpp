@@ -78,7 +78,7 @@ void arr(){
 	fflush(stdin);
   	for(t = 0; t < MAX; t++){  		
 	    printf("%d: ", t);fflush(stdin);
-	    gets(text[t]);	
+	    gets(text[t]);fflush(stdin);
 //	    *text[t] = getchar();	    			
 		fprintf(fp,"%s \n",text[t]);
 		
@@ -109,34 +109,38 @@ void arr(){
 	
 	char pilihan;
 	retry:
-	system("cls");
+//	system("cls");
 		for(k = 0; k < t; k++) {
-					printf("%d: ", k);
-		    		for(l = 0; text[ k ][ l ]; l++){		   	 		      
-		        		putchar(text[ k ][ l ]);			  		   
-		   			} putchar('\n');		     	         	    	
- 				}
+			printf("%d: ", k);
+		    for(l = 0; text[ k ][ l ]; l++){	
+				putchar(text[ k ][ l ]);			  		   
+		 	} 
+		putchar('\n');		     	         	    	
+ 		}
 	
 	printf("input data lagi ga ?(Y/N)");
 	scanf("%s",&pilihan);
 	
 	if(pilihan == 'Y' || pilihan == 'y' ){
-		fp = fopen(fn,"wt+");			
+		fp = fopen(fn,"at+");			
 								 																
  			int w; 		
 			for(; k < t; k++) {
 					printf("%d: ", k);
-		    	for(; text[ k ][ l ]; l++){		   	 		      
+		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		} putchar('\n');		     	         	    	
+		   		} putchar('\n');  	         	    	
  			}
 			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
 	    		gets(text[w]);	    			
+	    		t++;
 				fprintf(fp,"%s \n",text[w]);
 	    			if(!*text[w]) {
-	    				goto retry; /* quit on blank line */	   	
-					}			        		     	    	        
+	    				t--;
+						fclose(fp);	 	
+	    				goto retry; /* quit on blank line */
+			}			        		     	    	        
 		}
 		fclose(fp);	  											
 		}else if(pilihan == 'S' || pilihan == 'n'){
@@ -145,6 +149,7 @@ void arr(){
 			printf("invalid input");
 			goto retry;
 		}
+		
 //PANUTUP OPREK	
 	edit_file(fn);	
 }
@@ -488,8 +493,8 @@ void insert_line(){
     
   	while (ch != EOF){
 //        printf("%c", ch);
-        ch = getc(fp);
-        tampung[i][j] = getc(fp1);
+        ch = getc(fp);fflush(stdin);
+        tampung[i][j] = getc(fp1);fflush(stdin);
         if(!ch){
         	i++;
 		}
@@ -513,15 +518,15 @@ void insert_line(){
 	for(i=0;i<MAX;i++){
 		if(i == (insert-1)){
 			for(j=0;j<LEN;j++){
-				printf("%c",text[j]);
+				printf("%c",text[j]);fflush(stdin);
 				if(!*text[j]) 
-	        		break;
+	        		continue;
 			}
 		}
 		for(j=0;j<LEN;j++){
 			printf("%c",tampung[i][j]);
 			if(!*tampung[j]) 
-	        		break;
+	        		continue;
 		}
 	}
 

@@ -149,13 +149,13 @@ void arr(){
 				fprintf(fp,"%s \n",text[w]);		        		     	    	        
 		}
 		fclose(fp);	  											
-		}else if(pilihan == 'S' || pilihan == 'n'){
+		}else if(pilihan == 'N' || pilihan == 'n'){
+			fclose(fp);
 			edit_file(fn);	 
 		}else{
 			printf("invalid input");
 			goto retry;
 		}
-	edit_file(fn);	
 }
 
 void Total_Char(){
@@ -261,7 +261,7 @@ void edit_file(char fn[]){
     	fclose(fp);
 		fclose(fpt);
 		remove(fn);
-		rename("temp.txt", fn);
+		rename("temp.txt",fn);
  		goto tambah;
 
 	 }

@@ -12,7 +12,8 @@ char text[MAX][LEN];
 void arr();
 int edit();
 void Total_Char();
-void display();
+void display(char fname[]);
+void display1(char fname[]);
 void shortcut(char isi);
 void edit_file(char fn[]);
 
@@ -41,7 +42,7 @@ int main(void)
 				break;
 			}
 			case 2:{
-				display();
+				display1(fn);
 				break;
 			}
 			case 3:{
@@ -80,7 +81,6 @@ void arr(){
 	    printf("%d: ", t);fflush(stdin);
 	    gets(text[t]);fflush(stdin);
 //	    *text[t] = getchar();	    			
-		fprintf(fp,"%s \n",text[t]);
 		
 		if(*text[t] == 5){
 			fclose(fp);
@@ -102,21 +102,27 @@ void arr(){
 			insert_line();
 			goto retry;
 		}
+		else if(*text[t] == 32){ // for blank line
+			break;
+		}
 	    else if(!*text[t]) 
-	        break; /* quit on blank line */	        	    	        
+	        break; /* quit on blank line */	 
+			
+	fprintf(fp,"%s \n",text[t]);     	    	        
 	}	
 	fclose(fp);
 	
 	char pilihan;
 	retry:
 //	system("cls");
-		for(k = 0; k < t; k++) {
-			printf("%d: ", k);
-		    for(l = 0; text[ k ][ l ]; l++){	
-				putchar(text[ k ][ l ]);			  		   
-		 	} 
-		putchar('\n');		     	         	    	
- 		}
+//		for(k = 0; k < t; k++) {
+//			printf("%d: ", k);
+//		    for(l = 0; text[ k ][ l ]; l++){	
+//				putchar(text[ k ][ l ]);			  		   
+//		 	} 
+//		putchar('\n');		     	         	    	
+// 		}
+	display(fn);
 	
 	printf("input data lagi ga ?(Y/N)");
 	scanf("%s",&pilihan);
@@ -124,23 +130,23 @@ void arr(){
 	if(pilihan == 'Y' || pilihan == 'y' ){
 		fp = fopen(fn,"at+");			
 								 																
- 			int w; 		
-			for(; k < t; k++) {
+ 			int w; 	
+			for(k = 0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
 		   		} putchar('\n');  	         	    	
  			}
-			for(w = k; w < MAX; w++){  		
+			for(w = t; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
 	    		gets(text[w]);	    			
 	    		t++;
-				fprintf(fp,"%s \n",text[w]);
 	    			if(!*text[w]) {
 	    				t--;
 						fclose(fp);	 	
 	    				goto retry; /* quit on blank line */
-			}			        		     	    	        
+					}	
+				fprintf(fp,"%s \n",text[w]);		        		     	    	        
 		}
 		fclose(fp);	  											
 		}else if(pilihan == 'S' || pilihan == 'n'){
@@ -149,8 +155,6 @@ void arr(){
 			printf("invalid input");
 			goto retry;
 		}
-		
-//PANUTUP OPREK	
 	edit_file(fn);	
 }
 
@@ -170,14 +174,11 @@ void Total_Char(){
 	main();
 }
 
-void display(){
-	char fname[20];
+void display(char fname[]){
     FILE *fptr = NULL; 
     int i = 0;
     int j = 0;
-    int tot = 0;
-	printf("Input the filename to be opened : ");
-	scanf("%s",fname);	
+    int tot = 0;	
 
     fptr = fopen(fname, "r");
     while(fgets(text[i], LEN, fptr)) 
@@ -185,20 +186,27 @@ void display(){
         text[i][strlen(text[i]) - 1] = '\0';
         i++;
     }
-    tot = i;
-	printf("\nIsi File : \n",fname);
-	printf("\n");    
-    for(i = 0; i < tot-1; ++i)
+    tot = i;  
+    for(i = 0; i < tot; ++i)
     {
         printf("\t %d :%s\n", i, text[i]);
     }
     
-    printf("\n");
+}
+
+void display1(char fname[]){
+	printf("Input the filename to be opened : ");
+	scanf("%s",fname);
+	printf("\nIsi File : \n",fname);
+	printf("\n");  
+	display(fname);
+	printf("\n");
     printf("Press any key...");
     getch();
     system("cls");
     main();
 }
+
 
 void edit_file(char fn[]){
 	

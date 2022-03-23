@@ -114,7 +114,7 @@ void arr(){
 	
 	char pilihan;
 	retry:
-//	system("cls");
+	system("cls");
 //		for(k = 0; k < t; k++) {
 //			printf("%d: ", k);
 //		    for(l = 0; text[ k ][ l ]; l++){	
@@ -189,7 +189,7 @@ void display(char fname[]){
     tot = i;  
     for(i = 0; i < tot; ++i)
     {
-        printf("\t %d :%s\n", i, text[i]);
+        printf("%d :%s\n", i, text[i]);
     }
     
 }

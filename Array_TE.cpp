@@ -12,7 +12,8 @@ char text[MAX][LEN];
 void arr();
 int edit();
 void Total_Char();
-void display();
+void display(char fname[]);
+void display1(char fname[]);
 void shortcut(char isi);
 void edit_file(char fn[]);
 
@@ -41,7 +42,7 @@ int main(void)
 				break;
 			}
 			case 2:{
-				display();
+				display1(fn);
 				break;
 			}
 			case 3:{
@@ -80,7 +81,6 @@ void arr(){
 	    printf("%d: ", t);fflush(stdin);
 	    gets(text[t]);fflush(stdin);
 //	    *text[t] = getchar();	    			
-		fprintf(fp,"%s \n",text[t]);
 		
 		if(*text[t] == 5){
 			fclose(fp);
@@ -103,20 +103,23 @@ void arr(){
 			goto retry;
 		}
 	    else if(!*text[t]) 
-	        break; /* quit on blank line */	        	    	        
+	        break; /* quit on blank line */	 
+			
+	fprintf(fp,"%s \n",text[t]);     	    	        
 	}	
 	fclose(fp);
 	
 	char pilihan;
 	retry:
 //	system("cls");
-		for(k = 0; k < t; k++) {
-			printf("%d: ", k);
-		    for(l = 0; text[ k ][ l ]; l++){	
-				putchar(text[ k ][ l ]);			  		   
-		 	} 
-		putchar('\n');		     	         	    	
- 		}
+//		for(k = 0; k < t; k++) {
+//			printf("%d: ", k);
+//		    for(l = 0; text[ k ][ l ]; l++){	
+//				putchar(text[ k ][ l ]);			  		   
+//		 	} 
+//		putchar('\n');		     	         	    	
+// 		}
+	display(fn);
 	
 	printf("input data lagi ga ?(Y/N)");
 	scanf("%s",&pilihan);
@@ -149,8 +152,6 @@ void arr(){
 			printf("invalid input");
 			goto retry;
 		}
-		
-//PANUTUP OPREK	
 	edit_file(fn);	
 }
 
@@ -170,14 +171,11 @@ void Total_Char(){
 	main();
 }
 
-void display(){
-	char fname[20];
+void display(char fname[]){
     FILE *fptr = NULL; 
     int i = 0;
     int j = 0;
-    int tot = 0;
-	printf("Input the filename to be opened : ");
-	scanf("%s",fname);	
+    int tot = 0;	
 
     fptr = fopen(fname, "r");
     while(fgets(text[i], LEN, fptr)) 
@@ -185,20 +183,27 @@ void display(){
         text[i][strlen(text[i]) - 1] = '\0';
         i++;
     }
-    tot = i;
-	printf("\nIsi File : \n",fname);
-	printf("\n");    
+    tot = i;  
     for(i = 0; i < tot-1; ++i)
     {
         printf("\t %d :%s\n", i, text[i]);
     }
     
-    printf("\n");
+}
+
+void display1(char fname[]){
+	printf("Input the filename to be opened : ");
+	scanf("%s",fname);
+	printf("\nIsi File : \n",fname);
+	printf("\n");  
+	display(fname);
+	printf("\n");
     printf("Press any key...");
     getch();
     system("cls");
     main();
 }
+
 
 void edit_file(char fn[]){
 	
@@ -484,50 +489,111 @@ void insert_line(){
 	int insert;
 	char ch, p;
 	i=0,j=0;
-	
 	system("cls");
 	fp = fopen(fn, "r");
-	fp1 = fopen(fn, "r");
-	
-    ch = getc(fp);
     
-  	while (ch != EOF){
+  	while (!feof(fp) && ch != EOF){
+// 		melanjut:
 //        printf("%c", ch);
-        ch = getc(fp);fflush(stdin);
-        tampung[i][j] = getc(fp1);fflush(stdin);
-        if(!ch){
-        	i++;
+        tampung[i][j] = getc(fp);
+//        puts(tampung[i]);
+		if(tampung[i][j] == '\n'){
+			i++;
+			j=0;
 		}
-		j++;
-    }
-    
-    fclose(fp);
-    fclose(fp1);
-
-    printf("Masukkan Kalimat : ");
-	for(t = 0; t < MAX; t++){  		
-	    
-	    scanf("%c",&baru[t]);
-		if(baru[t] == '\n') 
-	        break;
+		else{
+			j++;
+		}
 	}
-	
-    printf("\nPada baris mana akan dimasukkan :");
+//        printf("%c",tampung[i][j]);
+//        if(tampung[i][j] == ' '){
+//        	i++;
+//       		j=0;
+//	  		goto melanjut;
+//		}
+
+    
+//    fclose(fp);
+//    printf("%c",tampung[0][0]);printf("%c",tampung[0][1]);printf("%c\n",tampung[0][2]);
+//    printf("%c",tampung[1][0]);printf("%c",tampung[1][1]);printf("%c",tampung[1][2]);
+//	printf("%c",tampung[2][0]);printf("%c",tampung[2][1]);printf("%c",tampung[2][2]);
+    printf("Masukkan Kalimat : ");
+    scanf("%s",&baru);
+    fflush(stdin);
+//	for(t = 0; t < MAX; t++){  		
+//	    
+//	    scanf("%c",&baru[t]);
+//		if(baru[t] == '\n') 
+//	        break;
+//	}
+//	
+//	printf("\nPada baris mana akan dimasukkan :");
+//    scanf("%d", &insert);
+//	
+//	fp = fopen(fn, "w");
+//		j=0;
+//		if(i == (insert)){ //true
+//			strcpy(text[i],baru);
+//			for(;j<strlen(baru);j++){
+////				printf("%c",baru[j]);
+////				printf("udah bisa");
+//				printf("%c",text[i][j]);
+//				fprintf(fp,"%c",text[i][j]);
+//					if(!*text[j]) 
+////		        		continue;					
+//			}	
+//				for(k = 0; k < t; k++) {
+//			printf("%d: ", k);
+//		    for(l = 0; baru[ l ]; l++){	
+//				putchar(baru[ l ]);			  		   
+//		 	} 
+////				putchar('\n');		     	   
+////				printf("MASUK\n");
+////				printf("%c\n",text[1][0]);	
+//		}else{
+//		for(;j<strlen(text[j]);j++){
+//			if(!text[j]){				
+//				printf("%c",text[i][j]);
+//				continue;
+//	printf("\nkewkusr \n");
+////		}
+//		}
+//			}
+//		
+//			fprintf(fp,"%c",tampung[i][j]);
+//			if(!*tampung[j]) 
+//	        		continue;
+		
+	printf("\nPada baris mana akan dimasukkan :");
     scanf("%d", &insert);
 	
 	for(i=0;i<MAX;i++){
-		if(i == (insert-1)){
-			for(j=0;j<LEN;j++){
-				printf("%c",text[j]);fflush(stdin);
-				if(!*text[j]) 
-	        		continue;
+		j=0;
+		if(i == (insert)){
+//			strcpy(text[i],baru);
+			for(;j<strlen(baru);j++){
+				printf("%c",baru[j]);fflush(stdin);
+				if(j+1 == strlen(baru)) {
+					j=0;
+					printf("\n");
+					goto lanjut;
+				}
+			}
+			printf("\n");
+		}
+		else{
+			lanjut:
+			for(;j<strlen(text[j]);j++){
+				printf("%c",tampung[i][j]);fflush(stdin);
+				if(tampung[i][j] == '\n') 
+		        		goto mulai;
 			}
 		}
-		for(j=0;j<LEN;j++){
-			printf("%c",tampung[i][j]);
-			if(!*tampung[j]) 
-	        		continue;
-		}
+		printf("\n");
+		mulai:;
 	}
-
+	fclose(fp);
 }
+
+		
+		

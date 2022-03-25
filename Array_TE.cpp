@@ -14,6 +14,7 @@ void display();
 void shortcut(char isi);
 void edit_file(char fn[]);
 void DeleteLine(char fn[]);
+void Menu();
 
 	FILE *fp;
 	char fn[15];
@@ -44,12 +45,12 @@ int main(void)
 	
 	end1:;
 }
+void Menu(){
+	
+}
 
 void arr(){
-	
-//	system("cls");
-//	start1:
-//	fp = fopen("baru.txt","wb+");
+
 
 	printf("Ctrl+S : Save\tCtrl+E : Edit\t\n");
 	
@@ -64,7 +65,7 @@ void arr(){
 	    gets(text[t]);	    			
 		fprintf(fp,"%s \n",text[t]);
 	    if(!*text[t]) 
-	        break; /* quit on blank line */	        	    	        
+	        break; 	    	        
 	}	
 	fclose(fp);
 	

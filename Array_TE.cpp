@@ -16,14 +16,12 @@ void display(char fname[]);
 void display1(char fname[]);
 void shortcut(char isi);
 void edit_file(char fn[]);
-
+void Menu();
 void Delete();
 void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
-
 void DeleteLine();
 void insert_line();
-
 
 	FILE *fp;
 	char fn[15];
@@ -31,104 +29,83 @@ void insert_line();
 
 int main(void)
 {
-	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
-	int pil;
-	scanf("%i",&pil);
-  	do{
-  		switch (pil){
-  			case 1:{
-  				printf("masukkan data kosong untuk quit.\n");
-		  		arr();
-				break;
-			}
-			case 2:{
-				display1(fn);
-				break;
-			}
-			case 3:{
-				Total_Char();
-				break;
-			}
-			case 4:{
-				Delete();
-				break;
-			}
-				case 5:{
-				find();
-				break;
-			}
-		}
-	}while(pil != 4);
-	
-	end1:;
+	arr();
+//	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
+//	int pil;
+//	scanf("%i",&pil);
+//  	do{
+//  		switch (pil){
+//  			case 1:{
+//  				printf("masukkan data kosong untuk quit.\n");
+//		  		arr();
+//				break;
+//			}
+//			case 2:{
+//				display1(fn);
+//				break;
+//			}
+//			case 3:{
+//				Total_Char();
+//				break;
+//			}
+//			case 4:{
+//				Delete();
+//				break;
+//			}
+//				case 5:{
+//				find();
+//				break;
+//			}
+//		}
+//	}while(pil != 4);
+//	
+//	end1:;
 }
+void Menu(){	
 
-void arr(){
-	
-//	system("cls");
-//	start1:
-//	fp = fopen("baru.txt","wb+");
-
+fp = fopen(fn,"at+");	
+system("cls");
+printf("File Name : %s ",fn);
+printf("\t\t Status : Menu In Control\n ");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
-	printf("\tCtrl+D : Insert Line\n");
-	
-	printf("\n\tEnter the file name: ");
-	scanf("%s",fn);
-	fp=fopen(fn,"w+");
-
-	fflush(stdin);
-  	for(t = 0; t < MAX; t++){  		
-	    printf("%d: ", t);fflush(stdin);
-	    gets(text[t]);fflush(stdin);
-//	    *text[t] = getchar();	    			
+	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
+	for(k=0; k < t; k++) {
+					printf("%d: ", k);
+		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
+		        	putchar(text[ k ][ l ]);			  		   
+		   		} putchar('\n');  	         	    	
+ 			}
+	char key;
+	key = getch();
+	if(key == 5){
+			fclose(fp);
+//			edit_file(fn);			
+printf("test 1");
+		}
+		else if(key == 18){
+			fclose(fp);
+			Total_Char();			
+printf("test 2");
+		}
+		else if(key== 4){
+			fclose(fp);
+//			DeleteLine();			
+printf("test 3");
+		}
+		else if(key == 17){
+			fclose(fp);
+//			insert_line();
+printf("test 4");
+		}
+		else if(key == 9){
+			system("cls");
+			printf("File Name : %s ",fn);
+			printf("\t\tStatus : Menu Not In Control \n");
+	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
+	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
 		
-		if(*text[t] == 5){
-			fclose(fp);
-			edit_file(fn);
-			goto retry;
-		}
-		else if(*text[t] == 18){
-			fclose(fp);
-			Total_Char();
-			goto retry;
-		}
-		else if(*text[t] == 4){
-			fclose(fp);
-			DeleteLine();
-			goto retry;
-		}
-		else if(*text[t] == 17){
-			fclose(fp);
-			insert_line();
-			goto retry;
-		}
-	    else if(!*text[t]) 
-	        break; /* quit on blank line */	 
-			
-	fprintf(fp,"%s \n",text[t]);     	    	        
-	}	
-	fclose(fp);
-	
-	char pilihan;
-	retry:
-//	system("cls");
-//		for(k = 0; k < t; k++) {
-//			printf("%d: ", k);
-//		    for(l = 0; text[ k ][ l ]; l++){	
-//				putchar(text[ k ][ l ]);			  		   
-//		 	} 
-//		putchar('\n');		     	         	    	
-// 		}
-	display(fn);
-	
-	printf("input data lagi ga ?(Y/N)");
-	scanf("%s",&pilihan);
-	
-	if(pilihan == 'Y' || pilihan == 'y' ){
-		fp = fopen(fn,"at+");			
-								 																
- 			int w; 		
-			for(; k < t; k++) {
+			int w; 		
+		for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
@@ -142,17 +119,73 @@ void arr(){
 	    			if(!*text[w]) {
 	    				t--;
 						fclose(fp);	 	
-	    				goto retry; /* quit on blank line */
+						Menu();
 			}			        		     	    	        
 		}
-		fclose(fp);	  											
-		}else if(pilihan == 'S' || pilihan == 'n'){
-			edit_file(fn);	 
-		}else{
-			printf("invalid input");
-			goto retry;
+		fclose(fp);	  					
 		}
-	edit_file(fn);	
+}
+
+void arr(){
+
+	
+	printf("\n\tEnter the file name: ");
+	scanf("%s",fn);
+	fp=fopen(fn,"w+");
+	
+	printf("File Name : %s ",fn);
+	printf("\t\tStatus : Menu Not In Control \n");
+	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
+	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
+	fflush(stdin);
+  	for(t = 0; t < MAX; t++){  		
+	    printf("%d: ", t);fflush(stdin);
+	    gets(text[t]);fflush(stdin);
+	    if(!*text[t]) 
+	        break; /* quit on blank line */	 
+			
+	fprintf(fp,"%s \n",text[t]);     	    	        
+
+	}	
+	fclose(fp);	
+	Menu();
+//	char pilihan;
+//	retry:
+//
+//	display(fn);
+	
+//	printf("input data lagi ga ?(Y/N)");
+//	scanf("%s",&pilihan);
+//	
+//	if(pilihan == 'Y' || pilihan == 'y' ){
+//		fp = fopen(fn,"at+");			
+//								 																
+// 			int w; 		
+//			for(; k < t; k++) {
+//					printf("%d: ", k);
+//		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
+//		        	putchar(text[ k ][ l ]);			  		   
+//		   		} putchar('\n');  	         	    	
+// 			}
+//			for(w = k; w < MAX; w++){  		
+//	    		printf("%d: ", w);fflush(stdin);
+//	    		gets(text[w]);	    			
+//	    		t++;
+//				fprintf(fp,"%s \n",text[w]);
+//	    			if(!*text[w]) {
+//	    				t--;
+//						fclose(fp);	 	
+//	    				goto retry; /* quit on blank line */
+//			}			        		     	    	        
+//		}
+//		fclose(fp);	  											
+//		}else if(pilihan == 'S' || pilihan == 'n'){
+//			edit_file(fn);	 
+//		}else{
+//			printf("invalid input");
+//			goto retry;
+//		}
+//	edit_file(fn);	
 }
 
 void Total_Char(){
@@ -167,7 +200,12 @@ void Total_Char(){
 	    	break;
 	}
 	printf("\nTotal Character : %i",total);
-	printf("\nTotal Baris	 : %i\n",i);
+
+	printf("\nTotal Baris	 : %i\n\n",i);
+//	main();
+system("pause");
+Menu();
+
 }
 
 void display(char fname[]){
@@ -218,7 +256,7 @@ void edit_file(char fn[]){
 	 printf("\nselesai, mau edit file ? (Y/N) ");
 	 scanf("%s",&inpedit);
 	 
-	 //Edit Kembali line
+
 	 if(inpedit == 'y' || inpedit == 'Y')
 	 {
 		int inp;
@@ -228,14 +266,14 @@ void edit_file(char fn[]){
     	scanf("%d",&inp);
     	fflush(stdin);
     	
-    	//Tampil Data Lama
+
     	printf("Data Lama : ");
     	for(j = 0; text[ inp ][ j ]; j++)
 		{
 			putchar(text[ inp ][ j ]);
 		}
 			
-		//Ganti Data
+
 		fp = fopen(fn,"r");	
 		fpt = fopen("temp.txt","w");
 		printf ("\ninput Data baru :");
@@ -267,7 +305,7 @@ void edit_file(char fn[]){
 		scanf("%s",&pil);
 		
 		if(pil == 'y' || pil == 'Y'){
-			arr();//start1;
+			arr();
 		}
 		else if(pil == 'n' || pil == 'N'){
 			system ("cls");
@@ -279,12 +317,6 @@ void edit_file(char fn[]){
 		}
 	} 		
 }
-
-//void shortcut(char isi){
-//	if(isi == 4){
-//		edit_file();
-//	}	
-//}
 
 void Delete(){
 	FILE *fp;
@@ -321,8 +353,6 @@ void find()
     char buffer[BUFFER_SIZE];
     char oldWord[100], newWord[100];
 
-
-
     printf("masukan nama file: ");
     scanf("%s", path);
 
@@ -333,45 +363,25 @@ void find()
     scanf("%s", newWord);
 
 
-    /*  Open all required files */
     fPtr  = fopen(path, "r");
     fTemp = fopen("replace.tmp", "w"); 
 
-    /* fopen() return NULL if unable to open file in given mode. */
     if (fPtr == NULL || fTemp == NULL)
     {
-        /* Unable to open file hence exit */
         printf("\nUnable to open file.\n");
         printf("Please check whether file exists and you have read/write privilege.\n");
         exit(EXIT_SUCCESS);
     }
 
-
-    /*
-     * Read line from source file and write to destination 
-     * file after replacing given word.
-     */
     while ((fgets(buffer, BUFFER_SIZE, fPtr)) != NULL)
     {
-        // Replace all occurrence of word from current line
         replaceAll(buffer, oldWord, newWord);
-
-        // After replacing write it to temp file.
         fputs(buffer, fTemp);
     }
-
-
-    /* Close all files to release resource */
     fclose(fPtr);
     fclose(fTemp);
-
-
-    /* Delete original source file */
     remove(path);
-
-    /* Rename temp file as original file */
     rename("replace.tmp", path);
-
     printf("\nSukses dirubah dari '%s' menjadi '%s'.", oldWord, newWord);
 	
 	
@@ -381,11 +391,6 @@ void find()
 
 }
 
-
-
-/**
- * Replace all occurrences of a given a word in string.
- */
 void replaceAll(char *str, const char *oldWord, const char *newWord)
 {
     char *pos, temp[BUFFER_SIZE];
@@ -394,31 +399,16 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 
     owlen = strlen(oldWord);
 
-    // Fix: If oldWord and newWord are same it goes to infinite loop
     if (!strcmp(oldWord, newWord)) {
         return;
     }
 
-
-    /*
-     * Repeat till all occurrences are replaced. 
-     */
     while ((pos = strstr(str, oldWord)) != NULL)
     {
-        // Backup current line
         strcpy(temp, str);
-
-        // Index of current found word
         index = pos - str;
-
-        // Terminate str after word found index
         str[index] = '\0';
-
-        // Concatenate str with new word 
         strcat(str, newWord);
-        
-        // Concatenate str with remaining words after 
-        // oldword found index.
         strcat(str, temp + index + owlen);
     }
 }

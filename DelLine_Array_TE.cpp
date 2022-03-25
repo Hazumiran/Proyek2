@@ -3,7 +3,7 @@
 #include <conio.h>
 
 #define MAX 100
-#define LEN 80
+#define LEN 800
 
 char text[MAX][LEN];
 void arr();
@@ -201,8 +201,8 @@ void edit_file(){
 //	}	
 //}
 
-void DeleteLine(){
 	FILE *fp1;
+void DeleteLine(){
 	int delete_line, temp = 1, k;
 	char ch, p;
 	

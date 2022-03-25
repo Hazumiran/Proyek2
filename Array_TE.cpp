@@ -10,7 +10,7 @@
 #define BUFFER_SIZE 1000
 char text[MAX][LEN];
 void arr();
-int edit();
+int edit(); 
 void Total_Char();
 void display(char fname[]);
 void display1(char fname[]);
@@ -102,9 +102,6 @@ void arr(){
 			insert_line();
 			goto retry;
 		}
-		else if(*text[t] == 32){ // for blank line
-			break;
-		}
 	    else if(!*text[t]) 
 	        break; /* quit on blank line */	 
 			
@@ -114,7 +111,7 @@ void arr(){
 	
 	char pilihan;
 	retry:
-	system("cls");
+//	system("cls");
 //		for(k = 0; k < t; k++) {
 //			printf("%d: ", k);
 //		    for(l = 0; text[ k ][ l ]; l++){	
@@ -130,32 +127,32 @@ void arr(){
 	if(pilihan == 'Y' || pilihan == 'y' ){
 		fp = fopen(fn,"at+");			
 								 																
- 			int w; 	
-			for(k = 0; k < t; k++) {
+ 			int w; 		
+			for(; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
 		   		} putchar('\n');  	         	    	
  			}
-			for(w = t; w < MAX; w++){  		
+			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
 	    		gets(text[w]);	    			
 	    		t++;
+				fprintf(fp,"%s \n",text[w]);
 	    			if(!*text[w]) {
 	    				t--;
 						fclose(fp);	 	
 	    				goto retry; /* quit on blank line */
-					}	
-				fprintf(fp,"%s \n",text[w]);		        		     	    	        
+			}			        		     	    	        
 		}
 		fclose(fp);	  											
-		}else if(pilihan == 'N' || pilihan == 'n'){
-			fclose(fp);
+		}else if(pilihan == 'S' || pilihan == 'n'){
 			edit_file(fn);	 
 		}else{
 			printf("invalid input");
 			goto retry;
 		}
+	edit_file(fn);	
 }
 
 void Total_Char(){
@@ -170,8 +167,7 @@ void Total_Char(){
 	    	break;
 	}
 	printf("\nTotal Character : %i",total);
-	printf("\nTotal Baris	 : %i\n\n",i);
-	main();
+	printf("\nTotal Baris	 : %i\n",i);
 }
 
 void display(char fname[]){
@@ -187,9 +183,9 @@ void display(char fname[]){
         i++;
     }
     tot = i;  
-    for(i = 0; i < tot; ++i)
+    for(i = 0; i <= tot-1; ++i)
     {
-        printf("%d :%s\n", i, text[i]);
+        printf("\t %d :%s\n", i, text[i]);
     }
     
 }
@@ -261,7 +257,7 @@ void edit_file(char fn[]){
     	fclose(fp);
 		fclose(fpt);
 		remove(fn);
-		rename("temp.txt",fn);
+		rename("temp.txt", fn);
  		goto tambah;
 
 	 }
@@ -289,11 +285,12 @@ void edit_file(char fn[]){
 //		edit_file();
 //	}	
 //}
+
 void Delete(){
 	FILE *fp;
 	char fn[15];
 	
-	fp=fopen("temp.txt","w");
+//	fp=fopen("temp.txt","w");
 	printf("\n\tEnter the file name: ");
 	scanf("%s",fn);
 	fp=fopen(fn,"r");
@@ -307,17 +304,17 @@ void Delete(){
 	
 	if(remove(fn)==0){
 		printf("\n\n\tFile has been deleted successfully!");
-	goto end2;
+		goto end2;
 	}
 	else
-	
 	printf("\n\tError!\n");
 	end2: printf("\n\n\tPress any key to continue\n");
 	
 }
+
 void find()
 {
-   FILE * fPtr;
+    FILE * fPtr;
     FILE * fTemp;
     char path[100];
     
@@ -376,7 +373,11 @@ void find()
     rename("replace.tmp", path);
 
     printf("\nSukses dirubah dari '%s' menjadi '%s'.", oldWord, newWord);
-
+	
+	
+	
+	end2: printf("\n\n\tPress any key to continue\n");
+	main();
 
 }
 
@@ -424,49 +425,85 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 
 void DeleteLine(){
 	FILE *fp1;
-	int delete_line, temp = 1, k;
-	char ch, p;
+	int delete_line, temp = 1;
+	int tot = 0;
+	int i = 0;
+	int j=0;
+	char ch,p;
 	
 	system("cls");
 	fp = fopen(fn, "r");
-    ch = getc(fp);
-  	while (ch != EOF){
-  		
-        printf("%c", ch);
-        ch = getc(fp);
+ //   ch = getc(fp);
+    
+    while(fgets(text[i], LEN, fp)) 
+	{
+        text[i][strlen(text[i]) - 1] = '\0';
+        i++;
     }
-    //rewind
+    tot = i;  
+    for(i = 0; i <= tot-1; ++i)
+    {
+        printf("%d :%s\n", i, text[i]);
+    }
+    
+//  	while (ch != EOF){
+//  		
+//        printf("%c", ch);
+//        ch= getc(fp);
+//    }
+//    rewind
+
     rewind(fp);
     printf("\nEnter line number of the line to be deleted:");
     scanf("%d", &delete_line);
     delete_line += 1;
     //open new file in write mode
-    fp1 = fopen("temp.txt", "w");
-    ch = 'A';
-    while (ch != EOF)
+    fp1 = fopen("delete.tmp", "w");
+	
+    while((fgets(text[i], LEN, fp)) != NULL)
     {
-        ch = getc(fp);
-        if (temp != delete_line)
+    	if(temp != delete_line)
         {
-            putc(ch, fp1);
-        }
-        if (ch == '\n')
-        {
-            temp++;
-        }
-    }
+       		fputs(text[i], fp1);
+			temp++;
+		}
+	}
+	
+//    ch = 'A';
+//    while (ch != EOF)
+//    {
+//        ch = getc(fp);
+//        if (temp != delete_line)
+//        {
+//            putc(ch, fp1);
+//        }
+//        if (ch == '\n')
+//        {
+//            temp++;
+//        }
+//    }
+
     fclose(fp);
     fclose(fp1);
     remove(fn);
-    rename("temp.txt", fn);
+    rename("delete.tmp", fn);
     printf("\nAfter Delete:\n");
     fp = fopen(fn, "r");
-    ch = getc(fp);
-    while (ch != EOF){
-        printf("%c", ch);
-        ch = getc(fp);
+	while(fgets(text[j], LEN, fp)) 
+	{
+        text[j][strlen(text[j]) - 1] = '\0';
+        j++;
     }
-    
+   tot = j;  
+    for(j = 0; j <= tot-1; ++j)
+    {
+        printf("%d :%s\n", j, text[j]);
+    }
+//    ch = getc(fp);
+//    while (ch != EOF){
+//        printf("%c", ch);
+//        ch = getc(fp);
+//    }
     fclose(fp);
     
     Ulang :
@@ -474,8 +511,9 @@ void DeleteLine(){
     scanf("%s", &p);
     	if(p == 'y' || p == 'Y'){
     		DeleteLine();
-		}
+		}   
 		else if(p == 'n' || p == 'N'){
+			system("cls");
 			main();
 		}
 		else{
@@ -492,50 +530,108 @@ void insert_line(){
 	int insert;
 	char ch, p;
 	i=0,j=0;
-	
 	system("cls");
 	fp = fopen(fn, "r");
-	fp1 = fopen(fn, "r");
-	
-    ch = getc(fp);
     
-  	while (ch != EOF){
+  	while (!feof(fp) && ch != EOF){
+// 		melanjut:
 //        printf("%c", ch);
-        ch = getc(fp);fflush(stdin);
-        tampung[i][j] = getc(fp1);fflush(stdin);
-        if(!ch){
-        	i++;
+        tampung[i][j] = getc(fp);
+//        puts(tampung[i]);
+		if(tampung[i][j] == '\n'){
+			i++;
+			j=0;
 		}
-		j++;
-    }
-    
-    fclose(fp);
-    fclose(fp1);
-
-    printf("Masukkan Kalimat : ");
-	for(t = 0; t < MAX; t++){  		
-	    
-	    scanf("%c",&baru[t]);
-		if(baru[t] == '\n') 
-	        break;
+		else{
+			j++;
+		}
 	}
-	
-    printf("\nPada baris mana akan dimasukkan :");
+//        printf("%c",tampung[i][j]);
+//        if(tampung[i][j] == ' '){
+//        	i++;
+//       		j=0;
+//	  		goto melanjut;
+//		}
+
+    
+//    fclose(fp);
+//    printf("%c",tampung[0][0]);printf("%c",tampung[0][1]);printf("%c\n",tampung[0][2]);
+//    printf("%c",tampung[1][0]);printf("%c",tampung[1][1]);printf("%c",tampung[1][2]);
+//	printf("%c",tampung[2][0]);printf("%c",tampung[2][1]);printf("%c",tampung[2][2]);
+    printf("Masukkan Kalimat : ");
+    scanf("%s",&baru);
+    fflush(stdin);
+//	for(t = 0; t < MAX; t++){  		
+//	    
+//	    scanf("%c",&baru[t]);
+//		if(baru[t] == '\n') 
+//	        break;
+//	}
+//	
+//	printf("\nPada baris mana akan dimasukkan :");
+//    scanf("%d", &insert);
+//	
+//	fp = fopen(fn, "w");
+//		j=0;
+//		if(i == (insert)){ //true
+//			strcpy(text[i],baru);
+//			for(;j<strlen(baru);j++){
+////				printf("%c",baru[j]);
+////				printf("udah bisa");
+//				printf("%c",text[i][j]);
+//				fprintf(fp,"%c",text[i][j]);
+//					if(!*text[j]) 
+////		        		continue;					
+//			}	
+//				for(k = 0; k < t; k++) {
+//			printf("%d: ", k);
+//		    for(l = 0; baru[ l ]; l++){	
+//				putchar(baru[ l ]);			  		   
+//		 	} 
+////				putchar('\n');		     	   
+////				printf("MASUK\n");
+////				printf("%c\n",text[1][0]);	
+//		}else{
+//		for(;j<strlen(text[j]);j++){
+//			if(!text[j]){				
+//				printf("%c",text[i][j]);
+//				continue;
+//	printf("\nkewkusr \n");
+////		}
+//		}
+//			}
+//		
+//			fprintf(fp,"%c",tampung[i][j]);
+//			if(!*tampung[j]) 
+//	        		continue;
+		
+	printf("\nPada baris mana akan dimasukkan :");
     scanf("%d", &insert);
 	
 	for(i=0;i<MAX;i++){
-		if(i == (insert-1)){
-			for(j=0;j<LEN;j++){
-				printf("%c",text[j]);fflush(stdin);
-				if(!*text[j]) 
-	        		continue;
+		j=0;
+		if(i == (insert)){
+//			strcpy(text[i],baru);
+			for(;j<strlen(baru);j++){
+				printf("%c",baru[j]);fflush(stdin);
+				if(j+1 == strlen(baru)) {
+					j=0;
+					printf("\n");
+					goto lanjut;
+				}
+			}
+			printf("\n");
+		}
+		else{
+			lanjut:
+			for(;j<strlen(text[j]);j++){
+				printf("%c",tampung[i][j]);fflush(stdin);
+				if(tampung[i][j] == '\n') 
+		        		goto mulai;
 			}
 		}
-		for(j=0;j<LEN;j++){
-			printf("%c",tampung[i][j]);
-			if(!*tampung[j]) 
-	        		continue;
-		}
+		printf("\n");
+		mulai:;
 	}
-
+	fclose(fp);
 }

@@ -16,12 +16,23 @@ void display(char fname[]);
 void display1(char fname[]);
 void shortcut(char isi);
 void edit_file(char fn[]);
+<<<<<<< HEAD
 void Menu();
 void Delete();
 void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
 void DeleteLine();
 void insert_line();
+=======
+
+void Delete();
+void find();
+void replaceAll(char *str, const char *oldWord, const char *newWord);
+
+void DeleteLine();
+void insert_line();
+
+>>>>>>> Tubagus
 
 	FILE *fp;
 	char fn[15];
@@ -29,6 +40,7 @@ void insert_line();
 
 int main(void)
 {
+<<<<<<< HEAD
 	arr();
 //	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
 //	int pil;
@@ -123,11 +135,44 @@ printf("test 4");
 			}			        		     	    	        
 		}
 		fclose(fp);	  					
+=======
+	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
+	int pil;
+	scanf("%i",&pil);
+  	do{
+  		switch (pil){
+  			case 1:{
+  				printf("masukkan data kosong untuk quit.\n");
+		  		arr();
+				break;
+			}
+			case 2:{
+				display1(fn);
+				break;
+			}
+			case 3:{
+				Total_Char();
+				break;
+			}
+			case 4:{
+				Delete();
+				break;
+			}
+				case 5:{
+				find();
+				break;
+			}
+>>>>>>> Tubagus
 		}
 }
 
 void arr(){
 
+<<<<<<< HEAD
+=======
+	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
+	printf("\tCtrl+D : Insert Line\n");
+>>>>>>> Tubagus
 	
 	printf("\n\tEnter the file name: ");
 	scanf("%s",fn);
@@ -141,6 +186,7 @@ void arr(){
   	for(t = 0; t < MAX; t++){  		
 	    printf("%d: ", t);fflush(stdin);
 	    gets(text[t]);fflush(stdin);
+<<<<<<< HEAD
 	    if(!*text[t]) 
 	        break; /* quit on blank line */	 
 			
@@ -186,6 +232,81 @@ void arr(){
 //			goto retry;
 //		}
 //	edit_file(fn);	
+=======
+//	    *text[t] = getchar();	    			
+		
+		if(*text[t] == 5){
+			fclose(fp);
+			edit_file(fn);
+			goto retry;
+		}
+		else if(*text[t] == 18){
+			fclose(fp);
+			Total_Char();
+			goto retry;
+		}
+		else if(*text[t] == 4){
+			fclose(fp);
+			DeleteLine();
+			goto retry;
+		}
+		else if(*text[t] == 17){
+			fclose(fp);
+			insert_line();
+			goto retry;
+		}
+	    else if(!*text[t]) 
+	        break; /* quit on blank line */	 
+			
+	fprintf(fp,"%s \n",text[t]);     	    	        
+	}	
+	fclose(fp);
+	
+	char pilihan;
+	retry:
+//	system("cls");
+//		for(k = 0; k < t; k++) {
+//			printf("%d: ", k);
+//		    for(l = 0; text[ k ][ l ]; l++){	
+//				putchar(text[ k ][ l ]);			  		   
+//		 	} 
+//		putchar('\n');		     	         	    	
+// 		}
+	display(fn);
+	
+	printf("input data lagi ga ?(Y/N)");
+	scanf("%s",&pilihan);
+	
+	if(pilihan == 'Y' || pilihan == 'y' ){
+		fp = fopen(fn,"at+");			
+								 																
+ 			int w; 		
+			for(; k < t; k++) {
+					printf("%d: ", k);
+		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
+		        	putchar(text[ k ][ l ]);			  		   
+		   		} putchar('\n');  	         	    	
+ 			}
+			for(w = k; w < MAX; w++){  		
+	    		printf("%d: ", w);fflush(stdin);
+	    		gets(text[w]);	    			
+	    		t++;
+				fprintf(fp,"%s \n",text[w]);
+	    			if(!*text[w]) {
+	    				t--;
+						fclose(fp);	 	
+	    				goto retry; /* quit on blank line */
+			}			        		     	    	        
+		}
+		fclose(fp);	  											
+		}else if(pilihan == 'S' || pilihan == 'n'){
+			edit_file(fn);	 
+		}else{
+			printf("invalid input");
+			goto retry;
+		}
+	edit_file(fn);	
+>>>>>>> Tubagus
 }
 
 void Total_Char(){
@@ -200,12 +321,16 @@ void Total_Char(){
 	    	break;
 	}
 	printf("\nTotal Character : %i",total);
+<<<<<<< HEAD
 
 	printf("\nTotal Baris	 : %i\n\n",i);
 //	main();
 system("pause");
 Menu();
 
+=======
+	printf("\nTotal Baris	 : %i\n",i);
+>>>>>>> Tubagus
 }
 
 void display(char fname[]){
@@ -318,6 +443,15 @@ void edit_file(char fn[]){
 	} 		
 }
 
+<<<<<<< HEAD
+=======
+//void shortcut(char isi){
+//	if(isi == 4){
+//		edit_file();
+//	}	
+//}
+
+>>>>>>> Tubagus
 void Delete(){
 	FILE *fp;
 	char fn[15];
@@ -353,6 +487,11 @@ void find()
     char buffer[BUFFER_SIZE];
     char oldWord[100], newWord[100];
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Tubagus
     printf("masukan nama file: ");
     scanf("%s", path);
 
@@ -363,16 +502,28 @@ void find()
     scanf("%s", newWord);
 
 
+<<<<<<< HEAD
     fPtr  = fopen(path, "r");
     fTemp = fopen("replace.tmp", "w"); 
 
     if (fPtr == NULL || fTemp == NULL)
     {
+=======
+    /*  Open all required files */
+    fPtr  = fopen(path, "r");
+    fTemp = fopen("replace.tmp", "w"); 
+
+    /* fopen() return NULL if unable to open file in given mode. */
+    if (fPtr == NULL || fTemp == NULL)
+    {
+        /* Unable to open file hence exit */
+>>>>>>> Tubagus
         printf("\nUnable to open file.\n");
         printf("Please check whether file exists and you have read/write privilege.\n");
         exit(EXIT_SUCCESS);
     }
 
+<<<<<<< HEAD
     while ((fgets(buffer, BUFFER_SIZE, fPtr)) != NULL)
     {
         replaceAll(buffer, oldWord, newWord);
@@ -382,6 +533,34 @@ void find()
     fclose(fTemp);
     remove(path);
     rename("replace.tmp", path);
+=======
+
+    /*
+     * Read line from source file and write to destination 
+     * file after replacing given word.
+     */
+    while ((fgets(buffer, BUFFER_SIZE, fPtr)) != NULL)
+    {
+        // Replace all occurrence of word from current line
+        replaceAll(buffer, oldWord, newWord);
+
+        // After replacing write it to temp file.
+        fputs(buffer, fTemp);
+    }
+
+
+    /* Close all files to release resource */
+    fclose(fPtr);
+    fclose(fTemp);
+
+
+    /* Delete original source file */
+    remove(path);
+
+    /* Rename temp file as original file */
+    rename("replace.tmp", path);
+
+>>>>>>> Tubagus
     printf("\nSukses dirubah dari '%s' menjadi '%s'.", oldWord, newWord);
 	
 	
@@ -391,6 +570,14 @@ void find()
 
 }
 
+<<<<<<< HEAD
+=======
+
+
+/**
+ * Replace all occurrences of a given a word in string.
+ */
+>>>>>>> Tubagus
 void replaceAll(char *str, const char *oldWord, const char *newWord)
 {
     char *pos, temp[BUFFER_SIZE];
@@ -399,16 +586,43 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 
     owlen = strlen(oldWord);
 
+<<<<<<< HEAD
+=======
+    // Fix: If oldWord and newWord are same it goes to infinite loop
+>>>>>>> Tubagus
     if (!strcmp(oldWord, newWord)) {
         return;
     }
 
+<<<<<<< HEAD
     while ((pos = strstr(str, oldWord)) != NULL)
     {
         strcpy(temp, str);
         index = pos - str;
         str[index] = '\0';
         strcat(str, newWord);
+=======
+
+    /*
+     * Repeat till all occurrences are replaced. 
+     */
+    while ((pos = strstr(str, oldWord)) != NULL)
+    {
+        // Backup current line
+        strcpy(temp, str);
+
+        // Index of current found word
+        index = pos - str;
+
+        // Terminate str after word found index
+        str[index] = '\0';
+
+        // Concatenate str with new word 
+        strcat(str, newWord);
+        
+        // Concatenate str with remaining words after 
+        // oldword found index.
+>>>>>>> Tubagus
         strcat(str, temp + index + owlen);
     }
 }

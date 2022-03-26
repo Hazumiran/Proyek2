@@ -203,20 +203,10 @@ void Total_Char(){
 		if(!*text[i]) 
 	    	break;
 	}
-<<<<<<< HEAD
-	printf("\nTotal Character : %i",total);
-
-	printf("\nTotal Baris	 : %i\n\n",i);
-//	main();
-system("pause");
-Menu();
-
-=======
 	printf("\n Lines :%i",total);
 	printf("/Coloumns : %i\n\n",i);
 system("pause");
 Menu();
->>>>>>> c86200a99e07ab88f68f815192cb5b2019d2cba2
 }
 
 void display(char fname[]){
@@ -448,7 +438,6 @@ void DeleteLine(){
         ch = getc(fp);
         if (temp != delete_line)
         {
-<<<<<<< HEAD
        		fputs(text[i], fp1);
         }
         if(text[i], fp1){
@@ -471,15 +460,6 @@ void DeleteLine(){
 //        }
 //    }
 
-=======
-            putc(ch, fp1);
-        }
-        if (ch == '\n')
-        {
-            temp++;
-        }
-    }
->>>>>>> c86200a99e07ab88f68f815192cb5b2019d2cba2
     fclose(fp);
     fclose(fp1);
     remove(fn);

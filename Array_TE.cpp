@@ -73,7 +73,7 @@ printf("\t\t Status : Menu In Control\n ");
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		} putchar('\n');  	         	    	
+		   		} putchar('\n');
  			}
 	char key;
 	key = getch();
@@ -89,7 +89,7 @@ printf("test 2");
 		}
 		else if(key== 4){
 			fclose(fp);
-//			DeleteLine();			
+			DeleteLine();			
 printf("test 3");
 		}
 		else if(key == 17){
@@ -110,7 +110,7 @@ printf("test 4");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
 		
-			int w; 		
+		int w; 		
 		for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
@@ -416,29 +416,35 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 
 void DeleteLine(){
 	FILE *fp1;
-	int delete_line, temp = 1, k;
-	char ch, p;
+	int delete_line, temp = 1;
+	int tot = 0;
+	int i = 0;
+	int j=0;
+	char ch,p;
 	
-	system("cls");
+//	system("cls");
 	fp = fopen(fn, "r");
-    ch = getc(fp);
-  	while (ch != EOF){
-  		
-        printf("%c", ch);
-        ch = getc(fp);
-    }
-    //rewind
-    rewind(fp);
+	
+//    while(fgets(text[i], LEN, fp)) 
+//	{
+//        text[i][strlen(text[i]) - 1] = '\0';
+//        i++;
+//    }
+//    tot = i;  
+//    for(i = 0; i <= tot-1; ++i)
+//    {
+//        printf("%d :%s\n", i, text[i]);
+//    }
+//
+//    rewind(fp);
     printf("\nEnter line number of the line to be deleted:");
     scanf("%d", &delete_line);
     delete_line += 1;
-    //open new file in write mode
-    fp1 = fopen("temp.txt", "w");
-    ch = 'A';
-    while (ch != EOF)
+    
+    fp1 = fopen("delete.tmp", "w");
+    while((fgets(text[i], LEN, fp)) != NULL)
     {
-        ch = getc(fp);
-        if (temp != delete_line)
+    	if(temp != delete_line)
         {
        		fputs(text[i], fp1);
         }
@@ -446,35 +452,23 @@ void DeleteLine(){
 			temp++;
 		}
 	}
-	
-	
-//    ch = 'A';
-//    while (ch != EOF)
-//    {
-//        ch = getc(fp);
-//        if (temp != delete_line)
-//        {
-//            putc(ch, fp1);
-//        }
-//        if (ch == '\n')
-//        {
-//            temp++;
-//        }
-//    }
-
 
     fclose(fp);
     fclose(fp1);
     remove(fn);
-    rename("temp.txt", fn);
+    rename("delete.tmp", fn);
     printf("\nAfter Delete:\n");
     fp = fopen(fn, "r");
-    ch = getc(fp);
-    while (ch != EOF){
-        printf("%c", ch);
-        ch = getc(fp);
+	while(fgets(text[j], LEN, fp)) 
+	{
+        text[j][strlen(text[j]) - 1] = '\0';
+        j++;
     }
-    
+   tot = j;  
+    for(j = 0; j <= tot-1; ++j)
+    {
+        printf("%d :%s\n", j, text[j]);
+    }
     fclose(fp);
     
     Ulang :
@@ -482,9 +476,10 @@ void DeleteLine(){
     scanf("%s", &p);
     	if(p == 'y' || p == 'Y'){
     		DeleteLine();
-		}
+		}   
 		else if(p == 'n' || p == 'N'){
-			main();
+			system("cls");
+			Menu();
 		}
 		else{
 			printf("invalid input");

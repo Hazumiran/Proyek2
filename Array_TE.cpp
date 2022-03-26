@@ -23,7 +23,7 @@ void replaceAll(char *str, const char *oldWord, const char *newWord);
 void DeleteLine();
 void insert_line();
 
-	FILE *fp;
+	FILE *fp,*fp1;
 	char fn[15];
 	int i,j,t,k,l,m,temp_m;
 
@@ -63,23 +63,43 @@ int main(void)
 }
 void Menu(){	
 
-fp = fopen(fn,"at+");	
 system("cls");
 printf("File Name : %s ",fn);
 printf("\t\t Status : Menu In Control\n ");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
+	
+fp = fopen(fn,"at+");	
+fp1 = fopen(fn,"rt");	
+k=0,l=0;
+
+	if(fp1 != NULL){
+		while (!feof(fp1)){
+        text[k][l] = getc(fp1);
+		if(text[k][l] == '\n'){
+			k++;
+			l=0;
+		}
+		else{
+			l++;
+		}
+	}
+	t=k;
+	}
+	
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		} putchar('\n');  	         	    	
+		   		} 
+				   //putchar('\n');  	         	    	
  			}
+ 		
 	char key;
 	key = getch();
 	if(key == 5){
 			fclose(fp);
-//			edit_file(fn);			
+			edit_file(fn);			
 printf("test 1");
 		}
 		else if(key == 18){
@@ -89,18 +109,24 @@ printf("test 2");
 		}
 		else if(key== 4){
 			fclose(fp);
-//			DeleteLine();			
+			DeleteLine();			
 printf("test 3");
 		}
 		else if(key == 17){
 			fclose(fp);
 			insert_line();
+
+printf("test 4");
+		}
+		else if(key == 12){
+			fclose(fp);
+			Delete();
+
 printf("test 4");
 		}
 		else if(key == 14){
 			system("start Array_TE.exe");
 			Menu();
-//			insert_line();
 		}
 		else if(key == 9){
 			system("cls");
@@ -109,12 +135,14 @@ printf("test 4");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
 		
+	
 			int w; 		
 		for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		} putchar('\n');  	         	    	
+		   		} 
+				   //putchar('\n');  	         	    	
  			}
 			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
@@ -123,11 +151,13 @@ printf("test 4");
 				fprintf(fp,"%s \n",text[w]);
 	    			if(!*text[w]) {
 	    				t--;
-						fclose(fp);	 	
+						fclose(fp);
+						fclose(fp1);	 	
 						Menu();
 			}			        		     	    	        
 		}
-		fclose(fp);	  					
+		fclose(fp);
+		fclose(fp1);	  					
 		}
 }
 
@@ -199,16 +229,16 @@ void Total_Char(){
 	for(i = 0; i < MAX; i++) {
 	   for(j = 0; text[ i ][ j ]; j++) {
 	       total+=1;
-		}
-	 	
+		}	 	
 		if(!*text[i]) 
 	    	break;
 	}
-	printf("\nTotal Character : %i",total);
-	printf("\nTotal Baris	 : %i\n\n",i);
-//	main();
+
+	printf("\n Lines :%i",total);
+	printf("/Coloumns : %i\n\n",i);
 system("pause");
 Menu();
+
 }
 
 void display(char fname[]){
@@ -314,7 +344,7 @@ void edit_file(char fn[]){
 		}
 		else if(pil == 'n' || pil == 'N'){
 			system ("cls");
-			main();
+			Menu();
 		}
 		else{
 			printf("invalid input");
@@ -419,12 +449,12 @@ void DeleteLine(){
 	int delete_line, temp = 1, k;
 	char ch, p;
 	
-	system("cls");
+//	system("cls");
 	fp = fopen(fn, "r");
     ch = getc(fp);
   	while (ch != EOF){
   		
-        printf("%c", ch);
+//        printf("%c", ch);
         ch = getc(fp);
     }
     //rewind
@@ -451,11 +481,11 @@ void DeleteLine(){
     fclose(fp1);
     remove(fn);
     rename("temp.txt", fn);
-    printf("\nAfter Delete:\n");
+//   printf("\nAfter Delete:\n");
     fp = fopen(fn, "r");
     ch = getc(fp);
     while (ch != EOF){
-        printf("%c", ch);
+//        printf("%c", ch);
         ch = getc(fp);
     }
     
@@ -468,7 +498,7 @@ void DeleteLine(){
     		DeleteLine();
 		}
 		else if(p == 'n' || p == 'N'){
-			main();
+			Menu();
 		}
 		else{
 			printf("invalid input");
@@ -484,7 +514,7 @@ void insert_line(){
 	int insert;
 	char ch, p;
 	i=0,j=0;
-	system("cls");
+//	system("cls");
 	fp = fopen(fn, "r");
     
   	while (!feof(fp) && ch != EOF){
@@ -517,25 +547,30 @@ void insert_line(){
 //			strcpy(text[i],baru);
 			for(;j<strlen(baru);j++){
 				printf("%c",baru[j]);fflush(stdin);
+				fprintf(fp,"%c",baru[j]);
 				if(j+1 == strlen(baru)) {
 					j=0;
+					fprintf(fp,"\n");
 					printf("\n");
 					goto lanjut;
 				}
 			}
-			printf("\n");
+			fprintf(fp,"\n");
+//			printf("\n");
 		}
 		else{
 			lanjut:
 			for(;j<strlen(text[i]);j++){
+				fprintf(fp,"%c",tampung[i][j]);
 				printf("%c",tampung[i][j]);fflush(stdin);
 				if(tampung[i][j] == '\n') 
 		        		goto mulai;
 			}
 		}
-		printf("\n");
+//		printf("\n");
+//		fprintf(fp,"\n");
 		mulai:;
 	}
 	fclose(fp);
-
+	Menu();
 }		

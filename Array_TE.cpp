@@ -10,7 +10,7 @@
 #define BUFFER_SIZE 1000
 char text[MAX][LEN];
 void arr();
-int edit(); 
+int edit();
 void Total_Char();
 void display(char fname[]);
 void display1(char fname[]);
@@ -96,6 +96,11 @@ printf("test 3");
 			fclose(fp);
 //			insert_line();
 printf("test 4");
+		}
+		else if(key == 14){
+			system("start Array_TE.exe");
+			Menu();
+//			insert_line();
 		}
 		else if(key == 9){
 			system("cls");
@@ -194,11 +199,11 @@ void Total_Char(){
 	for(i = 0; i < MAX; i++) {
 	   for(j = 0; text[ i ][ j ]; j++) {
 	       total+=1;
-		}
-	 	
+		}	 	
 		if(!*text[i]) 
 	    	break;
 	}
+<<<<<<< HEAD
 	printf("\nTotal Character : %i",total);
 
 	printf("\nTotal Baris	 : %i\n\n",i);
@@ -206,6 +211,12 @@ void Total_Char(){
 system("pause");
 Menu();
 
+=======
+	printf("\n Lines :%i",total);
+	printf("/Coloumns : %i\n\n",i);
+system("pause");
+Menu();
+>>>>>>> c86200a99e07ab88f68f815192cb5b2019d2cba2
 }
 
 void display(char fname[]){
@@ -221,10 +232,12 @@ void display(char fname[]){
         i++;
     }
     tot = i;  
-    for(i = 0; i <= tot-1; ++i)
+    for(i = 0; i < tot-1; ++i)
     {
         printf("\t %d :%s\n", i, text[i]);
     }
+    system("pause");
+    Menu();
     
 }
 
@@ -322,7 +335,7 @@ void Delete(){
 	FILE *fp;
 	char fn[15];
 	
-//	fp=fopen("temp.txt","w");
+	fp=fopen("temp.txt","w");
 	printf("\n\tEnter the file name: ");
 	scanf("%s",fn);
 	fp=fopen(fn,"r");
@@ -336,17 +349,17 @@ void Delete(){
 	
 	if(remove(fn)==0){
 		printf("\n\n\tFile has been deleted successfully!");
-		goto end2;
+	goto end2;
 	}
 	else
+	
 	printf("\n\tError!\n");
 	end2: printf("\n\n\tPress any key to continue\n");
 	
 }
-
 void find()
 {
-    FILE * fPtr;
+   FILE * fPtr;
     FILE * fTemp;
     char path[100];
     
@@ -383,11 +396,7 @@ void find()
     remove(path);
     rename("replace.tmp", path);
     printf("\nSukses dirubah dari '%s' menjadi '%s'.", oldWord, newWord);
-	
-	
-	
-	end2: printf("\n\n\tPress any key to continue\n");
-	main();
+
 
 }
 
@@ -415,45 +424,31 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 
 void DeleteLine(){
 	FILE *fp1;
-	int delete_line, temp = 1;
-	int tot = 0;
-	int i = 0;
-	int j=0;
-	char ch,p;
+	int delete_line, temp = 1, k;
+	char ch, p;
 	
 	system("cls");
 	fp = fopen(fn, "r");
- //   ch = getc(fp);
-    
-    while(fgets(text[i], LEN, fp)) 
-	{
-        text[i][strlen(text[i]) - 1] = '\0';
-        i++;
+    ch = getc(fp);
+  	while (ch != EOF){
+  		
+        printf("%c", ch);
+        ch = getc(fp);
     }
-    tot = i;  
-    for(i = 0; i <= tot-1; ++i)
-    {
-        printf("%d :%s\n", i, text[i]);
-    }
-    
-//  	while (ch != EOF){
-//  		
-//        printf("%c", ch);
-//        ch= getc(fp);
-//    }
-//    rewind
-
+    //rewind
     rewind(fp);
     printf("\nEnter line number of the line to be deleted:");
     scanf("%d", &delete_line);
     delete_line += 1;
     //open new file in write mode
-    fp1 = fopen("delete.tmp", "w");
-	
-    while((fgets(text[i], LEN, fp)) != NULL)
+    fp1 = fopen("temp.txt", "w");
+    ch = 'A';
+    while (ch != EOF)
     {
-    	if(temp != delete_line)
+        ch = getc(fp);
+        if (temp != delete_line)
         {
+<<<<<<< HEAD
        		fputs(text[i], fp1);
         }
         if(text[i], fp1){
@@ -476,27 +471,27 @@ void DeleteLine(){
 //        }
 //    }
 
+=======
+            putc(ch, fp1);
+        }
+        if (ch == '\n')
+        {
+            temp++;
+        }
+    }
+>>>>>>> c86200a99e07ab88f68f815192cb5b2019d2cba2
     fclose(fp);
     fclose(fp1);
     remove(fn);
-    rename("delete.tmp", fn);
+    rename("temp.txt", fn);
     printf("\nAfter Delete:\n");
     fp = fopen(fn, "r");
-	while(fgets(text[j], LEN, fp)) 
-	{
-        text[j][strlen(text[j]) - 1] = '\0';
-        j++;
+    ch = getc(fp);
+    while (ch != EOF){
+        printf("%c", ch);
+        ch = getc(fp);
     }
-   tot = j;  
-    for(j = 0; j <= tot-1; ++j)
-    {
-        printf("%d :%s\n", j, text[j]);
-    }
-//    ch = getc(fp);
-//    while (ch != EOF){
-//        printf("%c", ch);
-//        ch = getc(fp);
-//    }
+    
     fclose(fp);
     
     Ulang :
@@ -504,9 +499,8 @@ void DeleteLine(){
     scanf("%s", &p);
     	if(p == 'y' || p == 'Y'){
     		DeleteLine();
-		}   
+		}
 		else if(p == 'n' || p == 'N'){
-			system("cls");
 			main();
 		}
 		else{
@@ -628,3 +622,6 @@ void insert_line(){
 	}
 	fclose(fp);
 }
+
+		
+		

@@ -95,6 +95,7 @@ printf("test 3");
 		else if(key == 17){
 			fclose(fp);
 			insert_line();
+
 printf("test 4");
 		}
 		else if(key == 14){
@@ -199,16 +200,16 @@ void Total_Char(){
 	for(i = 0; i < MAX; i++) {
 	   for(j = 0; text[ i ][ j ]; j++) {
 	       total+=1;
-		}
-	 	
+		}	 	
 		if(!*text[i]) 
 	    	break;
 	}
-	printf("\nTotal Character : %i",total);
-	printf("\nTotal Baris	 : %i\n\n",i);
-//	main();
+
+	printf("\n Lines :%i",total);
+	printf("/Coloumns : %i\n\n",i);
 system("pause");
 Menu();
+
 }
 
 void display(char fname[]){
@@ -440,13 +441,29 @@ void DeleteLine(){
         ch = getc(fp);
         if (temp != delete_line)
         {
-            putc(ch, fp1);
+       		fputs(text[i], fp1);
         }
-        if (ch == '\n')
-        {
-            temp++;
-        }
-    }
+        if(text[i], fp1){
+			temp++;
+		}
+	}
+	
+	
+//    ch = 'A';
+//    while (ch != EOF)
+//    {
+//        ch = getc(fp);
+//        if (temp != delete_line)
+//        {
+//            putc(ch, fp1);
+//        }
+//        if (ch == '\n')
+//        {
+//            temp++;
+//        }
+//    }
+
+
     fclose(fp);
     fclose(fp1);
     remove(fn);

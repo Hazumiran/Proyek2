@@ -1,9 +1,2 @@
 satu 
 dua 
-tiga empat 
-lima 
- 
-	 
-a 
- 
- 

@@ -97,6 +97,11 @@ printf("test 3");
 //			insert_line();
 printf("test 4");
 		}
+		else if(key == 14){
+			system("start Array_TE.exe");
+			Menu();
+//			insert_line();
+		}
 		else if(key == 9){
 			system("cls");
 			printf("File Name : %s ",fn);
@@ -223,6 +228,8 @@ void display(char fname[]){
     {
         printf("\t %d :%s\n", i, text[i]);
     }
+    system("pause");
+    Menu();
     
 }
 

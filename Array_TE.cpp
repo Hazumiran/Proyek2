@@ -505,69 +505,18 @@ void insert_line(){
 			j++;
 		}
 	}
-//        printf("%c",tampung[i][j]);
-//        if(tampung[i][j] == ' '){
-//        	i++;
-//       		j=0;
-//	  		goto melanjut;
-//		}
-
-    
-//    fclose(fp);
-//    printf("%c",tampung[0][0]);printf("%c",tampung[0][1]);printf("%c\n",tampung[0][2]);
-//    printf("%c",tampung[1][0]);printf("%c",tampung[1][1]);printf("%c",tampung[1][2]);
-//	printf("%c",tampung[2][0]);printf("%c",tampung[2][1]);printf("%c",tampung[2][2]);
-    printf("Masukkan Kalimat : ");
+	
+	int batas = i;
+	printf("Masukkan Kalimat : ");
     scanf("%s",&baru);
     fflush(stdin);
-//	for(t = 0; t < MAX; t++){  		
-//	    
-//	    scanf("%c",&baru[t]);
-//		if(baru[t] == '\n') 
-//	        break;
-//	}
-//	
-//	printf("\nPada baris mana akan dimasukkan :");
-//    scanf("%d", &insert);
-//	
-//	fp = fopen(fn, "w");
-//		j=0;
-//		if(i == (insert)){ //true
-//			strcpy(text[i],baru);
-//			for(;j<strlen(baru);j++){
-////				printf("%c",baru[j]);
-////				printf("udah bisa");
-//				printf("%c",text[i][j]);
-//				fprintf(fp,"%c",text[i][j]);
-//					if(!*text[j]) 
-////		        		continue;					
-//			}	
-//				for(k = 0; k < t; k++) {
-//			printf("%d: ", k);
-//		    for(l = 0; baru[ l ]; l++){	
-//				putchar(baru[ l ]);			  		   
-//		 	} 
-////				putchar('\n');		     	   
-////				printf("MASUK\n");
-////				printf("%c\n",text[1][0]);	
-//		}else{
-//		for(;j<strlen(text[j]);j++){
-//			if(!text[j]){				
-//				printf("%c",text[i][j]);
-//				continue;
-//	printf("\nkewkusr \n");
-////		}
-//		}
-//			}
-//		
-//			fprintf(fp,"%c",tampung[i][j]);
-//			if(!*tampung[j]) 
-//	        		continue;
-		
+
+	fp = fopen(fn, "w");
+	
 	printf("\nPada baris mana akan dimasukkan :");
     scanf("%d", &insert);
-	
-	for(i=0;i<MAX;i++){
+
+	for(i=0;i<=batas;i++){
 		j=0;
 		if(i == (insert)){
 //			strcpy(text[i],baru);
@@ -583,7 +532,7 @@ void insert_line(){
 		}
 		else{
 			lanjut:
-			for(;j<strlen(text[j]);j++){
+			for(;j<strlen(text[i]);j++){
 				printf("%c",tampung[i][j]);fflush(stdin);
 				if(tampung[i][j] == '\n') 
 		        		goto mulai;
@@ -593,7 +542,5 @@ void insert_line(){
 		mulai:;
 	}
 	fclose(fp);
-}
 
-		
-		
+}

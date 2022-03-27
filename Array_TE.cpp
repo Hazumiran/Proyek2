@@ -237,10 +237,10 @@ void display(char fname[]){
     tot = i;  
     for(i = 0; i < tot; ++i)
     {
-        printf("\t %d :%s\n", i, text[i]);
+        printf("%d :%s\n", i, text[i]);
     }
-    system("pause");
-    Menu();
+//    system("pause");
+//    Menu();
     
 }
 
@@ -266,8 +266,6 @@ void edit_file(char fn[]){
 	FILE *fpt;
 	
 	printf("\n");
-	tambah:
-	
 	 printf("\nselesai, mau edit file ? (Y/N) ");
 	 scanf("%s",&inpedit);
 	 
@@ -311,27 +309,17 @@ void edit_file(char fn[]){
 		fclose(fpt);
 		remove(fn);
 		rename("temp.txt", fn);
- 		goto tambah;
+		system ("cls");
+		display(fn);
+		Menu();
 
 	 }
-	 else{
-		ulang:
-		printf("\nApakah Akan kembali Menulis y/n: ");
-		scanf("%s",&pil);
-		
-		if(pil == 'y' || pil == 'Y'){
-			arr();
-		}
-		else if(pil == 'n' || pil == 'N'){
-			system ("cls");
-			display(fn);
-		}
 		else{
 			printf("invalid input");
-			goto ulang;
+			Menu();
 		}
 	} 		
-}
+
 
 void Delete(){
 	FILE *fp;

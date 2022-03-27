@@ -20,9 +20,11 @@ void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
 void DeleteLine();
 void insert_line();
-void findword(char fn[]);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 	FILE *fp, *fp1;
 	char fn[15];
 	int i,j,t,k,l,m,temp_m;
@@ -72,7 +74,10 @@ fp = fopen(fn,"at+");
 fp1 = fopen(fn,"rt");	
 k=0,l=0;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 	if(fp1 != NULL){
 		while (!feof(fp1)){
         text[k][l] = getc(fp1);
@@ -87,6 +92,11 @@ k=0,l=0;
 	t=k;
 	}
 	
+<<<<<<< HEAD
+=======
+//	display(fn);
+	
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
@@ -121,12 +131,15 @@ printf("test 3");
 
 printf("test 4");
 		}
+<<<<<<< HEAD
 		
 		else if(key == 6){
 		fclose(fp);
 		findword(fn);
 		}
 		
+=======
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 		else if(key == 14){
 			system("start Array_TE.exe");
 			Menu();
@@ -256,11 +269,9 @@ void display(char fname[]){
     tot = i;  
     for(i = 0; i < tot; ++i)
     {
-        printf("%d :%s\n", i, text[i]);
+        printf("\t %d :%s\n", i, text[i]);
     }
-//    system("pause");
-//    Menu();
-    
+
 }
 
 void display1(char fname[]){
@@ -282,8 +293,14 @@ void edit_file(char fn[]){
 	char pil;
 	char inpedit;
 	char newword[LEN];
+	char buffer[LEN];
 	FILE *fpt;
+<<<<<<< HEAD
 
+=======
+	
+	printf("\n");	
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 		int inp;
 		fflush(stdin);
 		
@@ -307,13 +324,13 @@ void edit_file(char fn[]){
 		fgets(newword, LEN, stdin);	
 
 		i = 0;
-			while ((fgets(text[i], LEN, fp)) != NULL)
+			while ((fgets(buffer, LEN, fp)) != NULL)
 			{
 			
 			    if (i == inp)
 			        fputs(newword, fpt);
 			    else
-			        fputs(text[i], fpt);
+			        fputs(buffer, fpt);
 			            
 			        i++;
 			}
@@ -321,12 +338,16 @@ void edit_file(char fn[]){
 		fclose(fpt);
 		remove(fn);
 		rename("temp.txt", fn);
-		system ("cls");
-		display(fn);
-		Menu();
 
+<<<<<<< HEAD
 	 }		
 
+=======
+			system ("cls");
+			Menu();
+	
+}
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 
 void Delete(){
 	FILE *fp;
@@ -560,6 +581,7 @@ void insert_line(){
 	}
 	fclose(fp);
 	Menu();
+<<<<<<< HEAD
 }			
 
 void findword(char fn[]) {
@@ -586,3 +608,6 @@ void findword(char fn[]) {
     }
 	printf("Ada di %d line yang ditemukan memiliki substring yang sama ", kata);	
 }	
+=======
+}			
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc

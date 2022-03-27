@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 q 
 w 
 e 
@@ -14,3 +15,14 @@ hihi
 huhu 
 hehe 
  
+=======
+apa 
+<<<<<<< HEAD
+siapa 
+=======
+lol
+wow
+dia 
+ÿ
+>>>>>>> Benny
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc

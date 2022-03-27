@@ -24,7 +24,7 @@ void DeleteLine();
 void insert_line();
 void findword(char fn[]);
 
-	FILE *fp;
+	FILE *fp ,*fp1;
 	char fn[15];
 	int i,j,t,k,l,m,temp_m;
 
@@ -70,11 +70,33 @@ printf("File Name : %s ",fn);
 printf("\t\t Status : Menu In Control\n ");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
+	
+	fp = fopen(fn,"at+");	
+	fp1 = fopen(fn,"rt");	
+	k=0,l=0;
+
+	if(fp1 != NULL){
+		while (!feof(fp1)){
+        text[k][l] = getc(fp1);
+		if(text[k][l] == '\n'){
+			k++;
+			l=0;
+		}
+		else{
+			l++;
+		}
+	}
+	t=k;
+	}
+
+//	display(fn);
+
+	
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		} putchar('\n');
+		   		}
  			}
 	char key;
 	key = getch();
@@ -126,7 +148,7 @@ printf("test 4");
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		} putchar('\n');  	         	    	
+		   		}	         	    	
  			}
 			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
@@ -493,7 +515,7 @@ void insert_line(){
 	int insert;
 	char ch, p;
 	i=0,j=0;
-	system("cls");
+//	system("cls");
 	fp = fopen(fn, "r");
     
   	while (!feof(fp) && ch != EOF){
@@ -526,28 +548,33 @@ void insert_line(){
 //			strcpy(text[i],baru);
 			for(;j<strlen(baru);j++){
 				printf("%c",baru[j]);fflush(stdin);
+				fprintf(fp,"%c",baru[j]);
 				if(j+1 == strlen(baru)) {
 					j=0;
+					fprintf(fp,"\n");
 					printf("\n");
 					goto lanjut;
 				}
 			}
-			printf("\n");
+			fprintf(fp,"\n");
+//			printf("\n");
 		}
 		else{
 			lanjut:
 			for(;j<strlen(text[i]);j++){
+				fprintf(fp,"%c",tampung[i][j]);
 				printf("%c",tampung[i][j]);fflush(stdin);
 				if(tampung[i][j] == '\n') 
 		        		goto mulai;
 			}
 		}
-		printf("\n");
+//		printf("\n");
+//		fprintf(fp,"\n");
 		mulai:;
 	}
 	fclose(fp);
-
-}
+	Menu();
+}			
 
 void findword(char fn[]) {
 	char str[LEN];

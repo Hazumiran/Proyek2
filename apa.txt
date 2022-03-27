@@ -1,5 +1,2 @@
-j
-b 
-c 
-d 
- 
+apa 
+siapa 

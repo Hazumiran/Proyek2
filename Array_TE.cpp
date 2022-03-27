@@ -10,11 +10,9 @@
 #define BUFFER_SIZE 1000
 char text[MAX][LEN];
 void arr();
-int edit();
 void Total_Char();
 void display(char fname[]);
 void display1(char fname[]);
-void shortcut(char isi);
 void edit_file(char fn[]);
 void Menu();
 void Delete();
@@ -22,9 +20,12 @@ void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
 void DeleteLine();
 void insert_line();
-void findword(char fn[]);
 
+<<<<<<< HEAD
 	FILE *fp ,*fp1;
+=======
+	FILE *fp, *fp1;
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 	char fn[15];
 	int i,j,t,k,l,m,temp_m;
 
@@ -63,17 +64,21 @@ int main(void)
 //	end1:;
 }
 void Menu(){	
-
-fp = fopen(fn,"at+");	
 system("cls");
 printf("File Name : %s ",fn);
 printf("\t\t Status : Menu In Control\n ");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\tCtrl+R : Total Char\n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
 	
+<<<<<<< HEAD
 	fp = fopen(fn,"at+");	
 	fp1 = fopen(fn,"rt");	
 	k=0,l=0;
+=======
+fp = fopen(fn,"at+");	
+fp1 = fopen(fn,"rt");	
+k=0,l=0;
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 
 	if(fp1 != NULL){
 		while (!feof(fp1)){
@@ -88,9 +93,14 @@ printf("\t\t Status : Menu In Control\n ");
 	}
 	t=k;
 	}
+<<<<<<< HEAD
 
 //	display(fn);
 
+=======
+	
+//	display(fn);
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 	
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
@@ -98,44 +108,39 @@ printf("\t\t Status : Menu In Control\n ");
 		        	putchar(text[ k ][ l ]);			  		   
 		   		}
  			}
+ 			
 	char key;
 	key = getch();
 	if(key == 5){
 			fclose(fp);
+			fclose(fp1);
 			edit_file(fn);			
-//printf("test 1");
+printf("test 1");
 		}
 		else if(key == 18){
 			fclose(fp);
+			fclose(fp1);
 			Total_Char();			
 printf("test 2");
 		}
 		else if(key== 4){
 			fclose(fp);
+			fclose(fp1);
 			DeleteLine();			
 printf("test 3");
 		}
 		else if(key == 17){
 			fclose(fp);
+			fclose(fp1);
 			insert_line();
-
 
 printf("test 4");
 		}
-		
-		else if(key == 6){
-		fclose(fp);
-		findword(fn);
-		}
-		
-		
 		else if(key == 14){
 			system("start Array_TE.exe");
 			Menu();
 //			insert_line();
 		}
-		
-		
 		else if(key == 9){
 			system("cls");
 			printf("File Name : %s ",fn);
@@ -161,7 +166,8 @@ printf("test 4");
 						Menu();
 			}			        		     	    	        
 		}
-		fclose(fp);	  					
+		fclose(fp);	  	
+		fclose(fp1);				
 		}
 }
 
@@ -240,8 +246,8 @@ void Total_Char(){
 
 	printf("\n Lines :%i",total);
 	printf("/Coloumns : %i\n\n",i);
-system("pause");
-Menu();
+	system("pause");
+	Menu();
 }
 
 void display(char fname[]){
@@ -259,11 +265,9 @@ void display(char fname[]){
     tot = i;  
     for(i = 0; i < tot; ++i)
     {
-        printf("%d :%s\n", i, text[i]);
+        printf("\t %d :%s\n", i, text[i]);
     }
-//    system("pause");
-//    Menu();
-    
+
 }
 
 void display1(char fname[]){
@@ -285,15 +289,10 @@ void edit_file(char fn[]){
 	char pil;
 	char inpedit;
 	char newword[LEN];
+	char buffer[LEN];
 	FILE *fpt;
 	
-	printf("\n");
-	 printf("\nselesai, mau edit file ? (Y/N) ");
-	 scanf("%s",&inpedit);
-	 
-
-	 if(inpedit == 'y' || inpedit == 'Y')
-	 {
+	printf("\n");	
 		int inp;
 		fflush(stdin);
 		
@@ -317,13 +316,13 @@ void edit_file(char fn[]){
 		fgets(newword, LEN, stdin);	
 
 		i = 0;
-			while ((fgets(text[i], LEN, fp)) != NULL)
+			while ((fgets(buffer, LEN, fp)) != NULL)
 			{
 			
 			    if (i == inp)
 			        fputs(newword, fpt);
 			    else
-			        fputs(text[i], fpt);
+			        fputs(buffer, fpt);
 			            
 			        i++;
 			}
@@ -331,17 +330,11 @@ void edit_file(char fn[]){
 		fclose(fpt);
 		remove(fn);
 		rename("temp.txt", fn);
-		system ("cls");
-		display(fn);
-		Menu();
 
-	 }
-		else{
-			printf("invalid input");
+			system ("cls");
 			Menu();
-		}
-	} 		
-
+	
+}
 
 void Delete(){
 	FILE *fp;
@@ -574,6 +567,7 @@ void insert_line(){
 	}
 	fclose(fp);
 	Menu();
+<<<<<<< HEAD
 }			
 
 void findword(char fn[]) {
@@ -600,3 +594,6 @@ void findword(char fn[]) {
     }
 	printf("Ada di %d line yang ditemukan memiliki substring yang sama ", kata);	
 }		
+=======
+}			
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc

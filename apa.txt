@@ -1,2 +1,9 @@
 apa 
+<<<<<<< HEAD
 siapa 
+=======
+lol
+wow
+dia 
+ÿ
+>>>>>>> Benny

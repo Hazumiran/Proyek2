@@ -108,7 +108,10 @@ k=0,l=0;
 	key = getch();
 	if(key == 5){
 			fclose(fp);
+<<<<<<< HEAD
 			fclose(fp1);
+=======
+>>>>>>> Tubagus
 			edit_file(fn);			
 printf("test 1");
 		}

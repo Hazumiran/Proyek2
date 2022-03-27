@@ -12,11 +12,7 @@ void Total_Char(char fn[]){
 	FILE *fp;
 	
 	fp = fopen(fn, "r");
-//	while (ch != EOF)
-//    {
-//        printf("%c", ch);
-//        ch = getc(fp);
-//    }
+	
 	for(i = 0; i < MAX; i++) {
 		
 	   for(j = 0; text[ i ][ j ]; j++) {

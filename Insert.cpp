@@ -11,10 +11,10 @@ void insert_line(char fn[]){
 	char text[MAX][LEN];
 	char baru[LEN];
 	char tampung[MAX][LEN];
-
 	int insert;
 	char ch, p;
 	int i=0,j=0;
+	
 //	system("cls");
 	fp = fopen(fn, "r");
     

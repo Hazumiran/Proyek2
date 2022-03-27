@@ -79,7 +79,7 @@ printf("\t\t Status : Menu In Control\n ");
 	key = getch();
 	if(key == 5){
 			fclose(fp);
-//			edit_file(fn);			
+			edit_file(fn);			
 printf("test 1");
 		}
 		else if(key == 18){

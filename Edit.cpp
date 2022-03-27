@@ -24,11 +24,11 @@ void edit_file(char fn[]){
     	scanf("%d",&inp);
     	fflush(stdin);
     	
-    	printf("Data Lama : ");
-    	for(j = 0; text[ inp ][ j ]; j++)
-		{
-			putchar(text[ inp ][ j ]);
-		}
+//    	printf("Data Lama : ");
+//    	for(j = 0; text[ inp ][ j ]; j++)
+//		{
+//			putchar(text[ inp ][ j ]);
+//		}
 			
 
 	//	fp = fopen(fn,"r");	
@@ -54,7 +54,7 @@ void edit_file(char fn[]){
 		remove(fn);
 		rename("temp.txt", fn);
 
-		system ("cls");
+//		system ("cls");
 		Menu();
 	
 }

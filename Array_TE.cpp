@@ -22,6 +22,7 @@ void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
 void DeleteLine();
 void insert_line();
+void findword(char fn[]);
 
 	FILE *fp;
 	char fn[15];
@@ -79,8 +80,8 @@ printf("\t\t Status : Menu In Control\n ");
 	key = getch();
 	if(key == 5){
 			fclose(fp);
-//			edit_file(fn);			
-printf("test 1");
+			edit_file(fn);			
+//printf("test 1");
 		}
 		else if(key == 18){
 			fclose(fp);
@@ -96,13 +97,23 @@ printf("test 3");
 			fclose(fp);
 			insert_line();
 
+
 printf("test 4");
 		}
+		
+		else if(key == 6){
+		fclose(fp);
+		findword(fn);
+		}
+		
+		
 		else if(key == 14){
 			system("start Array_TE.exe");
 			Menu();
 //			insert_line();
 		}
+		
+		
 		else if(key == 9){
 			system("cls");
 			printf("File Name : %s ",fn);
@@ -224,7 +235,7 @@ void display(char fname[]){
         i++;
     }
     tot = i;  
-    for(i = 0; i < tot-1; ++i)
+    for(i = 0; i < tot; ++i)
     {
         printf("\t %d :%s\n", i, text[i]);
     }
@@ -252,7 +263,6 @@ void edit_file(char fn[]){
 	char pil;
 	char inpedit;
 	char newword[LEN];
-	char buffer[LEN];
 	FILE *fpt;
 	
 	printf("\n");
@@ -287,13 +297,13 @@ void edit_file(char fn[]){
 		fgets(newword, LEN, stdin);	
 
 		i = 0;
-			while ((fgets(buffer, LEN, fp)) != NULL)
+			while ((fgets(text[i], LEN, fp)) != NULL)
 			{
 			
 			    if (i == inp)
 			        fputs(newword, fpt);
 			    else
-			        fputs(buffer, fpt);
+			        fputs(text[i], fpt);
 			            
 			        i++;
 			}
@@ -314,7 +324,7 @@ void edit_file(char fn[]){
 		}
 		else if(pil == 'n' || pil == 'N'){
 			system ("cls");
-			main();
+			display(fn);
 		}
 		else{
 			printf("invalid input");
@@ -549,4 +559,29 @@ void insert_line(){
 	}
 	fclose(fp);
 
+}
+
+void findword(char fn[]) {
+	char str[LEN];
+	int kata = 0, iya;
+	
+	i=0,j=0;
+	
+    fp = fopen(fn,"r");
+    
+    printf("Kata yang mau dicari substringnya: ");
+	scanf("%s", str);
+	
+	while(fgets(text[i], LEN, fp)) 
+	{
+		
+        text[i][strlen(text[i]) - 1] = '\0';
+        if(strstr(text[i], str) != NULL) {
+        		iya = strlen(text[i]) - 1;
+        		printf("Ketemu di baris %d character urutan ke %d!!\n", i, iya);
+        		kata++;
+         }
+        i++;
+    }
+	printf("Ada di %d line yang ditemukan memiliki substring yang sama ", kata);	
 }		

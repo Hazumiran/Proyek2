@@ -6,19 +6,15 @@
 #define BUFFER_SIZE 1000
 
 void arr();
-void Total_Char(char fn[]);
-void display(char fname[]);
-void display1(char fname[]);
-void edit_file(char fn[]);
+void Total_Char(char fn[30]);
+void display(char fname[30]);
+void display1(char fname[30]);
+void edit_file(char fn[30]);
 void Menu();
 void Delete();
 void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
-void DeleteLine(char fn[]);
-void insert_line(char fn[]);
+void DeleteLine(char fn[30]);
+void insert_line(char fn[30]);
 
-//char text[MAX][LEN];
-//FILE *fp, *fp1;
-//char fn[15];
-//int i,j,t,k,l,m,temp_m,tot;
 #endif

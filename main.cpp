@@ -5,7 +5,8 @@
 #include <string.h>
 #include <iostream>
 
+
 int main(void)
-{
+{	char fn[15];
 	arr();
 }

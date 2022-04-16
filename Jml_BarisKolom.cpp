@@ -11,6 +11,7 @@ void Total_Char(char fn[]){
 	char ch;
 	FILE *fp;
 	
+	
 	fp = fopen(fn, "r");
 	
 	for(i = 0; i < MAX; i++) {

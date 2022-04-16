@@ -6,7 +6,7 @@
 #include <iostream>
 
 FILE *fp, *fp1;
-char fn[15];
+//char fn[15];
 
 
 void arr(){
@@ -25,7 +25,7 @@ void arr(){
 	    printf("%d: ", t);fflush(stdin);
 	    gets(text[t]);fflush(stdin);
 	    if(!*text[t]) 
-	        break; /* quit on blank line */	 
+	        break; 
 			
 	fprintf(fp,"%s \n",text[t]);     	    	        
 

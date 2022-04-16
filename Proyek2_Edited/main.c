@@ -2,7 +2,6 @@
 #include "FileHandl.h"
 
 int main() {
-//	CreateFile();
-//	system("cls");
+	CreateFile();
 	OpenFile();
 }

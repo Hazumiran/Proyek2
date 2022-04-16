@@ -31,36 +31,6 @@ void findword(char fn[]);
 int main(void)
 {
 	arr();
-//	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
-//	int pil;
-//	scanf("%i",&pil);
-//  	do{
-//  		switch (pil){
-//  			case 1:{
-//  				printf("masukkan data kosong untuk quit.\n");
-//		  		arr();
-//				break;
-//			}
-//			case 2:{
-//				display1(fn);
-//				break;
-//			}
-//			case 3:{
-//				Total_Char();
-//				break;
-//			}
-//			case 4:{
-//				Delete();
-//				break;
-//			}
-//				case 5:{
-//				find();
-//				break;
-//			}
-//		}
-//	}while(pil != 4);
-//	
-//	end1:;
 }
 void Menu(){	
 
@@ -78,74 +48,75 @@ printf("------------------------------------------------------------------------
 fp1 = fopen(fn,"rt");	
 k=0,l=0;
 
-//	if(fp1 != NULL){
-//		while (!feof(fp1)){
-//        text[k][l] = getc(fp1);
-//		if(!*text[k]){
-//			k++;
-//			l=0;
-//		}
-//		else{
-//			l++;
-//		}
-//	}
-//	}
+	if(fp1 != NULL){
+		while (!feof(fp1)){
+        text[k][l] = getc(fp1);
+		if(text[k][l] == '\n'){
+			k++;
+			l=0;
+		}
+		else{
+			l++;
+		}
+	}
+	t=k;
+	}
+
+	
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		}printf("\n");
+		   		}
  			}
  			
-//	for(k=0; k < t; k++) {
-//					printf("%d: ", k);
-//		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
-//		        	putchar(text[ k ][ l ]);			  		   
-//		   		} putchar('\n');
-// 			}
-
 	char key;
 	key = getch();
 	if(key == 5){
 			fclose(fp);
+			fclose(fp1);
 			edit_file(fn);			
+printf("test 1");
 		}
 		else if(key == 18){
 			fclose(fp);
+			fclose(fp1);
 			Total_Char();			
+printf("test 2");
 		}
 		else if(key== 4){
 			fclose(fp);
+			fclose(fp1);
 			DeleteLine();			
+printf("test 3");
 		}
 		else if(key == 17){
 			fclose(fp);
+			fclose(fp1);
 			insert_line();
-		}		
-		else if(key == 6){
-		fclose(fp);
-		findword(fn);
-		}				
+
+printf("test 4");
+		}
 		else if(key == 14){
 			system("start Array_TE.exe");
 			Menu();
-		}				
+		}
 		else if(key == 9){
 			system("cls");
 printf("-----------------------------------------------------------------------------------------------\n");
 printf("| File Name : %s ",fn);
-printf("| Status : Menu Not In Control |\t");
+printf("| Status : Menu In Not Control |\t");
 Total_Char();
 printf("-----------------------------------------------------------------------------------------------\n");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\t\tCtrl+N : New Window \n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
-	fflush(stdin);
+		
 		int w; 		
 		for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
-		   		}  printf("\n");	         	    	
+		   		}	         	    	
  			}
 			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
@@ -154,12 +125,15 @@ printf("------------------------------------------------------------------------
 				fprintf(fp,"%s \n",text[w]);
 	    			if(!*text[w]) {
 	    				t--;
-						fclose(fp);	 	
+						fclose(fp);	
+						fclose(fp1); 	
 						Menu();
 			}			        		     	    	        
 		}
-		fclose(fp);	  					
-		}}
+		fclose(fp);	  	
+		fclose(fp1);				
+		}
+		}
 
 void arr(){	
 	printf("\n\tEnter the file name: ");
@@ -413,29 +387,13 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 }
 
 void DeleteLine(){
-	fflush(stdin);
-	FILE *fp1;
+FILE *fp1;
 	int delete_line, temp = 1;
 	int tot = 0;
 	int i = 0;
 	int j=0;
 	char ch,p;
-	
-//	system("cls");
 	fp = fopen(fn, "r");
-	
-//    while(fgets(text[i], LEN, fp)) 
-//	{
-//        text[i][strlen(text[i]) - 1] = '\0';
-//        i++;
-//    }
-//    tot = i;  
-//    for(i = 0; i <= tot-1; ++i)
-//    {
-//        printf("%d :%s\n", i, text[i]);
-//    }
-//
-//    rewind(fp);
     printf("\nEnter line number of the line to be deleted:");
     scanf("%d", &delete_line);
     delete_line += 1;

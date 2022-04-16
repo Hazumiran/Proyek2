@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 gimanaqq
 adaas 
 a 
@@ -8,4 +9,33 @@ akaka
 a 
 a 
 a 
+=======
+<<<<<<< HEAD
+q 
+w 
+e 
+okok
+jaja
+r 
+y 
+ÿßqhaha 
+hihi 
+huhu 
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
  
+ÿhaha 
+hihi 
+huhu 
+hehe 
+ 
+=======
+apa 
+<<<<<<< HEAD
+siapa 
+=======
+lol
+wow
+dia 
+ÿ
+>>>>>>> Benny
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc

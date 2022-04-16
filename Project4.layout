@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [Editor_5]
 CursorCol=17
 CursorRow=16
@@ -11,6 +12,16 @@ CursorCol=14
 CursorRow=184
 TopLine=172
 LeftChar=1
+=======
+[Editor_0]
+CursorCol=14
+CursorRow=184
+TopLine=1
+LeftChar=1
+[Editors]
+Order=4,2,3,1,0,5,6
+Focused=2
+>>>>>>> Tubagus
 [Editor_1]
 CursorCol=10
 CursorRow=33
@@ -19,7 +30,11 @@ LeftChar=1
 [Editor_2]
 CursorCol=1
 CursorRow=9
+<<<<<<< HEAD
 TopLine=4
+=======
+TopLine=1
+>>>>>>> Tubagus
 LeftChar=1
 [Editor_3]
 CursorCol=7
@@ -31,6 +46,14 @@ CursorCol=1
 CursorRow=5
 TopLine=1
 LeftChar=1
+<<<<<<< HEAD
+=======
+[Editor_5]
+CursorCol=17
+CursorRow=16
+TopLine=4
+LeftChar=1
+>>>>>>> Tubagus
 [Editor_6]
 CursorCol=1
 CursorRow=9

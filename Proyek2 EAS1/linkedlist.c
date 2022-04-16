@@ -1,22 +1,30 @@
 #include "linkedlist.h"
 
-List *listCtor()
-{
+//Membuat Head
+List *listCtor(){
     List *list = (List *)malloc(sizeof(List));
     list->head = NULL;
     return list;
 }
 
-Node *nodeCtor(int value)
-{
+//Pengalokasian Node
+Node *nodeCtor(int value){
     Node *node = (Node *)malloc(sizeof(Node));
     node->next = NULL;
+    node->prev = NULL;
     node->data = value;
     return node;
 }
 
-int insertNode(List *list, Node *node, int index)
-{
+//Dealokasi Node
+void DeAlokasi(Node *node){
+	node->next = NULL;
+	node->prev = NULL;
+	free(node);
+}
+
+//Insert node dan menghubungkannya
+int insertNode(List *list, Node *node, int index){
     if(index == 0)
     {
         node->next = list->head;
@@ -25,26 +33,27 @@ int insertNode(List *list, Node *node, int index)
     else
     {
         if(index > (listLength(list)))
-            return -1;
-        Node *prev = getNode(list, index - 1);
-        node->next = prev->next;
-        prev->next = node;
+        index =-1;
+            
+        node->prev = getNode(list, index - 1);
+        node->next = node->prev->next;
+        node->prev->next = node;
 
     }
     return 0;
 }
 
-int removeNode(List *list, Node *node)
-{
+//menghapus node diakhir
+int removeNode(List *list, Node *node){
     int indx = 0;
     Node *temp = NULL;
     for(temp = list->head; NULL != temp; temp = temp->next)
     {
         if(temp == node)
         {
-            Node *prev = getNode(list, indx - 1);
-            prev->next = node->next;
-            free(node);
+            node->prev = getNode(list, indx - 1);
+            node->prev->next = node->next;
+            DeAlokasi(node);
             break;
         }
         ++indx;
@@ -52,13 +61,13 @@ int removeNode(List *list, Node *node)
     return 0;
 }
 
-int removeNodeByIndex(List *list, int index)
-{
+//menghapus Sesuai keinginan(index) dan menghubungkannya
+int removeNodeByIndex(List *list, int index){
     if(index > listLength(list))
-        return -1;
+        index =-1;
 
     if(getNode(list, index) == NULL)
-        return -1;
+        index =-1;
         
     if(index == 0)
     {
@@ -68,17 +77,17 @@ int removeNodeByIndex(List *list, int index)
         return 0;
     }
 
-    Node *prev = getNode(list, index - 1);
-    Node *to_remove = prev->next;
+    Node *before = getNode(list, index - 1);
+    Node *to_remove = before->next;
 
-    prev->next = to_remove->next;
+    before->next = to_remove->next;
     free(to_remove);
 
     return 0;
 }
 
-int listLength(List *list)
-{
+//menghitung panjang semua kata 
+int listLength(List *list){
     int len = 0;
     Node *temp = NULL;
     for(temp = list->head; NULL != temp; temp = temp->next)
@@ -88,8 +97,8 @@ int listLength(List *list)
     return len;
 }
 
-Node * getNode(List *list, int index)
-{
+//mencari node dari index
+Node * getNode(List *list, int index){
     if(index > listLength(list))
         return NULL;
 
@@ -102,8 +111,8 @@ Node * getNode(List *list, int index)
     return temp;
 }
 
-void printList(List *list)
-{
+//menampilkan satu baris
+void printList(List *list){
     Node *temp = NULL;
     for(temp = list->head; NULL != temp; temp = temp->next)
     {
@@ -112,15 +121,15 @@ void printList(List *list)
     printf("[NULL]\n");
 }
 
-int deleteList(List * list)
-{
+//menghapus baris
+int deleteList(List * list){
 
     Node * freeme = list->head;
     Node * next = freeme;
     while(NULL != freeme)
     {
         next = freeme->next;
-        free(freeme);
+        DeAlokasi(freeme);
         freeme = next;
     }
     free(list);

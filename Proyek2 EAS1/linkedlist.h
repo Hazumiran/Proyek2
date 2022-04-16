@@ -5,6 +5,7 @@ typedef struct node_s
 {
     char data;
     struct node_s *next;
+    struct node_s *prev;
 }Node;
 
 typedef struct list_s
@@ -15,6 +16,7 @@ typedef struct list_s
 
 List * listCtor();
 Node * nodeCtor(int value);
+void DeAlokasi (Node *node);
 int insertNode(List *list, Node *node, int index);
 int removeNode(List *list, Node *node);
 int removeNodeByIndex(List *list, int index);

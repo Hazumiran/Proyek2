@@ -1,11 +1,10 @@
 #include "editor.h"
 
-Point * pointCtor()
-{
+Point *pointCtor(){
     Point *newPoint = (Point *)malloc(sizeof(Point));
-    newPoint->x = 0;
-    newPoint->y = 0;
-    newPoint->index = 0;
+    newPoint->x = NULL;
+    newPoint->y = NULL;
+    newPoint->index = NULL;
 
     return newPoint;
 }
@@ -51,25 +50,25 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
         {
             putchar(character);
             insertNode(content, nodeCtor(character), CursorPos->index);
-            ++CursorPos->y;
+			CursorPos->y += 1;
             CursorPos->x = 0;
-            ++CursorPos->index;
+            CursorPos->index += 1;
         }
         else
         {
             putchar(character);
             insertNode(content, nodeCtor(character), CursorPos->index);
-            ++CursorPos->x;
-            ++CursorPos->index;
+            CursorPos->x += 1;
+            CursorPos->index += 1;
         }
     }
     return 0;
 }
 
-int editContent(List *content, Point *CursorPos)
-{
+int editContent(List *content, Point *CursorPos){
 
-    unsigned char key;
+//	unsigned char key;
+    signed char key;
     while(ESC != (key = getch()))
     {
         if(key == ARROWKEY)
@@ -77,22 +76,26 @@ int editContent(List *content, Point *CursorPos)
             key = _getch();
             if(key == ARROWUPKEY)//UP
             {
+            	//jika berada di ujung atas
                 if(CursorPos->y == 0)
                 {
                     //At top line
                     continue;
                 }
+                
+                //yang atas lebih sedikit dari yang bawah
                 else if(CursorPos->x > getLineLen(content, CursorPos->y))
                 {
                     CursorPos->x = getLineLen(content, CursorPos->y);
-                    --CursorPos->y;
+                    CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoPos(CursorPos);
                     continue;
                 }
+                //Tanpa ketentutan
                 else
                 {
-                    --CursorPos->y;
+                    CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoPos(CursorPos);
                     continue;
@@ -100,22 +103,24 @@ int editContent(List *content, Point *CursorPos)
             }
             else if(key == ARROWDOWNKEY)//DOWN
             {
+            	//pada ujung bawah
                 if(CursorPos->y == getHeight(content))
                 {
-                    //At lowest line
                     continue;
                 }
+                //yang bawah lebih sedikit dari yang atas
                 else if(CursorPos->x > getLineLen(content, CursorPos->y + 2))
                 {
                     CursorPos->x = getLineLen(content, CursorPos->y + 2);
-                    ++CursorPos->y;
+                    CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoPos(CursorPos);
                     continue;
                 }
+                //tanpa ketentuan
                 else
                 {
-                    ++CursorPos->y;
+                    CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoPos(CursorPos);
                     continue;
@@ -180,16 +185,16 @@ int editContent(List *content, Point *CursorPos)
             else if(CursorPos->x == 0)
             {
                 CursorPos->x = getLineLen(content, CursorPos->y);
-                --CursorPos->y;
-                removeNodeByIndex(content, --CursorPos->index);
+                CursorPos->y -= 1;
+                removeNodeByIndex(content, CursorPos->index -= 1);
             }
             else
             {
-                putchar(BACKSPACEKEY);
-                putchar(SPACEKEY);
-                putchar(BACKSPACEKEY);
-                removeNodeByIndex(content, --CursorPos->index);
-                --CursorPos->x;
+//                putchar(BACKSPACEKEY);
+//                putchar(SPACEKEY);
+//                putchar(BACKSPACEKEY);
+                removeNodeByIndex(content, CursorPos->index -= 1);
+                CursorPos->x -= 1;
             }
         }
         else if(key == TAB)
@@ -241,7 +246,7 @@ int editContent(List *content, Point *CursorPos)
     }
 }
 
-int saveToFile(FILE *fp, List *content)
+void saveToFile(FILE *fp, List *content)
 {
     Node *temp = NULL;
     for(temp = content->head; NULL != temp; temp = temp->next)
@@ -250,6 +255,7 @@ int saveToFile(FILE *fp, List *content)
     }
 }
 
+//jumlah keseluruhan baris
 int getHeight(List *content)
 {
     int height = 0;
@@ -262,6 +268,7 @@ int getHeight(List *content)
     return height;
 }
 
+//Menghutung jumlah character pada 1 baris
 int getLineLen(List *content, int lineNum)
 {
     int i = 1;
@@ -285,6 +292,7 @@ int getLineLen(List *content, int lineNum)
     return linelen;
 }
 
+//Mencari Index tertentu
 int getIndex(List *content, Point *CursorPos)
 {
     int i = 0;

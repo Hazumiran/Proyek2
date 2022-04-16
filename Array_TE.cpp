@@ -36,36 +36,6 @@ void insert_line();
 int main(void)
 {
 	arr();
-//	printf("\t1.Creat\n\t2.Tampil\n\t3.Total Character\n\t4.Delete\n\t5.find\n");
-//	int pil;
-//	scanf("%i",&pil);
-//  	do{
-//  		switch (pil){
-//  			case 1:{
-//  				printf("masukkan data kosong untuk quit.\n");
-//		  		arr();
-//				break;
-//			}
-//			case 2:{
-//				display1(fn);
-//				break;
-//			}
-//			case 3:{
-//				Total_Char();
-//				break;
-//			}
-//			case 4:{
-//				Delete();
-//				break;
-//			}
-//				case 5:{
-//				find();
-//				break;
-//			}
-//		}
-//	}while(pil != 4);
-//	
-//	end1:;
 }
 void Menu(){	
 system("cls");
@@ -82,6 +52,8 @@ printf("------------------------------------------------------------------------
 fp1 = fopen(fn,"rt");	
 k=0,l=0;
 
+<<<<<<< HEAD
+=======
 //	if(fp1 != NULL){
 //		while (!feof(fp1)){
 //        text[k][l] = getc(fp1);
@@ -104,6 +76,10 @@ k=0,l=0;
 
 =======
 >>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
 	if(fp1 != NULL){
 		while (!feof(fp1)){
         text[k][l] = getc(fp1);
@@ -117,6 +93,13 @@ k=0,l=0;
 	}
 	t=k;
 	}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+	
+=======
+>>>>>>> Diaz
 	
 <<<<<<< HEAD
 =======
@@ -124,11 +107,23 @@ k=0,l=0;
 	
 >>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 >>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		   		}
+ 			}
+ 			
+=======
+<<<<<<< HEAD
+>>>>>>> Diaz
 		   		}printf("\n");
  			}
  			
@@ -144,35 +139,68 @@ k=0,l=0;
  			}
  			
 >>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
 	char key;
 	key = getch();
 	if(key == 5){
 			fclose(fp);
 <<<<<<< HEAD
 			fclose(fp1);
+<<<<<<< HEAD
 =======
 >>>>>>> Tubagus
 			edit_file(fn);			
+=======
+			edit_file(fn);			
+printf("test 1");
+=======
+<<<<<<< HEAD
+			fclose(fp1);
+=======
+>>>>>>> Tubagus
+			edit_file(fn);			
+>>>>>>> Diaz
 <<<<<<< HEAD
 =======
 printf("test 1");
 >>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
 		}
 		else if(key == 18){
 			fclose(fp);
 			fclose(fp1);
 			Total_Char();			
+printf("test 2");
 		}
 		else if(key== 4){
 			fclose(fp);
 			fclose(fp1);
 			DeleteLine();			
+printf("test 3");
 		}
 		else if(key == 17){
 			fclose(fp);
 			fclose(fp1);
 			insert_line();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+printf("test 4");
+		}
+		else if(key == 14){
+			system("start Array_TE.exe");
+			Menu();
+		}
+=======
+<<<<<<< HEAD
+>>>>>>> Diaz
 		}		
 		else if(key == 6){
 		fclose(fp);
@@ -201,26 +229,40 @@ printf("test 4");
 //			insert_line();
 		}
 >>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
 		else if(key == 9){
 			system("cls");
 printf("-----------------------------------------------------------------------------------------------\n");
 printf("| File Name : %s ",fn);
-printf("| Status : Menu Not In Control |\t");
+printf("| Status : Menu In Not Control |\t");
 Total_Char();
 printf("-----------------------------------------------------------------------------------------------\n");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\t\tCtrl+N : New Window \n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
-	fflush(stdin);
+		
 		int w; 		
 		for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		   		}	         	    	
+=======
+<<<<<<< HEAD
+>>>>>>> Diaz
 		   		}  printf("\n");	         	    	
 =======
 		   		}	         	    	
 >>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
  			}
 			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
@@ -229,11 +271,21 @@ printf("------------------------------------------------------------------------
 				fprintf(fp,"%s \n",text[w]);
 	    			if(!*text[w]) {
 	    				t--;
-						fclose(fp);	 	
+						fclose(fp);	
+						fclose(fp1); 	
 						Menu();
 			}			        		     	    	        
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+		fclose(fp);	  	
+		fclose(fp1);				
+		}
+		}
+=======
+<<<<<<< HEAD
+>>>>>>> Diaz
 		fclose(fp);	  					
 		}}
 =======
@@ -244,6 +296,10 @@ printf("------------------------------------------------------------------------
 
 void arr(){
 >>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz
 
 void arr(){	
 	printf("\n\tEnter the file name: ");
@@ -529,29 +585,13 @@ void replaceAll(char *str, const char *oldWord, const char *newWord)
 }
 
 void DeleteLine(){
-	fflush(stdin);
-	FILE *fp1;
+FILE *fp1;
 	int delete_line, temp = 1;
 	int tot = 0;
 	int i = 0;
 	int j=0;
 	char ch,p;
-	
-//	system("cls");
 	fp = fopen(fn, "r");
-	
-//    while(fgets(text[i], LEN, fp)) 
-//	{
-//        text[i][strlen(text[i]) - 1] = '\0';
-//        i++;
-//    }
-//    tot = i;  
-//    for(i = 0; i <= tot-1; ++i)
-//    {
-//        printf("%d :%s\n", i, text[i]);
-//    }
-//
-//    rewind(fp);
     printf("\nEnter line number of the line to be deleted:");
     scanf("%d", &delete_line);
     delete_line += 1;

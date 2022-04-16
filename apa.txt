@@ -1,4 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+hadir 
+ga  
+ya 
+=======
+<<<<<<< HEAD
+>>>>>>> Diaz
 gimanaqq
 adaas 
 a 
@@ -39,3 +47,7 @@ dia
 ÿ
 >>>>>>> Benny
 >>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+<<<<<<< HEAD
+=======
+>>>>>>> main
+>>>>>>> Diaz

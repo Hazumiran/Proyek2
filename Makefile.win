@@ -1,21 +1,12 @@
 # Project: Project3
 # Makefile created by Embarcadero Dev-C++ 6.3
 
-<<<<<<< HEAD
-CPP      = g++.exe
-CC       = gcc.exe
-WINDRES  = windres.exe
-OBJ      = main.o Menu.o Jml_BarisKolom.o Display.o Edit.o FindAndReplace.o Delete.o Insert.o
-LINKOBJ  = main.o Menu.o Jml_BarisKolom.o Display.o Edit.o FindAndReplace.o Delete.o Insert.o
-LIBS     = -L"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/lib" -L"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
-=======
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
 OBJ      = editor.o linkedlist.o main.o FileHandl.o
 LINKOBJ  = editor.o linkedlist.o main.o FileHandl.o
 LIBS     = -L"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/lib" -L"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3
->>>>>>> Tubagus
 INCS     = -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/include" -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/include" -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"D:/Aplikasi/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
 BIN      = Project4.exe

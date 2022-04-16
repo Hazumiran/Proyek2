@@ -10,11 +10,9 @@
 #define BUFFER_SIZE 1000
 char text[MAX][LEN];
 void arr();
-int edit();
 void Total_Char();
 void display(char fname[]);
 void display1(char fname[]);
-void shortcut(char isi);
 void edit_file(char fn[]);
 void Menu();
 void Delete();
@@ -22,9 +20,16 @@ void find();
 void replaceAll(char *str, const char *oldWord, const char *newWord);
 void DeleteLine();
 void insert_line();
-void findword(char fn[]);
 
+<<<<<<< HEAD
 	FILE *fp,*fp1;
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+	FILE *fp, *fp1;
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 	char fn[15];
 	int i,j,t,k,l,m,temp_m;
 
@@ -33,8 +38,6 @@ int main(void)
 	arr();
 }
 void Menu(){	
-
-fp = fopen(fn,"at+");	
 system("cls");
 printf("-----------------------------------------------------------------------------------------------\n");
 printf("| File Name : %s ",fn);
@@ -43,11 +46,37 @@ Total_Char();
 printf("-----------------------------------------------------------------------------------------------\n");
 	printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\t\tCtrl+N : New Window \n");
 	printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
+<<<<<<< HEAD
 	fflush(stdin);
 	fp = fopen(fn,"at+");	
 fp1 = fopen(fn,"rt");	
 k=0,l=0;
 
+<<<<<<< HEAD
+=======
+//	if(fp1 != NULL){
+//		while (!feof(fp1)){
+//        text[k][l] = getc(fp1);
+//		if(!*text[k]){
+//			k++;
+//			l=0;
+//		}
+//		else{
+//			l++;
+//		}
+//	}
+//	}
+=======
+	
+fp = fopen(fn,"at+");	
+fp1 = fopen(fn,"rt");	
+k=0,l=0;
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+>>>>>>> main
 	if(fp1 != NULL){
 		while (!feof(fp1)){
         text[k][l] = getc(fp1);
@@ -61,22 +90,63 @@ k=0,l=0;
 	}
 	t=k;
 	}
+<<<<<<< HEAD
 
 	
+=======
+	
+<<<<<<< HEAD
+=======
+//	display(fn);
+	
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+>>>>>>> main
 	for(k=0; k < t; k++) {
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
+<<<<<<< HEAD
 		   		}
  			}
  			
+=======
+<<<<<<< HEAD
+		   		}printf("\n");
+ 			}
+ 			
+//	for(k=0; k < t; k++) {
+//					printf("%d: ", k);
+//		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
+//		        	putchar(text[ k ][ l ]);			  		   
+//		   		} putchar('\n');
+// 			}
+
+=======
+		   		}
+ 			}
+ 			
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+>>>>>>> main
 	char key;
 	key = getch();
 	if(key == 5){
 			fclose(fp);
+<<<<<<< HEAD
 			fclose(fp1);
 			edit_file(fn);			
 printf("test 1");
+=======
+<<<<<<< HEAD
+			fclose(fp1);
+=======
+>>>>>>> Tubagus
+			edit_file(fn);			
+<<<<<<< HEAD
+=======
+printf("test 1");
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+>>>>>>> main
 		}
 		else if(key == 18){
 			fclose(fp);
@@ -94,6 +164,7 @@ printf("test 3");
 			fclose(fp);
 			fclose(fp1);
 			insert_line();
+<<<<<<< HEAD
 
 printf("test 4");
 		}
@@ -101,6 +172,37 @@ printf("test 4");
 			system("start Array_TE.exe");
 			Menu();
 		}
+=======
+<<<<<<< HEAD
+		}		
+		else if(key == 6){
+		fclose(fp);
+		findword(fn);
+		}				
+		else if(key == 14){
+			system("start Array_TE.exe");
+			Menu();
+		}				
+=======
+
+printf("test 4");
+		}
+<<<<<<< HEAD
+		
+		else if(key == 6){
+		fclose(fp);
+		findword(fn);
+		}
+		
+=======
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+		else if(key == 14){
+			system("start Array_TE.exe");
+			Menu();
+//			insert_line();
+		}
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+>>>>>>> main
 		else if(key == 9){
 			system("cls");
 printf("-----------------------------------------------------------------------------------------------\n");
@@ -116,7 +218,15 @@ printf("------------------------------------------------------------------------
 					printf("%d: ", k);
 		    	for(l=0; text[ k ][ l ]; l++){		   	 		      
 		        	putchar(text[ k ][ l ]);			  		   
+<<<<<<< HEAD
 		   		}	         	    	
+=======
+<<<<<<< HEAD
+		   		}  printf("\n");	         	    	
+=======
+		   		}	         	    	
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+>>>>>>> main
  			}
 			for(w = k; w < MAX; w++){  		
 	    		printf("%d: ", w);fflush(stdin);
@@ -130,10 +240,24 @@ printf("------------------------------------------------------------------------
 						Menu();
 			}			        		     	    	        
 		}
+<<<<<<< HEAD
 		fclose(fp);	  	
 		fclose(fp1);				
 		}
 		}
+=======
+<<<<<<< HEAD
+		fclose(fp);	  					
+		}}
+=======
+		fclose(fp);	  	
+		fclose(fp1);				
+		}
+}
+
+void arr(){
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
+>>>>>>> main
 
 void arr(){	
 	printf("\n\tEnter the file name: ");
@@ -207,8 +331,16 @@ void Total_Char(){
 		if(!*text[i]) 
 	    	break;
 	}
+<<<<<<< HEAD
 	printf("\tColoumns :%i",total);
 	printf("/Lines : %i |\n",i);
+=======
+
+	printf("\n Lines :%i",total);
+	printf("/Coloumns : %i\n\n",i);
+	system("pause");
+	Menu();
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 }
 
 void display(char fname[]){
@@ -225,8 +357,14 @@ void display(char fname[]){
     tot = i;  
     for(i = 0; i < tot; ++i)
     {
+<<<<<<< HEAD
         printf("%d :%s\n", i, text[i]);
     }    
+=======
+        printf("\t %d :%s\n", i, text[i]);
+    }
+
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 }
 
 void display1(char fname[]){
@@ -248,11 +386,21 @@ void edit_file(char fn[]){
 	char pil;
 	char inpedit;
 	char newword[LEN];
+	char buffer[LEN];
 	FILE *fpt;
+<<<<<<< HEAD
 	
 	printf("\n");
 
 
+=======
+<<<<<<< HEAD
+
+=======
+	
+	printf("\n");	
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 		int inp;
 		fflush(stdin);		
     	printf("Pilih index yang mau di edit :  ");
@@ -274,13 +422,13 @@ printf("\n");
 		fgets(newword, LEN, stdin);	
 
 		i = 0;
-			while ((fgets(text[i], LEN, fp)) != NULL)
+			while ((fgets(buffer, LEN, fp)) != NULL)
 			{
 			
 			    if (i == inp)
 			        fputs(newword, fpt);
 			    else
-			        fputs(text[i], fpt);
+			        fputs(buffer, fpt);
 			            
 			        i++;
 			}
@@ -288,12 +436,20 @@ printf("\n");
 		fclose(fpt);
 		remove(fn);
 		rename("temp.txt", fn);
-		system ("cls");
-		display(fn);
-		Menu();
 
+<<<<<<< HEAD
 	} 		
+=======
+<<<<<<< HEAD
+	 }		
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 
+=======
+			system ("cls");
+			Menu();
+	
+}
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc
 
 void Delete(){
 	FILE *fp;
@@ -444,6 +600,7 @@ FILE *fp1;
 		}
 }
 
+
 void insert_line(){
 	char baru[LEN];
 	char tampung[MAX][LEN];
@@ -451,6 +608,10 @@ void insert_line(){
 	int insert;
 	char ch, p;
 	i=0,j=0;
+<<<<<<< HEAD
+=======
+//	system("cls");
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 	fp = fopen(fn, "r");
   	while (!feof(fp) && ch != EOF){
         tampung[i][j] = getc(fp);
@@ -486,6 +647,10 @@ void insert_line(){
 				}
 			}
 			fprintf(fp,"\n");
+<<<<<<< HEAD
+=======
+//			printf("\n");
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 		}
 		else{
 			lanjut:
@@ -496,11 +661,21 @@ void insert_line(){
 		        		goto mulai;
 			}
 		}
+<<<<<<< HEAD
+=======
+//		printf("\n");
+//		fprintf(fp,"\n");
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 		mulai:;
 	}
 	fclose(fp);
 	Menu();
+<<<<<<< HEAD
 }
+=======
+<<<<<<< HEAD
+}			
+>>>>>>> c5ae0ad42687384672f68f83a107462b7662ac02
 
 void findword(char fn[]) {
 	char str[LEN];
@@ -525,4 +700,7 @@ void findword(char fn[]) {
         i++;
     }
 	printf("Ada di %d line yang ditemukan memiliki substring yang sama ", kata);	
-}		
+}	
+=======
+}			
+>>>>>>> b8f821fb1dbeb1d182876d901a93892e9c226adc

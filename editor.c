@@ -167,14 +167,23 @@ int KursorHandl(List *content, Point *CursorPos){
                     gotoxy(CursorPos);
                     continue;
                 }
-                else
-                {
+                else{
                     --CursorPos->x;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
                     continue;
                 }
             }
+            else if(key == CTRLLEFT){
+            	CursorPos->x = 0;
+            	gotoxy(CursorPos);
+            	continue;
+			}
+			else if(key == CTRLRIGHT){
+				CursorPos->x = getLineLen(content, CursorPos->y + 1);
+				gotoxy(CursorPos);
+				continue;
+			}
         }
         else if(key == BACKSPACEKEY) //TODO check bug when deleting after arrow job
         {
@@ -184,9 +193,9 @@ int KursorHandl(List *content, Point *CursorPos){
             }
             else if(CursorPos->x == 0)
             {
-                CursorPos->x = getLineLen(content, CursorPos->y);
-                CursorPos->y -= 1;
-                removeNodeByIndex(content, CursorPos->index -= 1);
+				CursorPos->x = getLineLen(content, CursorPos->y);
+		        CursorPos->y -= 1;
+		        removeNodeByIndex(content, CursorPos->index -= 1);	
             }
             else
             {

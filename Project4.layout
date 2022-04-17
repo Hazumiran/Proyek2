@@ -8,9 +8,9 @@ LeftChar=1
 Order=4,2,3,1,0,6
 Focused=0
 [Editor_0]
-CursorCol=14
-CursorRow=184
-TopLine=172
+CursorCol=56
+CursorRow=183
+TopLine=216
 LeftChar=1
 =======
 [Editor_0]
@@ -20,6 +20,7 @@ TopLine=1
 LeftChar=1
 [Editors]
 Order=4,2,3,1,0,5,6
+<<<<<<< HEAD:Project4.layout
 Focused=2
 >>>>>>> Tubagus
 [Editor_1]
@@ -35,6 +36,18 @@ TopLine=4
 =======
 TopLine=1
 >>>>>>> Tubagus
+=======
+Focused=-1
+[Editor_1]
+CursorCol=21
+CursorRow=24
+TopLine=27
+LeftChar=1
+[Editor_2]
+CursorCol=27
+CursorRow=77
+TopLine=73
+>>>>>>> Benny:Proyek2_Edited/Project4.layout
 LeftChar=1
 [Editor_3]
 CursorCol=7
@@ -49,9 +62,9 @@ LeftChar=1
 <<<<<<< HEAD
 =======
 [Editor_5]
-CursorCol=17
-CursorRow=16
-TopLine=4
+CursorCol=27
+CursorRow=22
+TopLine=10
 LeftChar=1
 >>>>>>> Tubagus
 [Editor_6]

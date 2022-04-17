@@ -68,11 +68,18 @@ int removeNodeByIndex(List *list, int index){
 
     if(getNode(list, index) == NULL)
         index =-1;
-        
+        	
     if(index == 0)
     {
-        list->head = list->head->next;
-        free(list->head);
+    	Node *tamp = getNode(list, index);
+    	if(tamp->next == NULL){
+	    	list->head = list->head->next;
+	        free(list->head);
+		}
+		else{
+			list->head = list->head->next;
+	        free(list->head->prev);
+		}
 
         return 0;
     }

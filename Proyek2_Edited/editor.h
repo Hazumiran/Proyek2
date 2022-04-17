@@ -20,6 +20,9 @@
 #define ARROWRIGHTKEY 77
 #define ARROWLEFTKEY 75
 
+#define CTRLRIGHT 116
+#define CTRLLEFT 115
+
 #define yKey 121
 #define YKey 89
 #define nKey 110

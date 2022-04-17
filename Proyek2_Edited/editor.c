@@ -184,9 +184,9 @@ int KursorHandl(List *content, Point *CursorPos){
             }
             else if(CursorPos->x == 0)
             {
-                CursorPos->x = getLineLen(content, CursorPos->y);
-                CursorPos->y -= 1;
-                removeNodeByIndex(content, CursorPos->index -= 1);
+				CursorPos->x = getLineLen(content, CursorPos->y);
+		        CursorPos->y -= 1;
+		        removeNodeByIndex(content, CursorPos->index -= 1);	
             }
             else
             {

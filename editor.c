@@ -1,6 +1,6 @@
 #include "editor.h"
 
-Point *pointCtor(){
+Point *pointCtor(){		
     Point *newPoint = (Point *)malloc(sizeof(Point));
     newPoint->x = NULL;
     newPoint->y = NULL;
@@ -35,6 +35,12 @@ void displayContent(List *list)
 {
     Node *temp = NULL;
     system("cls");
+    printf("-----------------------------------------------------------------------------------------------\n");
+		printf("| File Name :  ");
+		printf("| NODE JS TEXT EDITOR |\t\n");
+		printf("-----------------------------------------------------------------------------------------------\n");
+		printf("\tCtrl+D : Delete Line\tCtrl+E : Edit\t\tCtrl+N : New Window \n");
+		printf("\tCtrl+Q : Insert Line\tCtrl+i : Insert Again\n\n");
     for(temp = list->head; NULL != temp; temp = temp->next)
     {
         putchar(temp->data);

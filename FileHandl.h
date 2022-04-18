@@ -6,5 +6,6 @@
 
 void CreateFile();
 void OpenFile();
+void Menu();
 
 #endif

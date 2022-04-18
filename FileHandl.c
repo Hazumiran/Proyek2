@@ -11,9 +11,9 @@ void CreateFile(){
         List *content = listCtor();
         
         printf(" Name Of File : ");
-		scanf("%s",fname);
-		
+		scanf("%s",fname);		
 		system("cls");
+		
         Point *CursorPos = pointCtor();
         if(KursorHandl(content, CursorPos) == 0){
             fp = fopen(fname, "w");

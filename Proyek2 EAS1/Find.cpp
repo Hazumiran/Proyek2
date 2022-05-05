@@ -62,7 +62,7 @@ void replace (List *content, int pos, int pjg, char fname[20]){
 	k = strlen(kata);
 	
 	Node *temp = NULL;
-	for(temp = content->head; NULL != temp; temp = temp->next){
+	for(temp = content->head; NULL != temp->next; temp = temp->next){
 		if(i == pos){
 			
 			if (k == pjg){
@@ -88,6 +88,24 @@ void replace (List *content, int pos, int pjg, char fname[20]){
 					}
 					j++;
 					temp = temp->next;					
+				}
+			}
+			
+			else if(k > pjg){
+				selisih = k - pjg;
+				while(j < pjg + selisih){
+					if (j < pjg){
+						temp->data = kata[j];
+						temp = temp->next;
+					}
+					else if(j < k){
+						Node *P = nodeCtor(kata[j]);
+						temp->prev->next = P;
+						P->prev = temp->prev;
+						temp->prev = P;
+						P->next = temp;
+					}
+					j++;
 				}
 			}	
 			break;            

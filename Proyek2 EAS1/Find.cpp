@@ -13,7 +13,7 @@ void find(List *content, char fname[20]){
     Node *temp = NULL;
     int i, j = 0;
 
-	for(temp = content->head; NULL != temp; temp = temp->next)
+	for(temp = content->head; NULL != temp->next; temp = temp->next)
     {
 		if(kata[i] == temp->data){
 			i++;
@@ -36,7 +36,7 @@ void find(List *content, char fname[20]){
 	else{
 		printf("ketemu");
 		printf("\nApakah mau me-replace (y/n) ? ");
-		
+//		
 	while(pilih = _getch()){ // Mencegah user ngetik aneh aneh
 		if(pilih == 'y' || pilih == 'Y'){
 			putchar('y');
@@ -44,6 +44,7 @@ void find(List *content, char fname[20]){
 		}
 		else if (pilih == 'n' || pilih == 'N'){
 			putchar('n');
+			getch();
 			system("cls");
 			main();
 		}	
@@ -63,23 +64,32 @@ void replace (List *content, int pos, int pjg, char fname[20]){
 	Node *temp = NULL;
 	for(temp = content->head; NULL != temp; temp = temp->next){
 		if(i == pos){
-			while(j < k){
-				if (k == pjg){
+			
+			if (k == pjg){
+				while(j < k){
 					temp->data = kata[j];
 					temp = temp->next;
 					j++;
 				}
-				else if(k > pjg){
-//					selisih = k - pjg;
-					printf("lebih, gabisa diganti \n");
-					break;
-				}
-				else if(k < pjg){
-//					selisih = pjg - k;
-					printf("kurang, gabisa diganti \n");
-					break;
-				}	
 			}
+			
+			else if(k < pjg){
+				while(j < pjg){
+					if(j < k){
+						temp->data = kata[j];
+					}
+					else if(j >= k){
+						Node *P;
+						P = temp;
+						temp = temp->prev;
+						temp->next = P->next;
+						P->next->prev = temp;
+						DeAlokasi(P);
+					}
+					j++;
+					temp = temp->next;					
+				}
+			}	
 			break;            
 		}
 		else{
@@ -100,7 +110,8 @@ void replace (List *content, int pos, int pjg, char fname[20]){
         putc(temp->data, fp);
     }
     fclose(fp);
-	printf("\n %d %d %d", i, pos, pjg);
+
+	printf("\n %d i %d pos %d pjg %d k", i, pos, pjg, k);
 	getch();
 	system("cls");
 	main();

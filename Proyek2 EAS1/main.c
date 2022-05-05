@@ -1,4 +1,5 @@
-#include "editor.h"
+//#include "editor.h"
+#include "Find.h"
 
 int main() {
 	char fname[20];
@@ -20,6 +21,9 @@ int main() {
             fclose(fp);
             putchar('\n');
         }
+		fp = fopen(fname, "r");
+		fclose(fp);
+		find(content, fname);
         deleteList(content);
     return 0;
 }

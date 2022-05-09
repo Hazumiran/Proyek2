@@ -34,7 +34,7 @@
 typedef struct ScreenPos_s
 {
     int x;
-    int y;
+    int y=3;
     int index;
 }Point;
 

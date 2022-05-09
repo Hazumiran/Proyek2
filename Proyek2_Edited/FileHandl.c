@@ -8,15 +8,21 @@ FILE *fp;
 
 void CreateFile(){
 		char fname[20];
-        List *content = listCtor();
+        List *content = CreateHead();
         
         printf(" Name Of File : ");
 		scanf("%s",fname);
 		
 		system("cls");
         Point *CursorPos = pointCtor();
+	    int a = 186;
+	    int b = 200;
+	    int c = 201;
+	    printf("%c\n",c);
+	    printf("%c\n",a);
+	    printf("%c\n",b);
         if(KursorHandl(content, CursorPos) == 0){
-            fp = fopen(fname, "w");
+			fp = fopen(fname, "w");
             saveToFile(fp, content);
             fclose(fp);
             putchar('\n');
@@ -26,7 +32,7 @@ void CreateFile(){
 
 void OpenFile(){
 	char fname[20];
-        List *content = listCtor();
+        List *content = CreateHead();
         
         printf(" Input the filename to be opened : ");
 		scanf("%s",fname);

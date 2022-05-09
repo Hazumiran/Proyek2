@@ -9,32 +9,38 @@ Point *pointCtor(){
     return newPoint;
 } 
 
-void printListChars(List *list)
-{
-    Node *temp = NULL;
-    for(temp = list->head; NULL != temp; temp = temp->next)
-    {
-        if(temp->data == '\n')
-            printf("[\\n]->");
-        else
-            printf("[%c]->", temp->data);
-    }
-    printf("[NULL]\n");
-}
+//void printListChars(List *list)
+//{
+//    Node *temp = NULL;
+//    for(temp = list->head; NULL != temp; temp = temp->next)
+//    {
+//        if(temp->data == '\n')
+//            printf("[\\n]->");
+//        else
+//            printf("[%c]->", temp->data);
+//    }
+//    printf("[NULL]\n");
+//}
 
 void gotoxy(Point *point)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD Cord;
     Cord.X = point->x;
-    Cord.Y = point->y;
+    Cord.Y = point->y+3;
     SetConsoleCursorPosition(hStdout, Cord);
 }
 
 void displayContent(List *list)
 {
     Node *temp = NULL;
+    int a = 186;
+    int b = 200;
+    int c = 201;
     system("cls");
+    printf("%c\n",c);
+    printf("%c\n",a);
+    printf("%c\n",b);
     for(temp = list->head; NULL != temp; temp = temp->next)
     {
         putchar(temp->data);
@@ -49,7 +55,7 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
         if(character == '\n')
         {
             putchar(character);
-            insertNode(content, nodeCtor(character), CursorPos->index);
+            insertNode(content, CreateNode(character), CursorPos->index);
 			CursorPos->y += 1;
 			CursorPos->x = 0;
             CursorPos->index += 1;
@@ -57,7 +63,7 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
         else
         {
             putchar(character);
-            insertNode(content, nodeCtor(character), CursorPos->index);
+            insertNode(content, CreateNode(character), CursorPos->index);
             CursorPos->x += 1;
             CursorPos->index += 1;
         }
@@ -68,6 +74,7 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
 int KursorHandl(List *content, Point *CursorPos){
 
 //	unsigned char key;
+//	CursorPos->y=3;
     signed char key;
     while(ESC != (key = getch()))
     {
@@ -176,18 +183,20 @@ int KursorHandl(List *content, Point *CursorPos){
             }
             else if(key == CTRLLEFT){
             	CursorPos->x = 0;
+            	CursorPos->index = getIndex(content, CursorPos);
             	gotoxy(CursorPos);
             	continue;
 			}
 			else if(key == CTRLRIGHT){
 				CursorPos->x = getLineLen(content, CursorPos->y + 1);
+				CursorPos->index = getIndex(content, CursorPos);
 				gotoxy(CursorPos);
 				continue;
 			}
         }
         else if(key == BACKSPACEKEY) //TODO check bug when deleting after arrow job
         {
-            if((CursorPos->x == 0) && (CursorPos->y == 0))
+            if((CursorPos->x == 0) && (CursorPos->y == 3))
             {
                 continue;
             }
@@ -211,7 +220,7 @@ int KursorHandl(List *content, Point *CursorPos){
             int i;
             for(i = 0; i < 4; ++i)
             {
-                insertNode(content, nodeCtor(SPACEKEY), CursorPos->index);
+                insertNode(content, CreateNode(SPACEKEY), CursorPos->index);
                 ++CursorPos->x;
                 ++CursorPos->index;
             }
@@ -220,22 +229,21 @@ int KursorHandl(List *content, Point *CursorPos){
         {
             if(key == ENTERKEY || key == NLINE)
             {
-                insertNode(content, nodeCtor(NLINE), CursorPos->index);
+                insertNode(content, CreateNode(NLINE), CursorPos->index);
 				CursorPos->x = 0;
                 ++CursorPos->y;
                 ++CursorPos->index;
             }
             else
             {
-                insertNode(content, nodeCtor(key), CursorPos->index);
+                insertNode(content, CreateNode(key), CursorPos->index);
                 ++CursorPos->x;
                 ++CursorPos->index;
             }
         }
-
         displayContent(content);
-        gotoxy(CursorPos);
-    }
+        gotoxy(CursorPos);        
+	}
 
     CursorPos->y = getHeight(content);
     gotoxy(CursorPos);

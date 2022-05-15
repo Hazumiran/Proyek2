@@ -1,7 +1,12 @@
 <<<<<<< HEAD
 [Editors]
+<<<<<<< HEAD
 Order=4,3,2,1,0,5,6
 Focused=1
+=======
+Order=4,2,3,1,0,6,5,8,7
+Focused=7
+>>>>>>> 158bf36d708ecf2aa252f4c5a44c6f77c512a6c5
 [Editor_0]
 CursorCol=30
 CursorRow=288
@@ -22,10 +27,16 @@ LeftChar=1
 Order=4,3,2,1,0,5,6
 Focused=0
 [Editor_1]
+<<<<<<< HEAD
 CursorCol=1
 CursorRow=37
 TopLine=1
 >>>>>>> Benny
+=======
+CursorCol=24
+CursorRow=21
+TopLine=14
+>>>>>>> 158bf36d708ecf2aa252f4c5a44c6f77c512a6c5
 LeftChar=1
 [Editor_2]
 CursorCol=30
@@ -50,5 +61,10 @@ LeftChar=1
 [Editor_6]
 CursorCol=1
 CursorRow=9
+TopLine=1
+LeftChar=1
+[Editor_8]
+CursorCol=1
+CursorRow=1
 TopLine=1
 LeftChar=1

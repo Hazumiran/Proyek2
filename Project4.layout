@@ -1,80 +1,54 @@
 <<<<<<< HEAD
-[Editor_5]
-CursorCol=19
-CursorRow=1
-TopLine=1
-LeftChar=1
 [Editors]
-Order=4,2,3,1,0,6,5
+Order=4,3,2,1,0,5,6
 Focused=1
 [Editor_0]
-CursorCol=28
-CursorRow=231
-TopLine=1
+CursorCol=30
+CursorRow=288
+TopLine=104
 LeftChar=1
+[Editor_1]
+CursorCol=1
+CursorRow=37
+TopLine=22
 =======
+LeftChar=1
 [Editor_0]
-CursorCol=14
-CursorRow=184
+CursorCol=1
+CursorRow=8
 TopLine=1
 LeftChar=1
 [Editors]
-Order=4,2,3,1,0,5,6
-<<<<<<< HEAD:Project4.layout
-Focused=2
->>>>>>> Tubagus
+Order=4,3,2,1,0,5,6
+Focused=0
 [Editor_1]
 CursorCol=1
-CursorRow=25
-TopLine=14
+CursorRow=37
+TopLine=1
+>>>>>>> Benny
 LeftChar=1
 [Editor_2]
-CursorCol=1
-CursorRow=46
-<<<<<<< HEAD
+CursorCol=30
+CursorRow=76
 TopLine=1
-=======
-TopLine=1
->>>>>>> Tubagus
-=======
-Focused=-1
-LeftChar=1
-[Editor_1]
-CursorCol=21
-CursorRow=24
-TopLine=27
-LeftChar=1
-[Editor_2]
-CursorCol=27
-CursorRow=77
-TopLine=73
->>>>>>> Benny:Proyek2_Edited/Project4.layout
 LeftChar=1
 [Editor_3]
-CursorCol=20
-CursorRow=1
+CursorCol=1
+CursorRow=6
 TopLine=1
 LeftChar=1
 [Editor_4]
-CursorCol=3
-CursorRow=5
+CursorCol=23
+CursorRow=2
 TopLine=1
 LeftChar=1
-<<<<<<< HEAD
-=======
 [Editor_5]
-CursorCol=27
-CursorRow=22
-TopLine=10
+CursorCol=23
+CursorRow=4
+TopLine=4
 LeftChar=1
->>>>>>> Tubagus
 [Editor_6]
 CursorCol=1
-CursorRow=10
-TopLine=1
-LeftChar=1
-[Editor_7]
-CursorCol=25
-CursorRow=18
+CursorRow=9
 TopLine=1
 LeftChar=1

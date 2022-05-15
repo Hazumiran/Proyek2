@@ -42,7 +42,8 @@ int main(){
 	
 	for(int i = 0 ;;){
 	tampil:
-	gotoxy(0,0);
+	color(Set[3]);
+	gotoxy(0,0);	
 	printf("%c",bb);
 	for(int p = 0; p < 91; p++){
 	if(p == 6 || p == 12){
@@ -87,10 +88,11 @@ int main(){
 		}if(key == '\r'){
 			balikmenu:
 			if(counter == 1){
+				balikdialog:
 //				cout<<"Menu 1 Is Open";
 				
 	//TAMPIL MENU SOALNYA LOH KOK GAADA ANEH
-				
+				color(Set[3]);
 				gotoxy(0,0);				
 				printf("%c",bb);
 				for(int p = 0; p < 91; p++){
@@ -185,12 +187,13 @@ int main(){
 					}
 					if(counter2 ==3){
 						//DIALOG BOX
-						balikdialog:
+						
 							int Set4[] = {7,7};
 							char counter4 = 1;
 							char key4;
 							for(int DialogCount = 0 ;;){									
 									gotoxy(31,9);										
+									color(Set[3]);
 									printf("%c",bb);
 										for(int garis = 0; garis < 31; garis++){						
 										printf("%c",cc);		
@@ -437,10 +440,3 @@ int main(){
 	return 0;
 }
 
-void Menu_Pertama(){
-printf("HADEUH");
-}
-
-int Dialog(){
-	printf("Test");
-}

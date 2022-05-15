@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+[Editors]
+Order=4,3,2,1,0,5,6
+Focused=1
+[Editor_0]
+CursorCol=30
+CursorRow=288
+TopLine=104
+LeftChar=1
+[Editor_1]
+CursorCol=1
+CursorRow=37
+TopLine=27
+=======
 [Editor_0]
 CursorCol=1
 CursorRow=8
@@ -10,6 +24,7 @@ Focused=0
 CursorCol=1
 CursorRow=37
 TopLine=1
+>>>>>>> Benny
 LeftChar=1
 [Editor_2]
 CursorCol=30

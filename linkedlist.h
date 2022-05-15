@@ -17,8 +17,8 @@ typedef struct list_s
 }List;
 
 
-List * listCtor();
-Node * nodeCtor(int value);
+List *CreateHead();
+Node *CreateNode(int value);
 void DeAlokasi (Node *node);
 int insertNode(List *list, Node *node, int index);
 int removeNode(List *list, Node *node);

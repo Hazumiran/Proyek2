@@ -1,14 +1,14 @@
 #include "linkedlist.h"
 
 //Membuat Head
-List *listCtor(){
+List *CreateHead(){
     List *list = (List *)malloc(sizeof(List));
     list->head = NULL;
     return list;
 }
 
 //Pengalokasian Node
-Node *nodeCtor(int value){
+Node *CreateNode(int value){
     Node *node = (Node *)malloc(sizeof(Node));
     node->next = NULL;
     node->prev = NULL;
@@ -119,14 +119,14 @@ Node * getNode(List *list, int index){
 }
 
 //menampilkan satu baris
-void printList(List *list){
-    Node *temp = NULL;
-    for(temp = list->head; NULL != temp; temp = temp->next)
-    {
-        printf("[%d]->", temp->data);
-    }
-    printf("[NULL]\n");
-}
+//void printList(List *list){
+//    Node *temp = NULL;
+//    for(temp = list->head; NULL != temp; temp = temp->next)
+//    {
+//        printf("[%d]->", temp->data);
+//    }
+//    printf("[NULL]\n");
+//}
 
 //menghapus baris
 int deleteList(List * list){

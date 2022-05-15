@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
+#include <windows.h>
 #include "FileHandl.H"
 #include "linkedlist.H"
 #include "editor.H"

@@ -285,7 +285,7 @@ int getHeight(List *content)
     return height;
 }
 
-//Menghutung jumlah character pada 1 baris
+//Menghutung jumlah character
 int getLineLen(List *content, int lineNum)
 {
     int i = 1;

@@ -1,7 +1,8 @@
 #include "PulDown.h"
+#include "editor.h"
+#include "FileHandl.h"
 
 void color(int color){
-	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),color);
 }
 
@@ -13,7 +14,7 @@ void goto_xy(int x, int y){
 }
 
 
-void PullDown(){
+void PullDown(List *list){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
@@ -22,6 +23,7 @@ void PullDown(){
 	char key;
 	
 	for(int i = 0 ;;){
+	displayContent(list);
 	tampil:
 	color(Set[3]);
 	goto_xy(0,0);	
@@ -61,6 +63,9 @@ void PullDown(){
 	}	
 		
 		key = _getch();
+		if(key == 11){
+			break;
+		}
 		
 		if(key == 75&& (counter >=2 && counter <= 3)){
 			system("cls");
@@ -136,6 +141,14 @@ void PullDown(){
 				color(Set[3]);
 				printf("%c",dd);
 				color(Set2[2]);
+				printf("Delete File");	
+				color(Set[3]);
+				printf("%c",dd);
+				
+				goto_xy(1,6);
+				color(Set[3]);
+				printf("%c",dd);
+				color(Set2[3]);
 				printf("Exit");						
 				
 				color(Set[3]);
@@ -145,19 +158,21 @@ void PullDown(){
 	
 				key2 = _getch();
 				
-				if(key2 == 72&& (counter2 >=2 && counter2 <= 3)){			
+				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){			
 					counter2 --;
 					
-				}if(key2 == 80 && (counter2 >=1 && counter2 <= 2)){			
+				}if(key2 == 80 && (counter2 >=1 && counter2 <= 3)){			
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
 					system("cls");
+					displayContent(list);
 					counter --;
 					goto balikmenu;
 					
 				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
 					system("cls");
+					displayContent(list);
 					counter ++;
 					goto balikmenu;
 				}if(key2 == 20){	//ctrl + T		
@@ -166,9 +181,10 @@ void PullDown(){
 				//-----------------------------------------------------------------------Untuk nambahin function di edit
 				}if(key2 == '\r'){
 					if(counter2 ==1){
-					printf("New Windows jalan");
+//					printf("New Windows jalan");
 					}
 					if(counter2 ==2){
+						OpenFile();	
 					printf("New Windows jalan");
 					}
 					if(counter2 ==3){
@@ -270,6 +286,7 @@ void PullDown(){
 				Set2[1] =7;
 				Set2[2] =7;
 				Set2[3] =7;
+				Set2[4] =7;
 		
 				if(counter2 == 1){
 						Set2[0] = 9;					
@@ -281,6 +298,8 @@ void PullDown(){
 						Set2[2] = 9;						
 				}if(counter2 == 4){
 						Set2[3] = 9;
+				}if(counter2 == 5){
+						Set2[4] = 9;
 				}
 			
 				} //penutup for
@@ -360,12 +379,14 @@ void PullDown(){
 					counter3 ++;
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
-					system("cls");					
+					system("cls");	
+					displayContent(list);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key3 == 77 && (counter3 >=0 && counter3 <= 3)){
 					system("cls");
+					displayContent(list);
 					counter ++;
 					goto balikmenu;
 				}if(key3 == 20){	//ctrl + T		
@@ -474,5 +495,4 @@ void PullDownDisplay(){
 		}
 		printf("\n");
 	}
-	
 }

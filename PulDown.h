@@ -2,6 +2,7 @@
 #include <iostream>
 #include <windows.h>
 #include <conio.h>
+#include "editor.h"
 
 #define bb  201 // ╔
 #define cc  205 // ═
@@ -17,5 +18,5 @@ void goto_xy(int x, int y);
 void color(int color);
 int Dialog();
 void Menu_Pertama();
-void PullDown();
+void PullDown(List *list);
 void PullDownDisplay();

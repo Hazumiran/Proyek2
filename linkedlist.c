@@ -23,7 +23,7 @@ void DeAlokasi(Node *node){
 	free(node);
 }
 
-//Insert node dan menghubungkannya
+//Insert node dan menghubungkannya0
 int insertNode(List *list, Node *node, int index){
     if(index == 0)
     {

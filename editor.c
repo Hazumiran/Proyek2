@@ -204,9 +204,9 @@ int KursorHandl(List *content, Point *CursorPos){
             }
             else
             {
-//                putchar(BACKSPACEKEY);
-//                putchar(SPACEKEY);
-//                putchar(BACKSPACEKEY);
+                putchar(BACKSPACEKEY);
+                putchar(SPACEKEY);
+                putchar(BACKSPACEKEY);
                 removeNodeByIndex(content, CursorPos->index -= 1);
                 CursorPos->x -= 1;
             }
@@ -222,7 +222,7 @@ int KursorHandl(List *content, Point *CursorPos){
             }
         }
         else if(key == 11){
-        	PullDown();
+        	PullDown(content);
 		}
         else
         {
@@ -243,9 +243,10 @@ int KursorHandl(List *content, Point *CursorPos){
         displayContent(content);
         gotoxy(CursorPos);        
 	}
-
+	
     CursorPos->y = getHeight(content);
     gotoxy(CursorPos);
+    
     printf("\n----------\nSave Changes?(y/n) ");
     while(ESC != (key = _getch()))
     {

@@ -7,5 +7,7 @@
 void CreateFile();
 void OpenFile();
 void Menu();
+void Delete();
+bool txt_exe(char const *name);
 
 #endif

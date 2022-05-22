@@ -91,13 +91,34 @@ FILE *fp;
 	fp=fopen(fn,"r");
 	
 	if(fp==NULL){
-		printf("\n\tFile not found!");
+		printf("\n\tFile tidak ditemukan!");
 	}
 	
 	fclose(fp);
 	
 remove(fn);
-		printf("\n\n\tFile has been deleted successfully!");
+		printf("\n\n\tFile berhasil dihapus!");
     		
     
 }	
+
+void rename(){
+	  char oldName[100], newName[100];
+
+    
+    printf("masukan nama file : ");
+    scanf("%s", oldName);
+
+    printf("masukan nama file baru: ");
+    scanf("%s", newName);
+
+    if (rename(oldName, newName) == 0)
+    {
+        printf("sukses mengubah nama file \n");
+    }
+    else
+    {
+        printf("gagal merubah nama file.\n");
+
+}
+}

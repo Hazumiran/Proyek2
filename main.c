@@ -2,6 +2,7 @@
 #include "FileHandl.h"
 
 int main() {
-CreateFile();	
-Delete();
+//CreateFile();	
+//Delete();
+rename();
 }

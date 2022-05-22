@@ -4,6 +4,7 @@
 #include "FileHandl.H"
 #include "linkedlist.H"
 #include "editor.H"
+#include "PulDown.h"
 
 FILE *fp;
 
@@ -16,12 +17,7 @@ void CreateFile(){
 		system("cls");
 		
         Point *CursorPos = pointCtor();
-	    int a = 186;
-	    int b = 200;
-	    int c = 201;
-	    printf("%c\n",c);
-	    printf("%c\n",a);
-	    printf("%c\n",b);
+		PullDownDisplay();
         if(KursorHandl(content, CursorPos) == 0){
 			fp = fopen(fname, "w");
             saveToFile(fp, content);

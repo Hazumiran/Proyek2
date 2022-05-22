@@ -1,4 +1,5 @@
 #include "editor.h"
+#include "PulDown.h"
 
 Point *pointCtor(){
     Point *newPoint = (Point *)malloc(sizeof(Point));
@@ -34,13 +35,8 @@ void gotoxy(Point *point)
 void displayContent(List *list)
 {
     Node *temp = NULL;
-    int a = 186;
-    int b = 200;
-    int c = 201;
     system("cls");
-    printf("%c\n",c);
-    printf("%c\n",a);
-    printf("%c\n",b);
+	PullDownDisplay();
     for(temp = list->head; NULL != temp; temp = temp->next)
     {
         putchar(temp->data);
@@ -225,6 +221,9 @@ int KursorHandl(List *content, Point *CursorPos){
                 ++CursorPos->index;
             }
         }
+        else if(key == 11){
+        	PullDown();
+		}
         else
         {
             if(key == ENTERKEY || key == NLINE)

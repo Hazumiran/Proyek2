@@ -31,7 +31,28 @@ void gotoxy(Point *point)
     SetConsoleCursorPosition(hStdout, Cord);
 }
 
-void displayContent(List *list)
+void TempKolomBaris(int *baris , int *kolom){
+	int x = 28;
+	int y = 0;
+	
+	for(int i=1; i <= 125; i++)
+	{
+		gotoxy(x,y);
+		printf("%c", 196);
+		y++;
+	}
+	if (*baris == 0){
+		*baris = 1; 
+	}
+	else if(*kolom == 0){
+		*kolom = 1; 
+	}
+	gotoxy(28,0);
+    printf("\nBaris : %d\t",*baris); 
+	printf("Kolom : %d",*kolom);
+}
+
+void displayContent(List *list,int *baris, int *kolom)
 {
     Node *temp = NULL;
     int a = 186;
@@ -45,6 +66,7 @@ void displayContent(List *list)
     {
         putchar(temp->data);
     }
+    TempKolomBaris(baris, kolom);
 }
 
 int readFile(FILE *fp, List *content, Point *CursorPos)
@@ -71,28 +93,36 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
     return 0;
 }
 
-int KursorHandl(List *content, Point *CursorPos){
+int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom){
 
 //	unsigned char key;
 //	CursorPos->y=3;
     signed char key;
+    *kolom =  1;
+    *baris =  1;
+    
     while(ESC != (key = getch()))
     {
         if(key == ARROWKEY)
         {
-            key = _getch();
+            key = getch();
             if(key == ARROWUPKEY)//UP
             {
             	//jika berada di ujung atas
                 if(CursorPos->y == 0)
                 {
                     //At top line
-                    continue;
+                    *baris = 1;
+                    TempKolomBaris(baris, kolom);
+					continue;
                 }
                 
                 //yang atas lebih sedikit dari yang bawah
                 else if(CursorPos->x > getLineLen(content, CursorPos->y))
                 {
+                	*baris = *baris -1;
+                	*kolom = getLineLen(content, CursorPos->y);
+                    TempKolomBaris(baris, kolom);
                     CursorPos->x = getLineLen(content, CursorPos->y);
                     CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -102,6 +132,8 @@ int KursorHandl(List *content, Point *CursorPos){
                 //Tanpa ketentutan
                 else
                 {
+                	*baris = *baris - 1;
+                    TempKolomBaris(baris, kolom);
                     CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -113,11 +145,16 @@ int KursorHandl(List *content, Point *CursorPos){
             	//pada ujung bawah
                 if(CursorPos->y == getHeight(content))
                 {
-                    continue;
+                	*baris = *baris;
+                	TempKolomBaris(baris, kolom);
+					continue;
                 }
                 //yang bawah lebih sedikit dari yang atas
                 else if(CursorPos->x > getLineLen(content, CursorPos->y + 2))
                 {
+                	*baris = *baris + 1;
+                	*kolom = getLineLen(content, CursorPos->y);
+                    TempKolomBaris(baris, kolom);
                     CursorPos->x = getLineLen(content, CursorPos->y + 2);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -127,23 +164,29 @@ int KursorHandl(List *content, Point *CursorPos){
                 //tanpa ketentuan
                 else
                 {
+                	*baris = *baris + 1;
+                    TempKolomBaris(baris, kolom);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
                     continue;
                 }
-
             }
             else if(key == ARROWRIGHTKEY) //RIGHT
             {
                 if((CursorPos->y == getHeight(content)) && (CursorPos->x == getLineLen(content, CursorPos->y + 1)))
                 {
                     //At end of file
+                    *kolom = *kolom;
+					TempKolomBaris(baris, kolom);
                     continue;
                 }
                 else if(CursorPos->x == getLineLen(content, CursorPos->y + 1))
                 {
                     //At end of line, but not end of file
+                    *kolom = 1;
+                    *baris = *baris + 1;
+                    TempKolomBaris(baris, kolom);
                     CursorPos->x = 0;
 					++CursorPos->y;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -152,35 +195,44 @@ int KursorHandl(List *content, Point *CursorPos){
                 }
                 else
                 {
+                	*kolom = *kolom + 1;
+                    TempKolomBaris(baris, kolom);
                     CursorPos->x += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
                     continue;
                 }
-            }
+			}
             else if(key == ARROWLEFTKEY)//LEFT
             {
                 if((CursorPos->x == 0) && (CursorPos->y == 0))
                 {
                     //At start of file
+//                   *kolom = 1;
+//                   TempKolomBaris(baris, kolom);
                     continue;
                 }
                 else if(CursorPos->x == 0)
                 {
                     //At start of line, but not start of file
-                    CursorPos->x = getLineLen(content, CursorPos->y);
+                    *kolom = 1;
+                    *baris = *baris - 1;
+                    TempKolomBaris(baris, kolom);
+					CursorPos->x = getLineLen(content, CursorPos->y);
                     --CursorPos->y;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
                     continue;
                 }
                 else{
+                	*kolom = *kolom - 1;
+                    TempKolomBaris(baris, kolom);
                     --CursorPos->x;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
                     continue;
                 }
-            }
+			}
             else if(key == CTRLLEFT){
             	CursorPos->x = 0;
             	CursorPos->index = getIndex(content, CursorPos);
@@ -198,10 +250,14 @@ int KursorHandl(List *content, Point *CursorPos){
         {
             if((CursorPos->x == 0) && (CursorPos->y == 3))
             {
+//            	*kolom = *kolom - 1;
+//                TempKolomBaris(baris, kolom);
                 continue;
             }
             else if(CursorPos->x == 0)
             {
+//		        *kolom = *kolom - 1;
+//				TempKolomBaris(baris, kolom);            	
 				CursorPos->x = getLineLen(content, CursorPos->y);
 		        CursorPos->y -= 1;
 		        removeNodeByIndex(content, CursorPos->index -= 1);	
@@ -211,10 +267,14 @@ int KursorHandl(List *content, Point *CursorPos){
 //                putchar(BACKSPACEKEY);
 //                putchar(SPACEKEY);
 //                putchar(BACKSPACEKEY);
+                *kolom = *kolom - 1;
+                TempKolomBaris(baris, kolom);
                 removeNodeByIndex(content, CursorPos->index -= 1);
                 CursorPos->x -= 1;
             }
-        }
+            *kolom = *kolom - 1;
+            TempKolomBaris(baris, kolom);
+		}
         else if(key == TAB)
         {
             int i;
@@ -224,6 +284,7 @@ int KursorHandl(List *content, Point *CursorPos){
                 ++CursorPos->x;
                 ++CursorPos->index;
             }
+        *kolom = *kolom + 3;
         }
         else
         {
@@ -233,22 +294,26 @@ int KursorHandl(List *content, Point *CursorPos){
 				CursorPos->x = 0;
                 ++CursorPos->y;
                 ++CursorPos->index;
+                    *kolom = 0;
+        			*baris = *baris + 1;
             }
             else
             {
                 insertNode(content, CreateNode(key), CursorPos->index);
                 ++CursorPos->x;
                 ++CursorPos->index;
+//                	*kolom = 0;
+//       			*baris = *baris + 1;
             }
         }
-        displayContent(content);
+        *kolom = *kolom + 1;
+        displayContent(content, baris, kolom);
         gotoxy(CursorPos);        
-	}
-
+	}	
     CursorPos->y = getHeight(content);
     gotoxy(CursorPos);
     printf("\n----------\nSave Changes?(y/n) ");
-    while(ESC != (key = _getch()))
+    while(ESC != (key = getch()))
     {
         if(key == 'y' || key == 'Y')
         {

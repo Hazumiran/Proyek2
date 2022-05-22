@@ -9,6 +9,7 @@
 #include <corecrt.h> 
 
 FILE *fp;
+int baris = 0, kolom = 0;
 
 void CreateFile(){
 		char fname[20];
@@ -25,7 +26,7 @@ void CreateFile(){
 	    printf("%c\n",c);
 	    printf("%c\n",a);
 	    printf("%c\n",b);
-        if(KursorHandl(content, CursorPos) == 0){
+        if(KursorHandl(content, CursorPos, &baris, &kolom) == 0){
             saveToFile(fp, content);
 			fp = fopen(fname, "w");
             fclose(fp);
@@ -47,7 +48,7 @@ void OpenFile(){
 
         readFile(fp, content, CursorPos);
         fclose(fp);
-        if(KursorHandl(content, CursorPos) == 0)
+        if(KursorHandl(content, CursorPos, &baris, &kolom) == 0)
         {
             fp = fopen(fname, "w");
             saveToFile(fp, content);
@@ -101,3 +102,12 @@ remove(fn);
     		
     
 }	
+
+void gotoxy(int baris,int kolom)
+{
+	COORD coord;
+	
+    coord.X = kolom;
+    coord.Y = baris;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+}

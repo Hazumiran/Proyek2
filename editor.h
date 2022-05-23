@@ -1,7 +1,6 @@
 #include <conio.h>
 #include <windows.h>
 #include "linkedlist.h"
-#include "FileHandl.h"
 
 #ifndef editor.H
 #define editor.H
@@ -42,11 +41,11 @@ typedef struct ScreenPos_s
 
 Point * pointCtor();
 void printListChars(List *list);
-void TempKolomBaris(int *baris , int *kolom);
-void displayContent(List *list, int *baris, int *kolom);
+void TempKolomBaris(int *baris , int *kolom, int jml_char);
+void displayContent(List *list, int *baris, int *kolom, int *jml_char);
 int lineLen(List *content, int line);
 int readFile(FILE *fp, List *content, Point *CursorPos);
-int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom);
+int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jml_char);
 int saveToFile(FILE *fp, List *content);
 int getHeight(List *content);
 int getLineLen(List *content, int lineNum);

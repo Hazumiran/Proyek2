@@ -16,7 +16,6 @@ typedef struct list_s
     Node *head;
 }List;
 
-
 List *CreateHead();
 Node *CreateNode(int value);
 void DeAlokasi (Node *node);

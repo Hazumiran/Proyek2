@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <conio.h>
-#include <string.h>
 #include <windows.h>
+#include <string.h>
 #include "FileHandl.H"
 #include "linkedlist.H"
 #include "editor.H"
+#include "PulDown.h"
 #include <dirent.h>
 #include <corecrt.h> 
 
 FILE *fp;
-int baris = 0, kolom = 0;
 
 void CreateFile(){
+	int baris = 0, kolom = 0, jml_char = 0;
 		char fname[20];
         List *content = CreateHead();
         
@@ -20,15 +21,10 @@ void CreateFile(){
 		system("cls");
 		
         Point *CursorPos = pointCtor();
-	    int a = 186;
-	    int b = 200;
-	    int c = 201;
-	    printf("%c\n",c);
-	    printf("%c\n",a);
-	    printf("%c\n",b);
-        if(KursorHandl(content, CursorPos, &baris, &kolom) == 0){
-            saveToFile(fp, content);
+		PullDownDisplay();
+        if(KursorHandl(content, CursorPos, &baris, &kolom, &jml_char) == 0){
 			fp = fopen(fname, "w");
+            saveToFile(fp, content);
             fclose(fp);
             putchar('\n');
         }
@@ -36,6 +32,7 @@ void CreateFile(){
 }
 
 void OpenFile(){
+	int baris = 0, kolom = 0, jml_char = 0;
 	char fname[20];
         List *content = CreateHead();
         
@@ -48,7 +45,7 @@ void OpenFile(){
 
         readFile(fp, content, CursorPos);
         fclose(fp);
-        if(KursorHandl(content, CursorPos, &baris, &kolom) == 0)
+        if(KursorHandl(content, CursorPos, &baris, &kolom, &jml_char) == 0)
         {
             fp = fopen(fname, "w");
             saveToFile(fp, content);
@@ -58,8 +55,7 @@ void OpenFile(){
         deleteList(content);
 }
 
-bool txt_exe(char const *name)
-{
+bool txt_exe(char const *name){
 	size_t len = strlen(name);
 	return len > 4 && strcmp(name + len - 4, ".txt")== 0;
 }
@@ -102,6 +98,27 @@ remove(fn);
     		
     
 }	
+
+void rename(){
+	  char oldName[100], newName[100];
+
+    
+    printf("\nmasukan nama file : ");
+    scanf("%s", oldName);
+
+    printf("masukan nama file baru: ");
+    scanf("%s", newName);
+
+    if (rename(oldName, newName) == 0)
+    {
+        printf("sukses mengubah nama file \n");
+    }
+    else
+    {
+        printf("gagal merubah nama file.\n");
+
+}
+}
 
 void gotoxy(int baris,int kolom)
 {

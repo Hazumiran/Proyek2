@@ -4,23 +4,23 @@
 
 void find(List *content, char fname[20]){
 
-	char kata[25], pilih;
+	char kata[100], pilih;
 	int pjg, pos;
 	printf("\nkata yang mau dicari : ");fflush(stdin);
 	gets(kata);
 	pjg = strlen(kata);
 
     Node *temp = NULL;
-    int i, j = 0;
+    int i = 0, j = 0;
 
 	for(temp = content->head; NULL != temp->next; temp = temp->next)
     {
 		if(kata[i] == temp->data){
 			i++;
 			if(i == pjg){
-				if(temp->next->data == SPACEKEY){
 					break;
-				}
+//				if(temp->next->data == SPACEKEY){
+//				}
 			}
 		}
 		else{
@@ -36,7 +36,7 @@ void find(List *content, char fname[20]){
 	else{
 		printf("ketemu");
 		printf("\nApakah mau me-replace (y/n) ? ");
-//		
+	fflush(stdin);
 	while(pilih = _getch()){ // Mencegah user ngetik aneh aneh
 		if(pilih == 'y' || pilih == 'Y'){
 			putchar('y');
@@ -54,7 +54,7 @@ void find(List *content, char fname[20]){
 
 void replace (List *content, int pos, int pjg, char fname[20]){
 	int i = 0, j = 0, k = 0, selisih;
-	char kata[25];
+	char kata[100];
 	
 	printf("\n");
 	printf("Masukkan Kata pengganti : ");fflush(stdin);

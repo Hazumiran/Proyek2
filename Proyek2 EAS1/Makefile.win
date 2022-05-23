@@ -12,7 +12,7 @@ CXXINCS  = -I"D:/DevC++/Dev-Cpp/TDM-GCC-64/include" -I"D:/DevC++/Dev-Cpp/TDM-GCC
 BIN      = Project4.exe
 CXXFLAGS = $(CXXINCS) -g3
 CFLAGS   = $(INCS) -g3
-DEL      = D:\DevC++\Dev-Cpp\devcpp.exe INTERNAL_DEL
+DEL      = D:\DevC++\Dev-Cpp\DevCpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 

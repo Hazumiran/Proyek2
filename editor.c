@@ -1,4 +1,5 @@
 #include "editor.h"
+#include "PulDown.h"
 
 Point *pointCtor(){
     Point *newPoint = (Point *)malloc(sizeof(Point));
@@ -34,13 +35,8 @@ void gotoxy(Point *point)
 void displayContent(List *list)
 {
     Node *temp = NULL;
-    int a = 186;
-    int b = 200;
-    int c = 201;
     system("cls");
-    printf("%c\n",c);
-    printf("%c\n",a);
-    printf("%c\n",b);
+	PullDownDisplay();
     for(temp = list->head; NULL != temp; temp = temp->next)
     {
         putchar(temp->data);
@@ -75,6 +71,7 @@ int KursorHandl(List *content, Point *CursorPos){
 
 //	unsigned char key;
 //	CursorPos->y=3;
+	int tamp = 0;
     signed char key;
     while(ESC != (key = getch()))
     {
@@ -208,9 +205,9 @@ int KursorHandl(List *content, Point *CursorPos){
             }
             else
             {
-//                putchar(BACKSPACEKEY);
-//                putchar(SPACEKEY);
-//                putchar(BACKSPACEKEY);
+                putchar(BACKSPACEKEY);
+                putchar(SPACEKEY);
+                putchar(BACKSPACEKEY);
                 removeNodeByIndex(content, CursorPos->index -= 1);
                 CursorPos->x -= 1;
             }
@@ -225,6 +222,12 @@ int KursorHandl(List *content, Point *CursorPos){
                 ++CursorPos->index;
             }
         }
+        else if(key == 11){
+        	PullDown(content, &tamp);
+        	if(tamp == 0){
+        		return tamp;
+			}
+		}
         else
         {
             if(key == ENTERKEY || key == NLINE)
@@ -244,9 +247,10 @@ int KursorHandl(List *content, Point *CursorPos){
         displayContent(content);
         gotoxy(CursorPos);        
 	}
-
+	
     CursorPos->y = getHeight(content);
     gotoxy(CursorPos);
+    
     printf("\n----------\nSave Changes?(y/n) ");
     while(ESC != (key = _getch()))
     {

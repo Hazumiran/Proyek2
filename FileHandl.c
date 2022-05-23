@@ -5,6 +5,10 @@
 #include "FileHandl.H"
 #include "linkedlist.H"
 #include "editor.H"
+<<<<<<< HEAD
+=======
+#include "PulDown.h"
+>>>>>>> Benny
 #include <dirent.h>
 #include <corecrt.h> 
 
@@ -13,12 +17,11 @@ FILE *fp;
 void CreateFile(){
 		char fname[20];
         List *content = CreateHead();
-        
-        printf(" Name Of File : ");
-		scanf("%s",fname);		
 		system("cls");
+		strcpy(fname,"temp.txt");
 		
         Point *CursorPos = pointCtor();
+<<<<<<< HEAD
 	    int a = 186;
 	    int b = 200;
 	    int c = 201;
@@ -26,11 +29,26 @@ void CreateFile(){
 	    printf("%c\n",a);
 	    printf("%c\n",b);
         if(KursorHandl(content, CursorPos) == 0){
+=======
+		PullDownDisplay();
+		
+		while(KursorHandl(content, CursorPos) != 1){
+            printf("Masukkin nama filnya gan : ");
+            scanf("%s",fname);
+            rename("temp.txt",fname);
+			fp = fopen(fname, "w");
+>>>>>>> Benny
             saveToFile(fp, content);
 			fp = fopen(fname, "w");
             fclose(fp);
-            putchar('\n');
-        }
+		}
+		
+//        if(KursorHandl(content, CursorPos) == 0){
+//			fp = fopen(fname, "w");
+//            saveToFile(fp, content);
+//            fclose(fp);
+//            putchar('\n');
+//        }
         deleteList(content);
 }
 
@@ -57,8 +75,12 @@ void OpenFile(){
         deleteList(content);
 }
 
+<<<<<<< HEAD
 bool txt_exe(char const *name)
 {
+=======
+bool txt_exe(char const *name){
+>>>>>>> Benny
 	size_t len = strlen(name);
 	return len > 4 && strcmp(name + len - 4, ".txt")== 0;
 }
@@ -100,4 +122,8 @@ remove(fn);
 		printf("\n\n\tFile has been deleted successfully!");
     		
     
+<<<<<<< HEAD
 }	
+=======
+}	
+>>>>>>> Benny

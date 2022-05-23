@@ -29,7 +29,15 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=1
 CompilerSettings=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0
+<<<<<<< HEAD
 UnitCount=7
+=======
+<<<<<<< HEAD
+UnitCount=7
+=======
+UnitCount=11
+>>>>>>> main
+>>>>>>> Benny
 
 [VersionInfo]
 Major=1
@@ -119,4 +127,50 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
+<<<<<<< HEAD
+=======
 
+<<<<<<< HEAD
+=======
+[Unit8]
+FileName=Find.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=Find.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+>>>>>>> main
+
+[Unit10]
+FileName=PulDown.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=PulDown.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+>>>>>>> Benny

@@ -50,7 +50,7 @@ void TempKolomBaris(int *baris , int *kolom, int *jml_char){
 		*kolom = 1; 
 	}
 	
-	gotoxy(28,0);
+	gotoxy(29,0);
     printf("\nBaris : %d\t",*baris); 
 	printf("Kolom : %d\t",*kolom);
 //	printf("Jumlah Karakter : %d", *jml_char);
@@ -88,6 +88,7 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
             CursorPos->x += 1;
             CursorPos->index += 1;
         }
+  //      *jml_char = *jml_char + 1;
     }
     return 0;
 }
@@ -99,7 +100,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
     signed char key;
     *kolom =  1;
     *baris =  1;
-    *jml_char = 1;
     
 	while(ESC != (key = getch()))
     {

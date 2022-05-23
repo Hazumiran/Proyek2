@@ -1,4 +1,5 @@
 #include "Find.h"
+
 #include <string.h>
 #include <stdlib.h>
 
@@ -97,7 +98,7 @@ void replace (List *content, int pos, int pjg, char fname[20]){
 						temp = temp->next;
 					}
 					else if(j < k){
-						Node *P = nodeCtor(kata[j]);
+						Node *P = CreateNode(kata[j]);
 						temp->prev->next = P;
 						P->prev = temp->prev;
 						temp->prev = P;

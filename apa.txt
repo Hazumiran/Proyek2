@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 apa 
 apah 
 apakab 
 apakabar 
+=======
+apa wow
+>>>>>>> main

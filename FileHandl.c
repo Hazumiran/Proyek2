@@ -5,10 +5,7 @@
 #include "FileHandl.H"
 #include "linkedlist.H"
 #include "editor.H"
-<<<<<<< HEAD
-=======
 #include "PulDown.h"
->>>>>>> Benny
 #include <dirent.h>
 #include <corecrt.h> 
 
@@ -21,15 +18,6 @@ void CreateFile(){
 		strcpy(fname,"temp.txt");
 		
         Point *CursorPos = pointCtor();
-<<<<<<< HEAD
-	    int a = 186;
-	    int b = 200;
-	    int c = 201;
-	    printf("%c\n",c);
-	    printf("%c\n",a);
-	    printf("%c\n",b);
-        if(KursorHandl(content, CursorPos) == 0){
-=======
 		PullDownDisplay();
 		
 		while(KursorHandl(content, CursorPos) != 1){
@@ -37,7 +25,6 @@ void CreateFile(){
             scanf("%s",fname);
             rename("temp.txt",fname);
 			fp = fopen(fname, "w");
->>>>>>> Benny
             saveToFile(fp, content);
 			fp = fopen(fname, "w");
             fclose(fp);
@@ -75,12 +62,7 @@ void OpenFile(){
         deleteList(content);
 }
 
-<<<<<<< HEAD
-bool txt_exe(char const *name)
-{
-=======
 bool txt_exe(char const *name){
->>>>>>> Benny
 	size_t len = strlen(name);
 	return len > 4 && strcmp(name + len - 4, ".txt")== 0;
 }
@@ -120,10 +102,5 @@ FILE *fp;
 	
 remove(fn);
 		printf("\n\n\tFile has been deleted successfully!");
-    		
-    
-<<<<<<< HEAD
-}	
-=======
-}	
->>>>>>> Benny
+    		   
+}

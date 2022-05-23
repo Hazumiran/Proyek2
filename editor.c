@@ -50,7 +50,7 @@ void TempKolomBaris(int *baris , int *kolom, int *jml_char){
 		*kolom = 1; 
 	}
 	
-	gotoxy(29,0);
+	gotoxy(28,0);
     printf("\nBaris : %d\t",*baris); 
 	printf("Kolom : %d\t",*kolom);
 //	printf("Jumlah Karakter : %d", *jml_char);

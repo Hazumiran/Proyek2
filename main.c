@@ -1,6 +1,9 @@
 #include "editor.h"
+#include "Puldown.h"
 #include "FileHandl.h"
 
-int main() {	
+
+int main() {
+//	Pulldown();
 	CreateFile();
 }

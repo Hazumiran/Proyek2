@@ -14,7 +14,7 @@ void goto_xy(int x, int y){
 }
 
 
-void PullDown(List *list){
+void PullDown(List *list, int *x){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
@@ -28,14 +28,14 @@ void PullDown(List *list){
 	color(Set[3]);
 	goto_xy(0,0);	
 	printf("%c",bb);
-	
+	color(Set[3]);
 	for(int p = 0; p < 91; p++){
 		if(p == 6 || p == 12){
 			printf("%c",ff);
 		}
 		printf("%c",cc);		
 	}
-	
+	color(Set[3]);
 	printf("\n%c",dd);
 	goto_xy(1,1);
 	color(Set[0]);	
@@ -68,11 +68,11 @@ void PullDown(List *list){
 		}
 		
 		if(key == 75&& (counter >=2 && counter <= 3)){
-			system("cls");
+//			system("cls");
 			counter --;
 			
 		}if(key == 77 && (counter >=1 && counter <= 2)){
-			system("cls");
+//			system("cls");
 			counter ++;
 			
 		}if(key == '\r'){
@@ -165,13 +165,13 @@ void PullDown(List *list){
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
-					system("cls");
+//					system("cls");
 					displayContent(list);
 					counter --;
 					goto balikmenu;
 					
 				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
-					system("cls");
+//					system("cls");
 					displayContent(list);
 					counter ++;
 					goto balikmenu;
@@ -181,13 +181,18 @@ void PullDown(List *list){
 				//-----------------------------------------------------------------------Untuk nambahin function di edit
 				}if(key2 == '\r'){
 					if(counter2 ==1){
-//					printf("New Windows jalan");
+						*x = 0;
+						goto_xy(20,10);
+						printf("filenya ke save gan");
+						getch();
+						system("cls");
+//					printf("asek");
 					}
 					if(counter2 ==2){
 						OpenFile();	
 					printf("New Windows jalan");
 					}
-					if(counter2 ==3){
+					if(counter2 ==4){
 						//DIALOG BOX
 						
 							int Set4[] = {7,7};
@@ -277,7 +282,7 @@ void PullDown(List *list){
 												}
 							}//PANUTUP FOR DIALOG
 						//PANUTUP DIALOG
-					}if(counter2 ==4){
+					}if(counter2 ==3){
 					printf("New Windows jalan");
 					}
 				}
@@ -379,13 +384,13 @@ void PullDown(List *list){
 					counter3 ++;
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
-					system("cls");	
+//					system("cls");	
 					displayContent(list);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key3 == 77 && (counter3 >=0 && counter3 <= 3)){
-					system("cls");
+//					system("cls");
 					displayContent(list);
 					counter ++;
 					goto balikmenu;

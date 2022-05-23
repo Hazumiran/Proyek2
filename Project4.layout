@@ -1,16 +1,40 @@
 <<<<<<< HEAD
 [Editors]
+<<<<<<< HEAD
 Order=4,3,2,1,0,5,6,7
+Focused=4
+=======
+Order=4,3,2,1,0,5,6,7,9,10
 Focused=5
+=======
+<<<<<<< HEAD
+[Editors]
+<<<<<<< HEAD
+Order=4,3,2,1,0,5,6
+Focused=1
+=======
+Order=4,2,3,1,0,6,5,8,7
+Focused=7
+>>>>>>> 158bf36d708ecf2aa252f4c5a44c6f77c512a6c5
+>>>>>>> main
+>>>>>>> Benny
 [Editor_0]
 CursorCol=9
 CursorRow=280
 TopLine=55
 LeftChar=1
 [Editor_1]
+<<<<<<< HEAD
 CursorCol=1
 CursorRow=37
 TopLine=10
+=======
+CursorCol=2
+CursorRow=36
+TopLine=29
+<<<<<<< HEAD
+=======
+>>>>>>> Benny
 =======
 LeftChar=1
 [Editor_0]
@@ -26,6 +50,15 @@ CursorCol=1
 CursorRow=37
 TopLine=1
 >>>>>>> Benny
+<<<<<<< HEAD
+=======
+=======
+CursorCol=24
+CursorRow=21
+TopLine=14
+>>>>>>> 158bf36d708ecf2aa252f4c5a44c6f77c512a6c5
+>>>>>>> main
+>>>>>>> Benny
 LeftChar=1
 [Editor_2]
 CursorCol=36
@@ -38,6 +71,7 @@ CursorRow=4
 TopLine=1
 LeftChar=1
 [Editor_4]
+<<<<<<< HEAD
 CursorCol=11
 CursorRow=7
 TopLine=1
@@ -46,6 +80,17 @@ LeftChar=1
 CursorCol=5
 CursorRow=105
 TopLine=58
+=======
+CursorCol=1
+CursorRow=9
+TopLine=1
+LeftChar=1
+[Editor_5]
+<<<<<<< HEAD
+CursorCol=7
+CursorRow=105
+TopLine=68
+>>>>>>> main
 LeftChar=1
 [Editor_6]
 CursorCol=1
@@ -56,6 +101,39 @@ LeftChar=1
 CursorCol=17
 CursorRow=102
 TopLine=53
+=======
+CursorCol=40
+CursorRow=19
+TopLine=1
+LeftChar=1
+[Editor_6]
+CursorCol=9
+CursorRow=8
+TopLine=1
+LeftChar=1
+<<<<<<< HEAD
+=======
+[Editor_8]
+CursorCol=1
+CursorRow=1
+TopLine=1
+>>>>>>> Benny
+LeftChar=1
+>>>>>>> main
+[Editor_7]
+CursorCol=40
+CursorRow=5
+TopLine=106
+LeftChar=1
+[Editor_9]
+CursorCol=21
+CursorRow=188
+TopLine=181
+LeftChar=1
+[Editor_10]
+CursorCol=30
+CursorRow=21
+TopLine=1
 LeftChar=1
 [Editor_9]
 CursorCol=1

@@ -15,19 +15,33 @@ void CreateFile(){
 	int baris = 0, kolom = 0, jml_char = 0;
 		char fname[20];
         List *content = CreateHead();
-        
-        printf(" Name Of File : ");
-		scanf("%s",fname);		
 		system("cls");
+		strcpy(fname,"temp.txt");
 		
         Point *CursorPos = pointCtor();
 		PullDownDisplay();
+<<<<<<< HEAD
         if(KursorHandl(content, CursorPos, &baris, &kolom, &jml_char) == 0){
+=======
+		
+		while(KursorHandl(content, CursorPos) != 1){
+            printf("Masukkin nama filnya gan : ");
+            scanf("%s",fname);
+            rename("temp.txt",fname);
+			fp = fopen(fname, "w");
+            saveToFile(fp, content);
+>>>>>>> main
 			fp = fopen(fname, "w");
             saveToFile(fp, content);
             fclose(fp);
-            putchar('\n');
-        }
+		}
+		
+//        if(KursorHandl(content, CursorPos) == 0){
+//			fp = fopen(fname, "w");
+//            saveToFile(fp, content);
+//            fclose(fp);
+//            putchar('\n');
+//        }
         deleteList(content);
 }
 
@@ -95,6 +109,7 @@ FILE *fp;
 	
 remove(fn);
 		printf("\n\n\tFile has been deleted successfully!");
+<<<<<<< HEAD
     		
     
 }	
@@ -128,3 +143,7 @@ void gotoxy(int baris,int kolom)
     coord.Y = baris;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
+=======
+    		   
+}
+>>>>>>> main

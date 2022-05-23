@@ -1,6 +1,9 @@
 #include "editor.h"
 #include "PulDown.h"
+<<<<<<< HEAD
 #include "FileHandl.h"
+=======
+>>>>>>> main
 
 Point *pointCtor(){
     Point *newPoint = (Point *)malloc(sizeof(Point));
@@ -97,6 +100,7 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
 
 //	unsigned char key;
 //	CursorPos->y=3;
+	int tamp = 0;
     signed char key;
     *kolom =  1;
     *baris =  1;
@@ -266,8 +270,11 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
             }
             else
             {
+<<<<<<< HEAD
 				*kolom = *kolom - 1;
                 TempKolomBaris(baris, kolom, jml_char);
+=======
+>>>>>>> main
                 putchar(BACKSPACEKEY);
                 putchar(SPACEKEY);
                 putchar(BACKSPACEKEY);
@@ -289,7 +296,14 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
         *kolom = *kolom + 3;    
         }
         else if(key == 11){
+<<<<<<< HEAD
         	PullDown(content);
+=======
+        	PullDown(content, &tamp);
+        	if(tamp == 0){
+        		return tamp;
+			}
+>>>>>>> main
 		}
         else
         {

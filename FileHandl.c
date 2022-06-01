@@ -1,63 +1,61 @@
 #include <stdio.h>
 #include <conio.h>
 #include <windows.h>
-#include "FileHandl.H"
 #include "linkedlist.H"
 #include "editor.H"
 #include "PulDown.h"
 #include <dirent.h>
 #include <corecrt.h> 
 
-FILE *fp;
-
-void CreateFile(){
-		char fname[20];
-        List *content = CreateHead();
+void driver(){
+		int tamp = 0;
+		char *fname[20];
+	    List *content = CreateHead();
 		system("cls");
-		strcpy(fname,"temp.txt");
 		
         Point *CursorPos = pointCtor();
 		PullDownDisplay();
 		
-		while(KursorHandl(content, CursorPos) != 1){
-            printf("Masukkin nama filnya gan : ");
-            scanf("%s",fname);
-            rename("temp.txt",fname);
-			fp = fopen(fname, "w");
-            saveToFile(fp, content);
-            fclose(fp);
-		}
-		
-//        if(KursorHandl(content, CursorPos) == 0){
-//			fp = fopen(fname, "w");
-//            saveToFile(fp, content);
-//            fclose(fp);
-//            putchar('\n');
-//        }
+		do{
+			tamp = KursorHandl(content, CursorPos);
+			if (tamp == 2){
+				PullDown(content);
+			}
+		}while(tamp != 0);
         deleteList(content);
 }
 
-void OpenFile(){
+void CreateFile(List *list){
+	
+	char tamp_name[20];
+	TextBox(5,  40);
+    printf("Masukkin nama filenya gan : ");
+    scanf("%s",tamp_name);
+    
+	FILE *fp;
+	fp = fopen(tamp_name, "w");
+    saveToFile(fp, list);
+    fclose(fp);
+    
+}
+
+void OpenFile(List *list){
+	deleteList(list);
+	list = CreateHead();
+		
 	char fname[20];
-        List *content = CreateHead();
-        
-        printf(" Input the filename to be opened : ");
-		scanf("%s",fname);
-        FILE *fp = fopen(fname, "r");
-
-        Point *CursorPos = pointCtor();
-        system("cls");
-
-        readFile(fp, content, CursorPos);
-        fclose(fp);
-        if(KursorHandl(content, CursorPos) == 0)
-        {
-            fp = fopen(fname, "w");
-            saveToFile(fp, content);
-            fclose(fp);
-            putchar('\n');
-        }
-        deleteList(content);
+	 
+	TextBox(5,  40);
+    printf("Masukkin nama filenya gan : ");
+	scanf("%s",fname);
+		
+    FILE *fp = fopen(fname, "r");
+    Point *CursorPos = pointCtor();
+    system("cls");
+	
+	PullDownDisplay();
+    readFile(fp, list, CursorPos);
+    fclose(fp);
 }
 
 bool txt_exe(char const *name){
@@ -66,40 +64,46 @@ bool txt_exe(char const *name){
 }
 
 void Delete(){
+	int tamp =1;
+	int x = 7;
+    TextBox(15, 50);
+    goto_xy(30,6);
+    
 	DIR *d;
-  struct dirent *dir;
-  d = opendir(".");
-  if (d) {
-    while ((dir = readdir(d)) != NULL) {
-     if(txt_exe(dir->d_name)){    	
-    	  printf("%s\n", dir->d_name);
+	struct dirent *dir;
+	d = opendir(".");
+	if (d) {
+	while ((dir = readdir(d)) != NULL) {
+		if(txt_exe(dir->d_name)){ 
+			goto_xy(30+2,x+1);
+			tamp+=1;
+			x+=1;   	
+			printf("%s\n", dir->d_name);
 		}	
     }
     closedir(d);
-  }
-int c;
-FILE *file;
-file = fopen("temp.txt", "r");
-if (file) {
-    while ((c = getc(file)) != EOF)
-        putchar(c)  ;
-    fclose(file);
-}
-FILE *fp;
+	}
+	
+	FILE *fp;
 	char fn[15];
 	fp=fopen("temp.txt","r");
-	printf("\n\t pilih file yang akan dihapus: ");
+	
+	goto_xy(32,x+1);
+	printf("\n");
+	goto_xy(32,x+2);
+	printf("pilih file yang akan dihapus: ");
 	scanf("%s",fn);
+	
 	fp=fopen(fn,"r");
 	
 	if(fp==NULL){
-		printf("\n\tFile not found!");
+		goto_xy(32,x+4);
+		printf("File not found!");
 	}
 	
 	fclose(fp);
 	
-remove(fn);
-		printf("\n\n\tFile has been deleted successfully!");
-    		
-    
+	remove(fn);
+	goto_xy(32,x+4);
+	printf("File has been deleted successfully!");
 }	

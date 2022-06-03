@@ -18,9 +18,7 @@ void find(List *content, char fname[20]){
 		if(kata[i] == temp->data){
 			i++;
 			if(i == pjg){
-				if(temp->next->data == SPACEKEY){
 					break;
-				}
 			}
 		}
 		else{
@@ -46,7 +44,7 @@ void find(List *content, char fname[20]){
 			putchar('n');
 			getch();
 			system("cls");
-			main();
+//			main();
 		}	
 		}
 	}

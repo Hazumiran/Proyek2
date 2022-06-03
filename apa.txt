@@ -1,8 +1,1 @@
-<<<<<<< HEAD
-apa 
-apah 
-apakab 
-apakabar 
-=======
-apa wow
->>>>>>> main
+apa yang saya ketahui

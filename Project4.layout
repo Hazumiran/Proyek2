@@ -1,10 +1,19 @@
 <<<<<<< HEAD
 [Editors]
 <<<<<<< HEAD
-Order=4,3,2,1,0,5,6,7,8
-Focused=7
+<<<<<<< HEAD
+Order=3,4,2,1,0,5,6,9,7,10,8
+Focused=4
+=======
+<<<<<<< HEAD
+Order=4,3,2,1,0,5,6,7,9
+Focused=9
+>>>>>>> main
 =======
 Order=4,3,2,1,0,5,6,7,9,10
+=======
+Order=4,3,2,1,0,5,6,7,9,10,8
+>>>>>>> Benny
 Focused=5
 =======
 <<<<<<< HEAD
@@ -19,6 +28,7 @@ Focused=7
 >>>>>>> main
 >>>>>>> Benny
 [Editor_0]
+<<<<<<< HEAD
 CursorCol=9
 CursorRow=280
 TopLine=55
@@ -26,12 +36,22 @@ LeftChar=1
 [Editor_1]
 <<<<<<< HEAD
 CursorCol=1
-CursorRow=37
-TopLine=10
+CursorRow=3
+TopLine=1
 =======
 CursorCol=2
 CursorRow=36
 TopLine=29
+=======
+CursorCol=1
+CursorRow=46
+TopLine=48
+LeftChar=1
+[Editor_1]
+CursorCol=15
+CursorRow=5
+TopLine=22
+>>>>>>> Benny
 <<<<<<< HEAD
 =======
 >>>>>>> Benny
@@ -61,9 +81,9 @@ TopLine=14
 >>>>>>> Benny
 LeftChar=1
 [Editor_2]
-CursorCol=36
-CursorRow=26
-TopLine=1
+CursorCol=1
+CursorRow=4
+TopLine=2
 LeftChar=1
 [Editor_3]
 CursorCol=19
@@ -71,15 +91,16 @@ CursorRow=4
 TopLine=1
 LeftChar=1
 [Editor_4]
-CursorCol=15
-CursorRow=7
+<<<<<<< HEAD
+CursorCol=20
+CursorRow=1
 TopLine=1
 LeftChar=1
 [Editor_5]
 <<<<<<< HEAD
-CursorCol=7
-CursorRow=105
-TopLine=71
+CursorCol=1
+CursorRow=43
+TopLine=41
 LeftChar=1
 [Editor_6]
 CursorCol=1
@@ -87,40 +108,56 @@ CursorRow=9
 TopLine=1
 LeftChar=1
 [Editor_7]
-CursorCol=8
-CursorRow=24
-TopLine=1
+CursorCol=4
+CursorRow=63
+TopLine=51
 =======
 CursorCol=40
 CursorRow=19
 TopLine=1
+=======
+CursorCol=8
+CursorRow=8
+TopLine=1
+LeftChar=1
+[Editor_5]
+CursorCol=19
+CursorRow=54
+TopLine=44
+>>>>>>> Benny
 LeftChar=1
 [Editor_6]
-CursorCol=9
-CursorRow=8
+CursorCol=8
+CursorRow=13
 TopLine=1
 LeftChar=1
 <<<<<<< HEAD
 =======
 [Editor_8]
 CursorCol=1
-CursorRow=1
+CursorRow=9
 TopLine=1
 >>>>>>> Benny
 LeftChar=1
 >>>>>>> main
 [Editor_7]
-CursorCol=40
-CursorRow=5
-TopLine=106
+CursorCol=13
+CursorRow=33
+TopLine=10
 LeftChar=1
 [Editor_9]
-CursorCol=21
-CursorRow=188
+<<<<<<< HEAD
+CursorCol=34
+CursorRow=160
+TopLine=152
+=======
+CursorCol=13
+CursorRow=191
 TopLine=181
+>>>>>>> Benny
 LeftChar=1
 [Editor_10]
-CursorCol=30
-CursorRow=21
+CursorCol=17
+CursorRow=6
 TopLine=1
 LeftChar=1

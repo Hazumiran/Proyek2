@@ -13,8 +13,7 @@ void goto_xy(int x, int y){
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-
-void PullDown(List *list, int *x){
+void PullDown(List *list, char fname[20]){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
@@ -158,10 +157,10 @@ void PullDown(List *list, int *x){
 	
 				key2 = _getch();
 				
-				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){			
+				if(key2 == 72&& (counter2 >=1 && counter2 <= 4)){			
 					counter2 --;
 					
-				}if(key2 == 80 && (counter2 >=1 && counter2 <= 3)){			
+				}if(key2 == 80 && (counter2 >=1 && counter2 <= 4)){			
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
@@ -181,16 +180,21 @@ void PullDown(List *list, int *x){
 				//-----------------------------------------------------------------------Untuk nambahin function di edit
 				}if(key2 == '\r'){
 					if(counter2 ==1){
-						*x = 0;
-						goto_xy(20,10);
-						printf("filenya ke save gan");
+            			CreateFile(list);
 						getch();
 						system("cls");
+						PullDownDisplay();
 //					printf("asek");
 					}
 					if(counter2 ==2){
-						OpenFile();	
-					printf("New Windows jalan");
+						goto_xy(20,10);
+						OpenFile(list);
+					}
+					if(counter2 ==3){
+						Delete();
+						getch();
+						system("cls");
+						PullDownDisplay();
 					}
 					if(counter2 ==4){
 						//DIALOG BOX
@@ -400,7 +404,7 @@ void PullDown(List *list, int *x){
 				//-----------------------------------------------------------------untuk Menu Edit Masukin sini functionnya
 				}if(key3 == '\r'){
 					if(counter3 ==1){
-					printf("New Windows jalan");
+					find(list);
 					}
 					if(counter3 ==2){
 					printf("New Windows jalan");
@@ -500,4 +504,51 @@ void PullDownDisplay(){
 		}
 		printf("\n");
 	}
+}
+
+void TextBox(int c, int d){
+	int x =30, a=x;
+	int y =6, b=y;
+	
+	goto_xy(x,y);
+	for(int i =0;i<c;i++){
+		goto_xy(x,y+=1);
+		for(int j=0; j<d;j++){
+			if(i==0){
+				if(j==0){
+					printf("%c",bb);
+				}
+				else if(j==(d-1)){
+					printf("%c",ii);
+				}
+				else{
+					printf("%c",cc);
+				}
+			}
+			else if(i == (c-1)){
+				if(j==0){
+					printf("%c",ee);
+				}
+				else if(j==(d-1)){
+					printf("%c",hh);
+				}
+				else{
+					printf("%c",cc);
+				}
+			}
+			else{
+				if(j==0){
+					printf("%c",dd);
+				}
+				else if(j==(d-1)){
+					printf("%c",dd);
+				}
+				else{
+					printf(" ");
+				}
+			}
+		}
+		printf("\n");
+	}
+	goto_xy(a+3,b+3);
 }

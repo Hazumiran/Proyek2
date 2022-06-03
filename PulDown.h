@@ -3,6 +3,7 @@
 #include <windows.h>
 #include <conio.h>
 #include "editor.h"
+#include "Find.h"
 
 
 #define bb  201 // ╔
@@ -19,6 +20,6 @@ void goto_xy(int x, int y);
 void color(int color);
 int Dialog();
 void Menu_Pertama();
-void PullDown(List *list);
+void PullDown(List *list, char fname[20]);
 void PullDownDisplay();
 void TextBox(int c, int d);

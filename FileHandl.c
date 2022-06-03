@@ -11,8 +11,9 @@
 
 void driver(){
 		int tamp = 0;
-		char *fname[20];
 		int baris = 0, kolom = 0, jml_char = 0;
+		char fname[20];
+	
 	    List *content = CreateHead();
 		system("cls");
 		
@@ -22,7 +23,7 @@ void driver(){
 		do{
 			tamp = KursorHandl(content, CursorPos, &baris, &kolom, &jml_char);
 			if (tamp == 2){
-				PullDown(content);
+				PullDown(content, fname);
 			}
 		}while(tamp != 0);
         deleteList(content);

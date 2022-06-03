@@ -139,7 +139,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                     //At top line
                     *baris = 1;
                     displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     continue;
                 }
                 
@@ -149,7 +148,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 	*baris = *baris -1;
                 	*kolom = getLineLen(content, CursorPos->y) + 1;
                 	displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     CursorPos->x = getLineLen(content, CursorPos->y);
                     CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -160,8 +158,7 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 else
                 {
                     *baris = *baris - 1;
-                    displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);                	
+                    displayContent(content,baris, kolom, jml_char);             	
                     CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -175,7 +172,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 {
                 	*baris = *baris;
                 	displayContent(content,baris, kolom, jml_char);
-//                	TempKolomBaris(baris, kolom, jml_char,content);
                     continue;
                 }
                 //yang bawah lebih sedikit dari yang atas
@@ -184,7 +180,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 	*baris = *baris + 1;
                 	*kolom = getLineLen(content, CursorPos->y + 2) + 1;
                 	displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     CursorPos->x = getLineLen(content, CursorPos->y + 2);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -196,7 +191,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 {
                 	*baris = *baris + 1;
                 	displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -211,7 +205,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                     //At end of file
                     *kolom = *kolom;
                     displayContent(content,baris, kolom, jml_char);
-//					TempKolomBaris(baris, kolom, jml_char,content);
                     continue;
                 }
                 else if(CursorPos->x == getLineLen(content, CursorPos->y + 1))
@@ -220,7 +213,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                     *kolom = 1;
                     *baris = *baris + 1;
                     displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     CursorPos->x = 0;
 					++CursorPos->y;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -231,7 +223,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 {
                 	*kolom = *kolom + 1;
                 	displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     CursorPos->x += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -245,7 +236,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                     //At start of file
                     *kolom = 1;
                     displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     continue;
                 }
                 else if(CursorPos->x == 0)
@@ -254,7 +244,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                     *kolom = getLineLen(content, CursorPos->y) + 1;
                     *baris = *baris - 1;
                     displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     CursorPos->x = getLineLen(content, CursorPos->y);
                     --CursorPos->y;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -264,7 +253,6 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 else{
                 	*kolom = *kolom - 1;
                 	displayContent(content,baris, kolom, jml_char);
-//                    TempKolomBaris(baris, kolom, jml_char,content);
                     --CursorPos->x;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);

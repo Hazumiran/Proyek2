@@ -19,5 +19,6 @@ void goto_xy(int x, int y);
 void color(int color);
 int Dialog();
 void Menu_Pertama();
-void PullDown(List *list, int *x);
+void PullDown(List *list);
 void PullDownDisplay();
+void TextBox(int c, int d);

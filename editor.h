@@ -41,7 +41,6 @@ typedef struct ScreenPos_s
 
 Point * pointCtor();
 void printListChars(List *list);
-void TempKolomBaris(int *baris , int *kolom, int jml_char);
 void displayContent(List *list, int *baris, int *kolom, int *jml_char);
 int lineLen(List *content, int line);
 int readFile(FILE *fp, List *content, Point *CursorPos);

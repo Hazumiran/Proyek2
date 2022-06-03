@@ -19,18 +19,13 @@ void CreateFile(){
 		strcpy(fname,"temp.txt");
 		
         Point *CursorPos = pointCtor();
-		PullDownDisplay();
-<<<<<<< HEAD
-        if(KursorHandl(content, CursorPos, &baris, &kolom, &jml_char) == 0){
-=======
-		
-		while(KursorHandl(content, CursorPos) != 1){
+		PullDownDisplay();		
+		while(KursorHandl(content, CursorPos, &baris, &kolom, &jml_char) != 1){
             printf("Masukkin nama filnya gan : ");
             scanf("%s",fname);
             rename("temp.txt",fname);
 			fp = fopen(fname, "w");
             saveToFile(fp, content);
->>>>>>> main
 			fp = fopen(fname, "w");
             saveToFile(fp, content);
             fclose(fp);
@@ -108,31 +103,7 @@ FILE *fp;
 	fclose(fp);
 	
 remove(fn);
-		printf("\n\n\tFile has been deleted successfully!");
-<<<<<<< HEAD
-    		
-    
-}	
-
-void rename(){
-	  char oldName[100], newName[100];
-
-    
-    printf("\nmasukan nama file : ");
-    scanf("%s", oldName);
-
-    printf("masukan nama file baru: ");
-    scanf("%s", newName);
-
-    if (rename(oldName, newName) == 0)
-    {
-        printf("sukses mengubah nama file \n");
-    }
-    else
-    {
-        printf("gagal merubah nama file.\n");
-
-}
+		printf("\n\n\tFile has been deleted successfully!");   		   
 }
 
 void gotoxy(int baris,int kolom)
@@ -143,7 +114,3 @@ void gotoxy(int baris,int kolom)
     coord.Y = baris;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
-=======
-    		   
-}
->>>>>>> main

@@ -1,9 +1,6 @@
 #include "editor.h"
 #include "PulDown.h"
-<<<<<<< HEAD
 #include "FileHandl.h"
-=======
->>>>>>> main
 
 Point *pointCtor(){
     Point *newPoint = (Point *)malloc(sizeof(Point));
@@ -46,12 +43,16 @@ void TempKolomBaris(int *baris , int *kolom, int *jml_char){
 		printf("%c", 196);
 		y++;
 	}
+	
 	if (*baris == 0){
 		*baris = 1; 
 	}
 	else if(*kolom == 0){
 		*kolom = 1; 
 	}
+//	else if(*kolom <= 9 && *baris <= 9){
+//		system("cls");
+//	} 	
 	
 	gotoxy(28,0);
     printf("\nBaris : %d\t",*baris); 
@@ -91,7 +92,6 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
             CursorPos->x += 1;
             CursorPos->index += 1;
         }
-  //      *jml_char = *jml_char + 1;
     }
     return 0;
 }
@@ -136,8 +136,8 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 //Tanpa ketentutan
                 else
                 {
-                	*baris = *baris - 1;
-                    TempKolomBaris(baris, kolom, jml_char);
+                    *baris = *baris - 1;
+                    TempKolomBaris(baris, kolom, jml_char);                	
                     CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -253,34 +253,32 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
         }
         else if(key == BACKSPACEKEY) //TODO check bug when deleting after arrow job
         {
-            if((CursorPos->x == 0) && (CursorPos->y == 3))
+            if((CursorPos->x == 0) && (CursorPos->y == 0))
             {
-              *kolom = getLineLen(content, CursorPos->y);
-              *baris = *baris -1;
-              TempKolomBaris(baris, kolom, jml_char);
-                continue;
+ 			    *kolom = 1;
+                *baris = 1;
+                TempKolomBaris(baris, kolom, jml_char);
+                continue;  
             }
             else if(CursorPos->x == 0)
             {
-            	*kolom = 1;
-				TempKolomBaris(baris, kolom, jml_char); 
+                *kolom = getLineLen(content, CursorPos->y)+1;
+                *baris = *baris - 1;
+                TempKolomBaris(baris, kolom, jml_char);
 				CursorPos->x = getLineLen(content, CursorPos->y);
 		        CursorPos->y -= 1;
 		        removeNodeByIndex(content, CursorPos->index -= 1);	
             }
             else
             {
-<<<<<<< HEAD
-				*kolom = *kolom - 1;
-                TempKolomBaris(baris, kolom, jml_char);
-=======
->>>>>>> main
                 putchar(BACKSPACEKEY);
                 putchar(SPACEKEY);
                 putchar(BACKSPACEKEY);
                 removeNodeByIndex(content, CursorPos->index -= 1);
                 CursorPos->x -= 1;
-            }
+                *kolom = *kolom - 1;
+    			TempKolomBaris(baris, kolom, jml_char);
+            }    
         *kolom = *kolom - 1;
     	TempKolomBaris(baris, kolom, jml_char);
         }
@@ -296,14 +294,10 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
         *kolom = *kolom + 3;    
         }
         else if(key == 11){
-<<<<<<< HEAD
-        	PullDown(content);
-=======
         	PullDown(content, &tamp);
         	if(tamp == 0){
         		return tamp;
 			}
->>>>>>> main
 		}
         else
         {

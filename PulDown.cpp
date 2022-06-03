@@ -2,10 +2,7 @@
 #include "editor.h"
 #include "FileHandl.h"
 
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 void color(int color){
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),color);
 }
@@ -18,47 +15,31 @@ void goto_xy(int x, int y){
 }
 
 
-<<<<<<< HEAD
-void PullDown(List *list){
-=======
+
 void PullDown(List *list, int *x){
->>>>>>> main
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
     int Set[] = {7,7,7};
 	char counter = 2;
 	char key;
-<<<<<<< HEAD
 	int baris = 0, kolom = 0, jml_char = 0;
 	
 	for(int i = 0 ;;){
-	displayContent(list, &baris, &kolom, &jml_char);
-=======
-	
-	for(int i = 0 ;;){
-	displayContent(list);
->>>>>>> main
+	displayContent(list, &kolom, &baris, &jml_char);
 	tampil:
 	color(Set[3]);
 	goto_xy(0,0);	
 	printf("%c",bb);
-<<<<<<< HEAD
 	
-=======
 	color(Set[3]);
->>>>>>> main
 	for(int p = 0; p < 91; p++){
 		if(p == 6 || p == 12){
 			printf("%c",ff);
 		}
 		printf("%c",cc);		
 	}
-<<<<<<< HEAD
-	
-=======
 	color(Set[3]);
->>>>>>> main
 	printf("\n%c",dd);
 	goto_xy(1,1);
 	color(Set[0]);	
@@ -91,19 +72,11 @@ void PullDown(List *list, int *x){
 		}
 		
 		if(key == 75&& (counter >=2 && counter <= 3)){
-<<<<<<< HEAD
-			system("cls");
-			counter --;
-			
-		}if(key == 77 && (counter >=1 && counter <= 2)){
-			system("cls");
-=======
 //			system("cls");
 			counter --;
 			
 		}if(key == 77 && (counter >=1 && counter <= 2)){
 //			system("cls");
->>>>>>> main
 			counter ++;
 			
 		}if(key == '\r'){
@@ -196,24 +169,14 @@ void PullDown(List *list, int *x){
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
-<<<<<<< HEAD
-					system("cls");
-					displayContent(list, &baris, &kolom, &jml_char);
-=======
 //					system("cls");
-					displayContent(list);
->>>>>>> main
+					displayContent(list,&baris, &kolom, &jml_char);
 					counter --;
 					goto balikmenu;
 					
 				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
-<<<<<<< HEAD
-					system("cls");
-					displayContent(list, &baris, &kolom, &jml_char);
-=======
 //					system("cls");
-					displayContent(list);
->>>>>>> main
+					displayContent(list, &baris, &kolom, &jml_char);
 					counter ++;
 					goto balikmenu;
 				}if(key2 == 20){	//ctrl + T		
@@ -222,26 +185,19 @@ void PullDown(List *list, int *x){
 				//-----------------------------------------------------------------------Untuk nambahin function di edit
 				}if(key2 == '\r'){
 					if(counter2 ==1){
-<<<<<<< HEAD
-//					printf("New Windows jalan");
-=======
 						*x = 0;
 						goto_xy(20,10);
 						printf("filenya ke save gan");
 						getch();
 						system("cls");
 //					printf("asek");
->>>>>>> main
 					}
 					if(counter2 ==2){
 						OpenFile();	
 					printf("New Windows jalan");
 					}
-<<<<<<< HEAD
-					if(counter2 ==3){
-=======
+
 					if(counter2 ==4){
->>>>>>> main
 						//DIALOG BOX
 						
 							int Set4[] = {7,7};
@@ -331,11 +287,9 @@ void PullDown(List *list, int *x){
 												}
 							}//PANUTUP FOR DIALOG
 						//PANUTUP DIALOG
-<<<<<<< HEAD
-					}if(counter2 ==4){
-=======
+
 					}if(counter2 ==3){
->>>>>>> main
+
 					printf("New Windows jalan");
 					}
 				}
@@ -437,24 +391,14 @@ void PullDown(List *list, int *x){
 					counter3 ++;
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
-<<<<<<< HEAD
-					system("cls");	
-					displayContent(list, &baris, &kolom, &jml_char);				
-=======
 //					system("cls");	
-					displayContent(list);				
->>>>>>> main
+					displayContent(list, &baris, &kolom, &jml_char);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key3 == 77 && (counter3 >=0 && counter3 <= 3)){
-<<<<<<< HEAD
-					system("cls");
-					displayContent(list, &baris, &kolom, &jml_char);
-=======
 //					system("cls");
-					displayContent(list);
->>>>>>> main
+					displayContent(list, &baris, &kolom, &jml_char);
 					counter ++;
 					goto balikmenu;
 				}if(key3 == 20){	//ctrl + T		

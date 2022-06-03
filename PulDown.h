@@ -4,10 +4,7 @@
 #include <conio.h>
 #include "editor.h"
 
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 #define bb  201 // ╔
 #define cc  205 // ═
 #define dd  186 // ║
@@ -22,9 +19,5 @@ void goto_xy(int x, int y);
 void color(int color);
 int Dialog();
 void Menu_Pertama();
-<<<<<<< HEAD
-void PullDown(List *list);
-=======
 void PullDown(List *list, int *x);
->>>>>>> main
 void PullDownDisplay();

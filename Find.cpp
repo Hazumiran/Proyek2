@@ -1,19 +1,18 @@
 #include "Find.h"
-
 #include <string.h>
 #include <stdlib.h>
 #include "PulDown.h"
 
 void find(List *content){
 
-	char kata[100], pilih;
+	char kata[25], pilih;
 	int pjg, pos;
 	printf("\nkata yang mau dicari : ");fflush(stdin);
 	gets(kata);
 	pjg = strlen(kata);
 
     Node *temp = NULL;
-    int i = 0, j = 0;
+    int i, j = 0;
 
 	for(temp = content->head; NULL != temp->next; temp = temp->next)
     {
@@ -51,7 +50,6 @@ void find(List *content){
 	}
 	else{
 		printf("\nApakah mau me-replace (y/n) ? ");
-<<<<<<< HEAD
 		pilih = _getch(); // Mencegah user ngetik aneh aneh
 			if(pilih == 'y' || pilih == 'Y'){
 				putchar('y');
@@ -67,27 +65,12 @@ void find(List *content){
 				PullDownDisplay();
 				displayContent(content);
 			}	
-=======
-	fflush(stdin);
-	while(pilih = _getch()){ // Mencegah user ngetik aneh aneh
-		if(pilih == 'y' || pilih == 'Y'){
-			putchar('y');
-			replace(content, pos, pjg, fname);
-		}
-		else if (pilih == 'n' || pilih == 'N'){
-			putchar('n');
-			getch();
-			system("cls");
-			main();
-		}	
-		}
->>>>>>> 004a8c5c8bbcb2900ab62d93aa8fb1419e1c7bd8
 	}
 }
 
 void replace (List *content, int pos, int pjg){
 	int i = 0, j = 0, k = 0, selisih;
-	char kata[100];
+	char kata[25];
 	
 	printf("\n");
 	printf("Masukkan Kata pengganti : ");fflush(stdin);
@@ -162,13 +145,7 @@ void replace (List *content, int pos, int pjg){
 //    }
 //    fclose(fp);
 
-<<<<<<< HEAD
 //	printf("\n %d i %d pos %d pjg %d k", i, pos, pjg, k);
 //	system("pause");
-=======
-	printf("\n %d i %d pos %d pjg %d k", i, pos, pjg, k);
-	getch();
-	system("cls");
->>>>>>> 004a8c5c8bbcb2900ab62d93aa8fb1419e1c7bd8
 }
 		

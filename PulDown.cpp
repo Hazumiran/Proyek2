@@ -13,7 +13,7 @@ void goto_xy(int x, int y){
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-void PullDown(List *list){
+void PullDown(List *list, char fname[20]){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
@@ -157,10 +157,10 @@ void PullDown(List *list){
 	
 				key2 = _getch();
 				
-				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){			
+				if(key2 == 72&& (counter2 >=1 && counter2 <= 4)){			
 					counter2 --;
 					
-				}if(key2 == 80 && (counter2 >=1 && counter2 <= 3)){			
+				}if(key2 == 80 && (counter2 >=1 && counter2 <= 4)){			
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
@@ -404,7 +404,7 @@ void PullDown(List *list){
 				//-----------------------------------------------------------------untuk Menu Edit Masukin sini functionnya
 				}if(key3 == '\r'){
 					if(counter3 ==1){
-					printf("New Windows jalan");
+					find(list);
 					}
 					if(counter3 ==2){
 					printf("New Windows jalan");

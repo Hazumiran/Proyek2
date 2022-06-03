@@ -10,7 +10,7 @@
 
 void driver(){
 		int tamp = 0;
-		char *fname[20];
+		char fname[20];
 	    List *content = CreateHead();
 		system("cls");
 		
@@ -20,7 +20,7 @@ void driver(){
 		do{
 			tamp = KursorHandl(content, CursorPos);
 			if (tamp == 2){
-				PullDown(content);
+				PullDown(content, fname);
 			}
 		}while(tamp != 0);
         deleteList(content);

@@ -52,7 +52,6 @@ void OpenFile(List *list){
     FILE *fp = fopen(fname, "r");
     Point *CursorPos = pointCtor();
     system("cls");
-	
 	PullDownDisplay();
     readFile(fp, list, CursorPos);
     fclose(fp);

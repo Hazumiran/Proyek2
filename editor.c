@@ -291,15 +291,13 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
  			    *kolom = 1;
                 *baris = 1;
                 displayContent(content,baris, kolom, jml_char);
-//                TempKolomBaris(baris, kolom, jml_char,content);
                 continue;  
             }
             else if(CursorPos->x == 0)
             {
-                *kolom = getLineLen(content, CursorPos->y)+1;
+                *kolom = getLineLen(content, CursorPos->y) + 1;
                 *baris = *baris - 1;
                 displayContent(content,baris, kolom, jml_char);
-//                TempKolomBaris(baris, kolom, jml_char,content);
 				CursorPos->x = getLineLen(content, CursorPos->y);
 		        CursorPos->y -= 1;
 		        removeNodeByIndex(content, CursorPos->index -= 1);	
@@ -313,11 +311,9 @@ int KursorHandl(List *content, Point *CursorPos, int *baris, int *kolom, int *jm
                 CursorPos->x -= 1;
                 *kolom = *kolom - 1;
                 displayContent(content,baris, kolom, jml_char);
-//    			TempKolomBaris(baris, kolom, jml_char,content);
             }    
         *kolom = *kolom - 1;
         displayContent(content,baris, kolom, jml_char);
-//    	TempKolomBaris(baris, kolom, jml_char,content);
         }
         else if(key == TAB)
         {

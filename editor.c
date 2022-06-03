@@ -71,7 +71,6 @@ int KursorHandl(List *content, Point *CursorPos){
 
 //	unsigned char key;
 //	CursorPos->y=3;
-	int tamp = 0;
     signed char key;
     while(ESC != (key = getch()))
     {
@@ -223,10 +222,7 @@ int KursorHandl(List *content, Point *CursorPos){
             }
         }
         else if(key == 11){
-        	PullDown(content, &tamp);
-        	if(tamp == 0){
-        		return tamp;
-			}
+        	return 2;
 		}
         else
         {

@@ -34,7 +34,7 @@ Focused=7
 >>>>>>> Benny
 [Editor_0]
 <<<<<<< HEAD
-CursorCol=65
+CursorCol=36
 CursorRow=255
 TopLine=34
 =======
@@ -47,7 +47,7 @@ LeftChar=1
 [Editor_1]
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=65
+CursorCol=8
 CursorRow=44
 TopLine=14
 =======
@@ -136,7 +136,7 @@ CursorRow=8
 TopLine=1
 LeftChar=1
 [Editor_5]
-CursorCol=35
+CursorCol=25
 CursorRow=17
 TopLine=10
 =======
@@ -172,7 +172,7 @@ TopLine=1
 LeftChar=1
 [Editor_7]
 <<<<<<< HEAD
-CursorCol=56
+CursorCol=18
 CursorRow=58
 TopLine=119
 =======
@@ -217,7 +217,7 @@ LeftChar=1
 [Editor_9]
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=21
+CursorCol=20
 CursorRow=82
 TopLine=49
 LeftChar=1

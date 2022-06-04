@@ -21,5 +21,5 @@ void color(int color);
 int Dialog();
 void Menu_Pertama();
 void PullDown(List *list, char fname[20]);
-void PullDownDisplay();
+int PullDownDisplay();
 void TextBox(int c, int d);

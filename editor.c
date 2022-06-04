@@ -29,7 +29,7 @@ void gotoxy(Point *point)
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD Cord;
     Cord.X = point->x;
-    Cord.Y = point->y+3;
+    Cord.Y = point->y+1;
     SetConsoleCursorPosition(hStdout, Cord);
 }
 
@@ -81,16 +81,18 @@ void displayContent(List *list,Baris_Kolom *position)
     	}
 	}
 	
-	for(int i=1; i <= 125; i++)
-	{
-		goto_xy(x,y);
-		printf("%c", 196);
-		x++;
-	}
+//	for(int i=1; i <= 125; i++)
+//	{
+//		goto_xy(x,y);
+//		printf("%c", 196);
+//		x++;
+//	}
 
-	goto_xy(0,22);
+	goto_xy(0,21);
+	color(543);
     printf("\nBaris : %d\t",position->x); 
 	printf("Kolom : %d\t",position->y);
+	color(7);
 //	printf("Jumlah Karakter : %d", *jml_char);
 }
 

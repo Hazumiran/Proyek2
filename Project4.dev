@@ -145,43 +145,6 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
-
-[Unit9]
-FileName=Find.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
->>>>>>> main
-
-[Unit10]
-FileName=PulDown.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit11]
-FileName=PulDown.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-=======
->>>>>>> main
-
-<<<<<<< HEAD
-=======
-[Unit8]
 FileName=Find.cpp
 CompileCpp=1
 Folder=
@@ -201,8 +164,25 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 >>>>>>> main
+FileName=Find.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+>>>>>>> main
 
 [Unit10]
+FileName=PulDown.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 FileName=PulDown.cpp
 CompileCpp=1
 Folder=
@@ -221,5 +201,17 @@ Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
-
+=======
+>>>>>>> main
+<<<<<<< HEAD
+=======
+FileName=PulDown.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 >>>>>>> Benny
+

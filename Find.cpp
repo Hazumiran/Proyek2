@@ -35,17 +35,6 @@ void find(List *content){
 	pos = j - pjg + 1;
 	if(i == 0){
 		printf("Kata yang dicari tidak ada\n");
-//		printf("Mau coba kata lain (y/n) ?");
-//			pilih = _getch(); // Mencegah user ngetik aneh aneh
-//				if(pilih == 'y' || pilih == 'Y'){
-//					putchar('y');
-//					find(content);
-//				}
-//				else if (pilih == 'n' || pilih == 'N'){
-//					putchar('n');
-//					getch();
-////					system("pause");
-//				}
 	getch();	
 	system("cls");
 	PullDownDisplay();
@@ -133,22 +122,11 @@ void replace (List *content, int pos, int pjg){
 			i++;
 		}
 	}
-
-//	tampil list baru
 	for(temp = content->head; NULL != temp; temp = temp->next)
     {
         printf("%c", temp->data);
     }
     
-    //save list baru
-//    FILE *fp = fopen(fname, "w");
-//    for(temp = content->head; NULL != temp; temp = temp->next)
-//    {
-//        putc(temp->data, fp);
-//    }
-//    fclose(fp);
 
-//	printf("\n %d i %d pos %d pjg %d k", i, pos, pjg, k);
-//	system("pause");
 }
 		

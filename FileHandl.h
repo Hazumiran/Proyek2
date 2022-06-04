@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <conio.h>
+#include <windows.h>
+#include <tchar.h>
+#include <strsafe.h>
+
 #include "linkedlist.H"
 #include "editor.H"
 #include "PulDown.h"

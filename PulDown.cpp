@@ -18,7 +18,7 @@ void PullDown(List *list, char fname[20]){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
-    int Set[] = {7,7,7};
+    int Set[] = { 543,543,543};
 	char counter = 2;
 	char key;
 	int baris = 0, kolom = 0, jml_char = 0;
@@ -31,43 +31,21 @@ void PullDown(List *list, char fname[20]){
 	for(int i = 0 ;;){
 	displayContent(list, &position);
 	tampil:
-	color(Set[3]);
-	goto_xy(0,0);	
-	printf("%c",bb);
-	
-	color(Set[3]);
-	for(int p = 0; p < 91; p++){
-		if(p == 6 || p == 12){
-			printf("%c",ff);
-		}
-		printf("%c",cc);		
-	}
-	color(Set[3]);
-	printf("\n%c",dd);
-	goto_xy(1,1);
+
+	goto_xy(0,0);
 	color(Set[0]);	
-	printf("File ");
-	color(Set[3]);
-	printf(" %c",dd);
-	
-	goto_xy(8,1);
+	printf("File     ");
+
+	goto_xy(9,0);
 	color(Set[1]);	
-	printf("Edit  ");
-	
-	color(Set[3]);	
-	printf("%c",dd);
-	goto_xy(15,1);
+	printf("Edit     ");
+
+	goto_xy(18,0);
 	color(Set[2]);	
-	printf("View \t\t\t\t\t\t\t\t\t");
-	color(Set[3]);
-	printf("\n%c",ee);
-	
-	for(int u = 0; u < 91; u++){
-		if(u == 6 || u == 12){
-			printf("%c",gg);		
-		}
-		printf("%c",cc);		
-	}	
+	printf("View    ");
+	color(543);
+	printf("                                                                                              ");
+	color(7);	
 		
 		key = _getch();
 		if(key == 11){
@@ -75,94 +53,75 @@ void PullDown(List *list, char fname[20]){
 		}
 		
 		if(key == 75&& (counter >=2 && counter <= 3)){
-//			system("cls");
 			counter --;
 			
 		}if(key == 77 && (counter >=1 && counter <= 2)){
-//			system("cls");
 			counter ++;
 			
 		}if(key == '\r'){
 			balikmenu:
 			if(counter == 1){
 				balikdialog:
-//				cout<<"Menu 1 Is Open";
 				
 	//TAMPIL MENU SOALNYA LOH KOK GAADA ANEH
-				color(Set[3]);
-				goto_xy(0,0);				
-				printf("%c",bb);
-				for(int p = 0; p < 91; p++){
-				if(p == 6 || p == 12){
-					printf("%c",ff);
-				}
-				printf("%c",cc);		
-				}
-				printf("\n%c",dd);
-				goto_xy(1,1);
-				color(Set[0]);				
-				printf("File ");
-				color(Set[3]);
-				printf(" %c",dd);
+				goto_xy(0,0);
+				color(Set[0]);	
+				printf("File     ");
+			
+				goto_xy(9,0);
+				color(Set[1]);	
+				printf("Edit     ");
+
 				
-				goto_xy(8,1);
-				color(Set[1]);				
-				printf("Edit  ");
-				
-				color(Set[3]);	
-				printf("%c",dd);
-				goto_xy(15,1);
-				color(Set[2]);				
-				printf("View");
-				color(Set[3]);
-				printf("\n%c",ee);
-				for(int u = 0; u < 91; u++){
-				if(u == 6 || u == 12){
-					printf("%c",gg);		
-				}
-				printf("%c",cc);		
-				}				
+				goto_xy(18,0);
+				color(Set[2]);	
+				printf("View    ");
+				color(543);
+				printf("                                                                                              ");
+				color(543);	
 				// PANUTUP TAMPIL GAN	
-				int Set2[] = {7,7,7};
+				int Set2[] = {543,543,543,543};
 				char counter2 = 2;
 				char key2;
 	
 				for(int a = 0 ;;){
-				goto_xy(1,3);
-				color(Set[3]);
+				goto_xy(1,1);
+				color(543);
 				printf("%c",dd);
 				color(Set2[0]);		
-				printf("Save      ");
-				color(Set[3]);
-				printf(" %c",dd);
+				printf("Save       ");
+				color(543);
+				printf("%c",dd);
 			
-				goto_xy(1,4);
-				color(Set[3]);
+				goto_xy(1,2);
+				color(543);
 				printf("%c",dd);
 				color(Set2[1]);
-				printf("Open File");
-				color(Set[3]);
-				printf("  %c",dd);
+				printf("Open File  ");
+				color(543);
+				printf("%c",dd);
 				
-				goto_xy(1,5);
-				color(Set[3]);
+				goto_xy(1,3);
+				color(543);
 				printf("%c",dd);
 				color(Set2[2]);
 				printf("Delete File");	
-				color(Set[3]);
+				color(543);
 				printf("%c",dd);
 				
-				goto_xy(1,6);
-				color(Set[3]);
+				goto_xy(1,4);
+				color(543);
 				printf("%c",dd);
 				color(Set2[3]);
-				printf("Exit");						
+				printf("Exit       ");						
 				
-				color(Set[3]);
-				printf("\t     %c",dd);
-				printf("\n %c",ee);
+				color(543);
+				printf("%c",dd);
+				color(543);
+					goto_xy(1,5);
+				printf("%c",ee);
 				printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",hh);
-	
+				color(7);	
 				key2 = _getch();
 				
 				if(key2 == 72&& (counter2 >=1 && counter2 <= 4)){			
@@ -210,57 +169,74 @@ void PullDown(List *list, char fname[20]){
 							char counter4 = 1;
 							char key4;
 							for(int DialogCount = 0 ;;){									
-									goto_xy(31,9);										
-									color(Set[3]);
+									goto_xy(41,9);										
+									color(543);
 									printf("%c",bb);
 										for(int garis = 0; garis < 31; garis++){						
 										printf("%c",cc);		
 										}
 									printf("%c",ii);
 									
-									goto_xy(31,10);														
+									goto_xy(41,10);
+									color(543);
 									printf("%c",dd);
-									goto_xy(31,11);														
+									goto_xy(41,11);
+									color(543);
 									printf("%c",dd);
-									goto_xy(31,12);					
+									goto_xy(41,12);
+									color(543);
 									printf("%c",dd);
-									goto_xy(31,13);					
+									goto_xy(41,13);
+									color(543);
 									printf("%c",dd);
-									goto_xy(31,14);					
+									goto_xy(41,14);
+									color(543);
 									printf("%c",dd);
-									goto_xy(31,15);					
+									goto_xy(41,15);
+									color(543);
 									printf("%c",dd);	
-									goto_xy(31,16);					
+									goto_xy(41,16);
+									color(543);
 									printf("%c",ee);
-									goto_xy(32,16);	
+									goto_xy(42,16);
+									color(543);
 									for(int garis2 = 0; garis2 < 31; garis2++){						
 										printf("%c",cc);		
 										}										
-									goto_xy(63,10);					
+									goto_xy(73,10);
+									color(543);
 									printf("%c",dd);
-									goto_xy(63,11);					
+									goto_xy(73,11);
+									color(543);
 									printf("%c",dd);					
-									goto_xy(63,12);					
+									goto_xy(73,12);
+									color(543);
 									printf("%c",dd);
-									goto_xy(63,13);					
+									goto_xy(73,13);
+									color(543);
 									printf("%c",dd);
-									goto_xy(63,14);					
+									goto_xy(73,14);
+									color(543);
 									printf("%c",dd);
-									goto_xy(63,15);					
+									goto_xy(73,15);
+									color(543);
 									printf("%c",dd);
-									goto_xy(63,16);					
+									goto_xy(73,16);
+									color(543);			
 									printf("%c",hh);
 									
 									
 									//Text
-									goto_xy(34,11);														
+									goto_xy(44,11);
+									color(543);
 									printf("Apakah Yakin ingin Keluar ?");
-									goto_xy(33,15);		
+									goto_xy(43,15);		
 									color(Set4[0]);
 									printf("Yes");
-									goto_xy(60,15);
+									goto_xy(70,15);
 									color(Set4[1]);					
 									printf("No");
+									color(7);
 									
 										key4 = _getch();
 		
@@ -281,15 +257,16 @@ void PullDown(List *list, char fname[20]){
 												}else{
 													goto balikdialog;
 												}
-												
-										}Set4[0] =7;
-												Set4[1] =7;													
+																		
+											}
+												Set4[0] =543;
+												Set4[1] =543;													
 
 												if(counter4 == 1){
-														Set4[0] = 9;
+														Set4[0] = 760;
 												}
 												if(counter4 == 2){
-														Set4[1] = 9;
+														Set4[1] = 760;
 												}
 							}//PANUTUP FOR DIALOG
 						//PANUTUP DIALOG
@@ -300,24 +277,22 @@ void PullDown(List *list, char fname[20]){
 					}
 				}
 
-				Set2[0] =7;
-				Set2[1] =7;
-				Set2[2] =7;
-				Set2[3] =7;
-				Set2[4] =7;
+				Set2[0] =543;
+				Set2[1] =543;
+				Set2[2] =543;
+				Set2[3] =543;
+
 		
 				if(counter2 == 1){
-						Set2[0] = 9;					
+						Set2[0] = 760;					
 				}
 				if(counter2 == 2){
-						Set2[1] = 9;						
+						Set2[1] = 760;						
 				}
 				if(counter2 == 3){
-						Set2[2] = 9;						
+						Set2[2] = 760;						
 				}if(counter2 == 4){
-						Set2[3] = 9;
-				}if(counter2 == 5){
-						Set2[4] = 9;
+						Set2[3] = 760;
 				}
 			
 				} //penutup for
@@ -329,65 +304,48 @@ void PullDown(List *list, char fname[20]){
 				
 	//TAMPIL MENU SOALNYA LOH KOK GAADA ANEH
 				goto_xy(0,0);
-				printf("%c",bb);
-				for(int p = 0; p < 91; p++){
-				if(p == 6 || p == 12){
-					printf("%c",ff);
-				}
-				printf("%c",cc);		
-				}
-				printf("\n%c",dd);
-				goto_xy(1,1);
-				color(Set[0]);
-				printf("File ");
-				color(Set[3]);
-				printf(" %c",dd);
-				
-				goto_xy(8,1);
-				color(Set[1]);
-				printf("Edit  ");
-				
-				color(Set[3]);	
-				printf("%c",dd);
-				goto_xy(15,1);
-				color(Set[2]);
-				printf("View");
-				color(Set[3]);
-				printf("\n%c",ee);
-				for(int u = 0; u < 91; u++){
-				if(u == 6 || u == 12){
-					printf("%c",gg);		
-				}
-				printf("%c",cc);		
-				}
+				goto_xy(0,0);
+				color(Set[0]);	
+				printf("File     ");
+			
+				goto_xy(9,0);
+				color(Set[1]);	
+				printf("Edit     ");
+			
+				goto_xy(18,0);
+				color(Set[2]);	
+				printf("View    ");
+				color(543);
+				printf("                                                                                              ");
+				color(7);	
 // PANUTUP TAMPIL GAN	
-				int Set3[] = {7,7,7};
+				int Set3[] = {543,543,543};
 				char counter3 = 2;
 				char key3;
 						
 				for(int b ;;){
 					
-				goto_xy(8,3);
-				color(Set[3]);
+				goto_xy(8,1);
+				color(543);
 				printf("%c",dd);
 				color(Set3[0]);		
-				printf("Find And Replace");
-				color(Set[3]);
-				printf(" %c",dd);
+				printf("Find And Replace ");
+				color(543);
+				printf("%c",dd);
 			
-				goto_xy(8,4);
-				color(Set[3]);
+				goto_xy(8,2);
+				color(543);
 				printf("%c",dd);
 				color(Set3[1]);
-				printf("Copy");
-				color(Set[3]);
-				printf("             %c",dd);
+				printf("Copy             ");
+				color(543);
+				printf("%c",dd);
 				
-				goto_xy(8,5);
-				color(Set[3]);
+				goto_xy(8,3);
+				color(543);
 				printf("%c",ee);
 				printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",hh);
-
+				color(7);
 				key3 = _getch();
 				
 				if(key3 == 72&& (counter3 >=2 && counter3 <= 3)){			
@@ -421,18 +379,18 @@ void PullDown(List *list, char fname[20]){
 					}
 				}
 
-				Set3[0] =7;
-				Set3[1] =7;
-				Set3[2] =7;
+				Set3[0] =543;
+				Set3[1] =543;
+				Set3[2] =543;
 		
 				if(counter3 == 1){
-						Set3[0] = 9;
+						Set3[0] = 760;
 				}
 				if(counter3 == 2){
-						Set3[1] = 9;
+						Set3[1] = 760;
 				}
 				if(counter3 == 3){
-						Set3[2] = 9;
+						Set3[2] = 760;
 				}
 
 				}//panutup for
@@ -444,73 +402,62 @@ void PullDown(List *list, char fname[20]){
 		}
 		}
 		
-		Set[0] =7;
-		Set[1] =7;
-		Set[2] =7;
+		Set[0] =543;
+		Set[1] =543;
+		Set[2] =543;
 		Set[3] =15;
 		
 
 		if(counter == 1){
-				Set[0] = 9;
+				Set[0] = 760;
 		}
 		if(counter == 2){
-				Set[1] = 9;
+				Set[1] = 760;
 		}
 		if(counter == 3){
-				Set[2] = 9;
+				Set[2] = 760;
 		}
 	 }
 }
 
-void PullDownDisplay(){
-	
-	for(int i = 0; i<3;i++){
-		for(int j=0;j<91;j++){
-			if(i == 0){
-				if(j == 0){
-					printf("%c",bb);
-				}
-				else if(j==7 || j ==14){
-					printf("%c",ff);
-				}
-				else{
-					printf("%c",cc);
-				}			
-			}
-			if(i == 1){
-				if(j == 0 || j == 7 || j == 14){
-					printf("%c",dd);
-				}
-				if (j == 0){
-					printf("File");
-					j=j+4;
-				}
-				else if( j == 7){
-					printf("Edit");
-					j=j+4;
-				}
-				else if(j == 14){
-					printf("View");
-					j=j+4;
-				}
-				else{
-					printf(" ");
-				}
-			}
-			if(i == 2){
-				if(j == 0){
-					printf("%c",ee);
-				}
-				else if(j==7 || j ==14){
-					printf("%c",gg);
-				}
-				else{
-					printf("%c",cc);
-				}			
-			}
-		}
-		printf("\n");
-	}
+int PullDownDisplay(){
+		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hOut == INVALID_HANDLE_VALUE)
+    {
+        return GetLastError();
+    }
+
+    DWORD dwMode = 0;
+    if (!GetConsoleMode(hOut, &dwMode))
+    {
+        return GetLastError();
+    }
+
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    if (!SetConsoleMode(hOut, dwMode))
+    {
+        return GetLastError();
+    }
+    goto_xy(0,21);
+    color(543);
+    printf("\nBaris : 0       Kolom : 0                                                                                               "); 
+	color(7);
+	goto_xy(0,0);
+	color(543);	
+	printf("File     ");
+
+	goto_xy(9,0);
+	color(543);	
+	printf("Edit     ");
+
+	goto_xy(18,0);
+	color(543);	
+	printf("View    ");
+	color(543);
+	printf("                                                                                              \n");
+	color(7);
+
+
 }
 
 void TextBox(int c, int d){

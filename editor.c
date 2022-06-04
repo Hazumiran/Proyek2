@@ -88,7 +88,7 @@ void displayContent(List *list,Baris_Kolom *position)
 		x++;
 	}
 
-	goto_xy(0,28);
+	goto_xy(0,22);
     printf("\nBaris : %d\t",position->x); 
 	printf("Kolom : %d\t",position->y);
 //	printf("Jumlah Karakter : %d", *jml_char);
@@ -119,7 +119,6 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
 }
 
 int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
-
 //	unsigned char key;
 //	CursorPos->y=3;
     signed char key;

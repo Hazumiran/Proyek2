@@ -21,6 +21,7 @@ void PullDown(List *list, char fname[20]){
     int Set[] = {7,7,7};
 	char counter = 2;
 	char key;
+	int baris = 0, kolom = 0, jml_char = 0;
 	
 	Baris_Kolom  position;
 	position.x = 0;
@@ -171,13 +172,11 @@ void PullDown(List *list, char fname[20]){
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
-//					system("cls");
 					displayContent(list,&position);
 					counter --;
 					goto balikmenu;
 					
 				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
-//					system("cls");
 					displayContent(list, &position);
 					counter ++;
 					goto balikmenu;
@@ -398,13 +397,11 @@ void PullDown(List *list, char fname[20]){
 					counter3 ++;
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
-//					system("cls");	
 					displayContent(list, &position);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key3 == 77 && (counter3 >=0 && counter3 <= 3)){
-//					system("cls");
 					displayContent(list, &position);
 					counter ++;
 					goto balikmenu;

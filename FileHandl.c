@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <conio.h>
-#include <string.h>
 #include <windows.h>
 #include "linkedlist.H"
 #include "editor.H"
@@ -8,9 +7,17 @@
 #include <dirent.h>
 #include <corecrt.h> 
 
+
+
 void driver(){
 		int tamp = 0;
-		char *fname[20];
+		Baris_Kolom  position;
+		position.x = 0;
+		position.y = 0;
+		position.jml_char = 0;
+		
+		char fname[20];
+	
 	    List *content = CreateHead();
 		system("cls");
 		
@@ -18,9 +25,9 @@ void driver(){
 		PullDownDisplay();
 
 		do{
-			tamp = KursorHandl(content, CursorPos);
+			tamp = KursorHandl(content, CursorPos, &position);
 			if (tamp == 2){
-				PullDown(content);
+				PullDown(content, fname);
 			}
 		}while(tamp != 0);
         deleteList(content);

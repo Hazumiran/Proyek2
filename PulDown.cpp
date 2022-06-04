@@ -2,6 +2,7 @@
 #include "editor.h"
 #include "FileHandl.h"
 
+
 void color(int color){
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),color);
 }
@@ -13,7 +14,7 @@ void goto_xy(int x, int y){
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-void PullDown(List *list){
+void PullDown(List *list, char fname[20]){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
@@ -21,12 +22,18 @@ void PullDown(List *list){
 	char counter = 2;
 	char key;
 	
+	Baris_Kolom  position;
+	position.x = 0;
+	position.y = 0;
+	position.jml_char = 0;
+	
 	for(int i = 0 ;;){
-	displayContent(list);
+	displayContent(list, &position);
 	tampil:
 	color(Set[3]);
 	goto_xy(0,0);	
 	printf("%c",bb);
+	
 	color(Set[3]);
 	for(int p = 0; p < 91; p++){
 		if(p == 6 || p == 12){
@@ -157,21 +164,21 @@ void PullDown(List *list){
 	
 				key2 = _getch();
 				
-				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){			
+				if(key2 == 72&& (counter2 >=1 && counter2 <= 4)){			
 					counter2 --;
 					
-				}if(key2 == 80 && (counter2 >=1 && counter2 <= 3)){			
+				}if(key2 == 80 && (counter2 >=1 && counter2 <= 4)){			
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
 //					system("cls");
-					displayContent(list);
+					displayContent(list,&position);
 					counter --;
 					goto balikmenu;
 					
 				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
 //					system("cls");
-					displayContent(list);
+					displayContent(list, &position);
 					counter ++;
 					goto balikmenu;
 				}if(key2 == 20){	//ctrl + T		
@@ -196,6 +203,7 @@ void PullDown(List *list){
 						system("cls");
 						PullDownDisplay();
 					}
+
 					if(counter2 ==4){
 						//DIALOG BOX
 						
@@ -286,7 +294,9 @@ void PullDown(List *list){
 												}
 							}//PANUTUP FOR DIALOG
 						//PANUTUP DIALOG
+
 					}if(counter2 ==3){
+
 					printf("New Windows jalan");
 					}
 				}
@@ -389,13 +399,13 @@ void PullDown(List *list){
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
 //					system("cls");	
-					displayContent(list);				
+					displayContent(list, &position);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key3 == 77 && (counter3 >=0 && counter3 <= 3)){
 //					system("cls");
-					displayContent(list);
+					displayContent(list, &position);
 					counter ++;
 					goto balikmenu;
 				}if(key3 == 20){	//ctrl + T		
@@ -404,7 +414,7 @@ void PullDown(List *list){
 				//-----------------------------------------------------------------untuk Menu Edit Masukin sini functionnya
 				}if(key3 == '\r'){
 					if(counter3 ==1){
-					printf("New Windows jalan");
+					find(list);
 					}
 					if(counter3 ==2){
 					printf("New Windows jalan");

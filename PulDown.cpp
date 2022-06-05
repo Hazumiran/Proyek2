@@ -484,7 +484,8 @@ void PullDown(List *list, char fname[20]){
 					printf("New Help");
 					break;
 				case 3:
-					printf("New About");
+				TextBox(12,35 );
+					about();
 					break;
 				}
 			}
@@ -616,4 +617,39 @@ void TextBox(int c, int d){
 		printf("\n");
 	}
 	goto_xy(a+3,b+3);
+}
+void writeflush(char const *str, size_t len){
+  fwrite(str, 1, len, stdout);
+  fflush(stdout);
+}
+void about (){
+
+	goto_xy(31,8);
+	printf("TEXT EDITOR DIBUAT OLEH");
+	goto_xy(31,10);
+	printf(" Benny Yoga Suhardi    211511035");
+	goto_xy(31,11);
+	printf(" Muhamad Diaz Adhari   211511044");
+	goto_xy(31,12);
+	printf(" Muhamad Nauval Ardana 211511046");
+	goto_xy(31,13);
+	printf(" Nazwa Fitriyani Zahra 211511051");
+	goto_xy(31,14);
+	printf(" Tubagus Aji Prasetia  211511061");
+	goto_xy(31,16);
+	static const int second = 1000000;
+  	static char const *titletext ="N  O  D  E  J  S  V  2 ";
+   	writeflush(" ", 1);
+  
+  	
+
+//  clsscreen();
+ 	usleep(second / 2);
+  	 for (int i = 0; i < 23; ++i)
+{
+
+    writeflush(titletext + i, 1);
+    usleep(second / 30);	}               
+  	usleep(second / 2);
+	
 }

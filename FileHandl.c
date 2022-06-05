@@ -7,27 +7,25 @@
 #include <dirent.h>
 #include <corecrt.h> 
 
-
-
 void driver(){
 		int tamp = 0;
 		Baris_Kolom  position;
-		position.x = 0;
-		position.y = 0;
-		position.jml_char = 0;
+		position.x = 1;
+		position.y = 1;
+//		position.jml_char = 0;
 		
 		char fname[20];
-	
-	    List *content = CreateHead();
+		
+		List *content = CreateHead();
 		system("cls");
 		
         Point *CursorPos = pointCtor();
 		PullDownDisplay();
-
+		
 		do{
 			tamp = KursorHandl(content, CursorPos, &position);
 			if (tamp == 2){
-				PullDown(content, fname);
+				PullDown(content, fname, &position);
 			}
 		}while(tamp != 0);
         deleteList(content);

@@ -35,63 +35,65 @@ void gotoxy(Point *point)
 
 void displayContent(List *list,Baris_Kolom *position)
 {
-    int x = 0;
-	int y = 28;
 	char key;
 	List *content;
 	Node *temp = NULL;
 	
-	if (position->x == 0){
+	if (position->y == 0){
 		position->y = 1; 
 	}
 	else if(position->x == 0){
 		position->x = 1; 
-	}else if(key == 75){
-		position->x = 1;
-		position->y = 1;
 	}
+
+	system("cls");
+	PullDownDisplay();
+	for(temp = list->head; NULL != temp; temp = temp->next)
+    {
+    putchar(temp->data);
+    }
+//    if(key == 11){
+//    	PullDownDisplay();
+//		for(list -> head = temp -> next; NULL != temp; temp = temp->next)
+//    	{
+//    	putchar(temp->data);
+//    	}
+//	}
 	
-	if(position->x <= 9 || position->y <= 9){
-		system("cls");
-		PullDownDisplay();
-		for(temp = list->head; NULL != temp; temp = temp->next)
-    	{
-        putchar(temp->data);
-    	}
-	}else if( position->x <= 9 && position->y <= 9){
-		system("cls");
-		PullDownDisplay();
-		for(temp = list->head; NULL != temp; temp = temp->next)
-    	{
-        putchar(temp->data);
-    	}
-	}
-	else if( position->x >= 10 && position->x >= 10){
-		system("cls");
-		PullDownDisplay();
-		for(temp = list->head; NULL != temp; temp = temp->next)
-    	{
-        putchar(temp->data);
-    	}
-	}else if( position->x >= 10 || position->y >= 10){
-		PullDownDisplay();
-		for(temp = list->head; NULL != temp; temp = temp->next)
-    	{
-        putchar(temp->data);
-    	}
-	}
-	
-//	for(int i=1; i <= 125; i++)
-//	{
-//		goto_xy(x,y);
-//		printf("%c", 196);
-//		x++;
+//	if(position->x <= 9 || position->y <= 9){
+//		system("cls");
+//		PullDownDisplay();
+//		for(temp = list->head; NULL != temp; temp = temp->next)
+//    	{
+//        putchar(temp->data);
+//    	}
+//	}else if( position->x <= 9 && position->y <= 9){
+//		system("cls");
+//		PullDownDisplay();
+//		for(temp = list->head; NULL != temp; temp = temp->next)
+//    	{
+//        putchar(temp->data);
+//    	}
+//	}
+//	else if( position->x >= 10 && position->x >= 10){
+//		system("cls");
+//		PullDownDisplay();
+//		for(temp = list->head; NULL != temp; temp = temp->next)
+//    	{
+//        putchar(temp->data);
+//    	}
+//	}else if( position->x >= 10 || position->y >= 10){
+//		PullDownDisplay();
+//		for(temp = list->head; NULL != temp; temp = temp->next)
+//    	{
+//        putchar(temp->data);
+//    	}
 //	}
 
 	goto_xy(0,21);
 	color(543);
-    printf("\nBaris : %d\t",position->x); 
-	printf("Kolom : %d\t",position->y);
+    printf("\nBaris : %d\t",position->y); 
+	printf("Kolom : %d\t",position->x);
 	color(7);
 //	printf("Jumlah Karakter : %d", *jml_char);
 }
@@ -158,7 +160,7 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 //Tanpa ketentutan
                 else
                 {
-                    position->x -= 1;
+                    position->y -= 1;
                     displayContent(content,position);             	
                     CursorPos->y -= 1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -171,14 +173,14 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
             	//pada ujung bawah
                 if(CursorPos->y == getHeight(content))
                 {
-                	position->x = position->x;
+                	position->y = position->y;
                 	displayContent(content,position);
                     continue;
                 }
                 //yang bawah lebih sedikit dari yang atas
                 else if(CursorPos->x > getLineLen(content, CursorPos->y + 2))
                 {
-                	position->x += 1;
+                	position->y += 1;
                 	position->x = getLineLen(content, CursorPos->y + 2) + 1;
                 	displayContent(content,position);
                     CursorPos->x = getLineLen(content, CursorPos->y + 2);
@@ -190,7 +192,7 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 //tanpa ketentuan
                 else
                 {
-                	position->x += 1;
+                	position->y += 1;
                 	displayContent(content,position);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -243,7 +245,7 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 {
                     //At start of line, but not start of file
                     position->x = getLineLen(content, CursorPos->y) + 1;
-                    position->x -= 1;
+                    position->y -= 1;
                     displayContent(content,position);
                     CursorPos->x = getLineLen(content, CursorPos->y);
                     --CursorPos->y;
@@ -284,8 +286,8 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
             }
             else if(CursorPos->x == 0)
             {
-                position->x = getLineLen(content, CursorPos->y) + 1;
-                position->y = position->y - 1;
+                position->x = getLineLen(content, CursorPos->y);
+                position->y -= 1;
                 displayContent(content,position);
 				CursorPos->x = getLineLen(content, CursorPos->y);
 		        CursorPos->y -= 1;
@@ -313,9 +315,16 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 ++CursorPos->x;
                 ++CursorPos->index;
             }
-        position->x = position->x + 3;    
+        position->x += 3;    
         }
         else if(key == 11){
+//        	position->x = getLineLen(content, CursorPos->x);
+//        	position->y = getLineLen(content, CursorPos->y);
+//        	displayContent(content,position);
+//        	CursorPos->x = 0;
+//        	CursorPos->y = 0;
+//        	CursorPos->index = getIndex(content, CursorPos);
+//          gotoxy(CursorPos);
         	return 2;
 		}
         else
@@ -327,7 +336,7 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 ++CursorPos->y;
                 ++CursorPos->index;
                 position->x = 0;
-        		position->y = position->y + 1;
+        		position->y += 1;
             }
             else
             {
@@ -336,7 +345,7 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 ++CursorPos->index;
             }
         }
-        position->x+=1;
+        position->x +=1;
         displayContent(content, position);
         gotoxy(CursorPos);        
 	}
@@ -405,29 +414,6 @@ int getLineLen(List *content, int lineNum)
     }
     return linelen;
 }
-
-//Menghutung jumlah semua character
-//int Jml_Character(List *content, int lineNum)
-//{
-//    int i = 1;
-//    int linelen = 0;
-//    Node *temp;
-//    for(temp = content->head; temp != NULL; temp = temp->next)
-//    {
-//        if(i == lineNum)
-//        {
-//            if(temp->data != '\n')
-//                ++linelen;
-//            else
-//        }
-//        else if(i < lineNum)
-//        {
-//            if(temp->data == '\n')
-//                ++i;
-//        }
-//    }
-//    return linelen;
-//}
 
 //Mencari Index tertentu
 int getIndex(List *content, Point *CursorPos)

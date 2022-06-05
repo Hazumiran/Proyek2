@@ -482,6 +482,9 @@ void PullDown(List *list, char fname[20]){
 					break;
 				case 2:
 					help();
+					getch();
+					system("cls");
+					PullDownDisplay();
 					break;
 				case 3:
 					printf("New About");
@@ -674,4 +677,5 @@ void help(){
 	printf("3. Redo");
 	goto_xy(35,34);
 	printf("Digunakan untuk melakukan Redo pada isi file");
+	
 }

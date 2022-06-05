@@ -396,7 +396,123 @@ void PullDown(List *list, char fname[20]){
 				}//panutup for
 				
 		}if(counter == 3){
-				printf("Menu 3 Is Open");
+				
+				
+				goto_xy(0,0);
+				goto_xy(0,0);
+				color(Set[0]);	
+				printf("File     ");
+			
+				goto_xy(9,0);
+				color(Set[1]);	
+				printf("Edit     ");
+			
+				goto_xy(18,0);
+				color(Set[2]);	
+				printf("View    ");
+				color(543);
+				printf("                                                                                              ");
+				color(7);	
+// PANUTUP TAMPIL GAN	
+				int Set5[] = {543,543,543};
+				char counter5 = 2;
+				char key5;
+						
+				for(int g ;;){
+					
+				goto_xy(17,1);
+				color(543);
+				printf("%c",dd);
+				color(Set5[0]);		
+				printf("New Windows      ");
+				color(543);
+				printf("%c",dd);
+			
+				goto_xy(17,2);
+				color(543);
+				printf("%c",dd);
+				color(Set5[1]);
+				printf("Help             ");
+				color(543);
+				printf("%c",dd);
+				
+				goto_xy(17,3);
+				color(543);
+				printf("%c",dd);
+				color(Set5[2]);
+				printf("About            ");
+				color(543);
+				printf("%c",dd);
+				
+				goto_xy(17,4);
+				color(543);
+				printf("%c",ee);
+				printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",cc);printf("%c",hh);
+				color(7);
+				key5 = _getch();
+				
+				if(key5 == 72&& (counter5 >=2 && counter5 <= 3)){			
+					counter5 --;
+					
+				}if(key5 == 80 && (counter5 >=1 && counter5 <= 2)){			
+					counter5 ++;
+					
+				}if(key5 == 75&& (counter5 >=2 && counter5 <= 3)){
+					displayContent(list, &position);				
+					counter --;
+					goto balikmenu;
+					
+				}if(key5 == 77 && (counter5 >=0 && counter5 <= 3)){
+					displayContent(list, &position);
+					counter ++;
+					goto balikmenu;
+				}if(key5 == 20){	//ctrl + T		
+					goto baliksini; 
+				
+				//-----------------------------------------------------------------untuk Menu Edit Masukin sini functionnya
+				}if(key5 == '\r'){
+//					if(counter5 ==1){
+//					printf("New Windows jalan");
+//					}
+//					if(counter5 ==2){
+//					printf("New Help");
+//					}
+//					if(counter5 ==3){
+//					printf("New About");
+//					}
+			switch(counter5){
+				case 1:
+//					printf("New Win");
+					system("Project4.exe");
+					break;
+				case 2:
+					printf("New Help");
+					break;
+				case 3:
+					printf("New About");
+					break;
+				}
+			}
+
+				Set5[0] =543;
+				Set5[1] =543;
+				Set5[2] =543;
+		
+				if(counter5 == 1){
+						Set5[0] = 760;
+				}
+				if(counter5 == 2){
+						Set5[1] = 760;
+				}
+				if(counter5 == 3){
+						Set5[2] = 760;
+				}
+
+				}//panutup for
+				
+				
+				
+				
 		}else{
 				goto baliksini;
 		}

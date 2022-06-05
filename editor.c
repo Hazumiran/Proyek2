@@ -1,4 +1,6 @@
 #include "editor.h"
+#include "PulDown.h"
+#include "FileHandl.h"
 
 Point *pointCtor(){
     Point *newPoint = (Point *)malloc(sizeof(Point));
@@ -27,24 +29,71 @@ void gotoxy(Point *point)
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD Cord;
     Cord.X = point->x;
-    Cord.Y = point->y+3;
+    Cord.Y = point->y+1;
     SetConsoleCursorPosition(hStdout, Cord);
 }
 
-void displayContent(List *list)
+void displayContent(List *list,Baris_Kolom *position)
 {
-    Node *temp = NULL;
-    int a = 186;
-    int b = 200;
-    int c = 201;
-    system("cls");
-    printf("%c\n",c);
-    printf("%c\n",a);
-    printf("%c\n",b);
-    for(temp = list->head; NULL != temp; temp = temp->next)
-    {
+    int x = 0;
+	int y = 28;
+	char key;
+	List *content;
+	Node *temp = NULL;
+	
+	if (position->x == 0){
+		position->y = 1; 
+	}
+	else if(position->x == 0){
+		position->x = 1; 
+	}else if(key == 75){
+		position->x = 1;
+		position->y = 1;
+	}
+	
+	if(position->x <= 9 || position->y <= 9){
+		system("cls");
+		PullDownDisplay();
+		for(temp = list->head; NULL != temp; temp = temp->next)
+    	{
         putchar(temp->data);
-    }
+    	}
+	}else if( position->x <= 9 && position->y <= 9){
+		system("cls");
+		PullDownDisplay();
+		for(temp = list->head; NULL != temp; temp = temp->next)
+    	{
+        putchar(temp->data);
+    	}
+	}
+	else if( position->x >= 10 && position->x >= 10){
+		system("cls");
+		PullDownDisplay();
+		for(temp = list->head; NULL != temp; temp = temp->next)
+    	{
+        putchar(temp->data);
+    	}
+	}else if( position->x >= 10 || position->y >= 10){
+		PullDownDisplay();
+		for(temp = list->head; NULL != temp; temp = temp->next)
+    	{
+        putchar(temp->data);
+    	}
+	}
+	
+//	for(int i=1; i <= 125; i++)
+//	{
+//		goto_xy(x,y);
+//		printf("%c", 196);
+//		x++;
+//	}
+
+	goto_xy(0,21);
+	color(543);
+    printf("\nBaris : %d\t",position->x); 
+	printf("Kolom : %d\t",position->y);
+	color(7);
+//	printf("Jumlah Karakter : %d", *jml_char);
 }
 
 int readFile(FILE *fp, List *content, Point *CursorPos)
@@ -71,12 +120,14 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
     return 0;
 }
 
-int KursorHandl(List *content, Point *CursorPos){
-
+int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
 //	unsigned char key;
 //	CursorPos->y=3;
     signed char key;
-    while(ESC != (key = getch()))
+    position->x =  1;
+    position->y =  1;
+    
+	while(ESC != (key = getch()))
     {
         if(key == ARROWKEY)
         {
@@ -87,12 +138,17 @@ int KursorHandl(List *content, Point *CursorPos){
                 if(CursorPos->y == 0)
                 {
                     //At top line
+                    position->y = 1;
+                    displayContent(content,position);
                     continue;
                 }
                 
                 //yang atas lebih sedikit dari yang bawah
                 else if(CursorPos->x > getLineLen(content, CursorPos->y))
                 {
+                	position->y -= 1;
+                	position->x = getLineLen(content, CursorPos->y) + 1;
+                	displayContent(content,position);
                     CursorPos->x = getLineLen(content, CursorPos->y);
                     CursorPos->y -=1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -102,7 +158,9 @@ int KursorHandl(List *content, Point *CursorPos){
                 //Tanpa ketentutan
                 else
                 {
-                    CursorPos->y -=1;
+                    position->x -= 1;
+                    displayContent(content,position);             	
+                    CursorPos->y -= 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
                     continue;
@@ -113,11 +171,16 @@ int KursorHandl(List *content, Point *CursorPos){
             	//pada ujung bawah
                 if(CursorPos->y == getHeight(content))
                 {
+                	position->x = position->x;
+                	displayContent(content,position);
                     continue;
                 }
                 //yang bawah lebih sedikit dari yang atas
                 else if(CursorPos->x > getLineLen(content, CursorPos->y + 2))
                 {
+                	position->x += 1;
+                	position->x = getLineLen(content, CursorPos->y + 2) + 1;
+                	displayContent(content,position);
                     CursorPos->x = getLineLen(content, CursorPos->y + 2);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -127,6 +190,8 @@ int KursorHandl(List *content, Point *CursorPos){
                 //tanpa ketentuan
                 else
                 {
+                	position->x += 1;
+                	displayContent(content,position);
                     CursorPos->y += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -139,11 +204,16 @@ int KursorHandl(List *content, Point *CursorPos){
                 if((CursorPos->y == getHeight(content)) && (CursorPos->x == getLineLen(content, CursorPos->y + 1)))
                 {
                     //At end of file
+                    position->x = position->x;
+                    displayContent(content,position);
                     continue;
                 }
                 else if(CursorPos->x == getLineLen(content, CursorPos->y + 1))
                 {
                     //At end of line, but not end of file
+                    position->x = 1;
+                    position->y += 1;
+                    displayContent(content,position);
                     CursorPos->x = 0;
 					++CursorPos->y;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -152,6 +222,8 @@ int KursorHandl(List *content, Point *CursorPos){
                 }
                 else
                 {
+                	position->x += 1;
+                	displayContent(content,position);
                     CursorPos->x += 1;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -163,11 +235,16 @@ int KursorHandl(List *content, Point *CursorPos){
                 if((CursorPos->x == 0) && (CursorPos->y == 0))
                 {
                     //At start of file
+                    position->x = 1;
+                    displayContent(content,position);
                     continue;
                 }
                 else if(CursorPos->x == 0)
                 {
                     //At start of line, but not start of file
+                    position->x = getLineLen(content, CursorPos->y) + 1;
+                    position->x -= 1;
+                    displayContent(content,position);
                     CursorPos->x = getLineLen(content, CursorPos->y);
                     --CursorPos->y;
                     CursorPos->index = getIndex(content, CursorPos);
@@ -175,6 +252,8 @@ int KursorHandl(List *content, Point *CursorPos){
                     continue;
                 }
                 else{
+                	position->x -= 1;
+                	displayContent(content,position);
                     --CursorPos->x;
                     CursorPos->index = getIndex(content, CursorPos);
                     gotoxy(CursorPos);
@@ -196,24 +275,34 @@ int KursorHandl(List *content, Point *CursorPos){
         }
         else if(key == BACKSPACEKEY) //TODO check bug when deleting after arrow job
         {
-            if((CursorPos->x == 0) && (CursorPos->y == 3))
+            if((CursorPos->x == 0) && (CursorPos->y == 0))
             {
-                continue;
+ 			    position->x = 1;
+                position->y = 1;
+                displayContent(content,position);
+                continue;  
             }
             else if(CursorPos->x == 0)
             {
+                position->x = getLineLen(content, CursorPos->y) + 1;
+                position->y = position->y - 1;
+                displayContent(content,position);
 				CursorPos->x = getLineLen(content, CursorPos->y);
 		        CursorPos->y -= 1;
 		        removeNodeByIndex(content, CursorPos->index -= 1);	
             }
             else
             {
-//                putchar(BACKSPACEKEY);
-//                putchar(SPACEKEY);
-//                putchar(BACKSPACEKEY);
+                putchar(BACKSPACEKEY);
+                putchar(SPACEKEY);
+                putchar(BACKSPACEKEY);
                 removeNodeByIndex(content, CursorPos->index -= 1);
                 CursorPos->x -= 1;
-            }
+                position->x -= 1;
+                displayContent(content,position);
+            }    
+        position->x = position->x - 1;
+        displayContent(content,position);
         }
         else if(key == TAB)
         {
@@ -224,7 +313,11 @@ int KursorHandl(List *content, Point *CursorPos){
                 ++CursorPos->x;
                 ++CursorPos->index;
             }
+        position->x = position->x + 3;    
         }
+        else if(key == 11){
+        	return 2;
+		}
         else
         {
             if(key == ENTERKEY || key == NLINE)
@@ -233,6 +326,8 @@ int KursorHandl(List *content, Point *CursorPos){
 				CursorPos->x = 0;
                 ++CursorPos->y;
                 ++CursorPos->index;
+                position->x = 0;
+        		position->y = position->y + 1;
             }
             else
             {
@@ -241,12 +336,14 @@ int KursorHandl(List *content, Point *CursorPos){
                 ++CursorPos->index;
             }
         }
-        displayContent(content);
+        position->x+=1;
+        displayContent(content, position);
         gotoxy(CursorPos);        
 	}
-
+	
     CursorPos->y = getHeight(content);
     gotoxy(CursorPos);
+    
     printf("\n----------\nSave Changes?(y/n) ");
     while(ESC != (key = _getch()))
     {
@@ -285,7 +382,7 @@ int getHeight(List *content)
     return height;
 }
 
-//Menghutung jumlah character
+//Menghutung jumlah character dalam satu baris
 int getLineLen(List *content, int lineNum)
 {
     int i = 1;
@@ -308,6 +405,29 @@ int getLineLen(List *content, int lineNum)
     }
     return linelen;
 }
+
+//Menghutung jumlah semua character
+//int Jml_Character(List *content, int lineNum)
+//{
+//    int i = 1;
+//    int linelen = 0;
+//    Node *temp;
+//    for(temp = content->head; temp != NULL; temp = temp->next)
+//    {
+//        if(i == lineNum)
+//        {
+//            if(temp->data != '\n')
+//                ++linelen;
+//            else
+//        }
+//        else if(i < lineNum)
+//        {
+//            if(temp->data == '\n')
+//                ++i;
+//        }
+//    }
+//    return linelen;
+//}
 
 //Mencari Index tertentu
 int getIndex(List *content, Point *CursorPos)

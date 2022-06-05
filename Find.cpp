@@ -1,9 +1,14 @@
 #include "Find.h"
 #include <string.h>
 #include <stdlib.h>
+#include "PulDown.h"
 
-void find(List *content, char fname[20]){
-
+void find(List *content){
+	Baris_Kolom  position;
+	position.x = 0;
+	position.y = 0;
+	position.jml_char = 0;
+	
 	char kata[25], pilih;
 	int pjg, pos;
 	printf("\nkata yang mau dicari : ");fflush(stdin);
@@ -18,9 +23,7 @@ void find(List *content, char fname[20]){
 		if(kata[i] == temp->data){
 			i++;
 			if(i == pjg){
-				if(temp->next->data == SPACEKEY){
 					break;
-				}
 			}
 		}
 		else{
@@ -31,28 +34,33 @@ void find(List *content, char fname[20]){
 
 	pos = j - pjg + 1;
 	if(i == 0){
-		printf("Ga ketemu");
+		printf("Kata yang dicari tidak ada\n");
+	getch();	
+	system("cls");
+	PullDownDisplay();
+ 	displayContent(content, &position);
 	}
 	else{
-		printf("ketemu");
 		printf("\nApakah mau me-replace (y/n) ? ");
-//		
-	while(pilih = _getch()){ // Mencegah user ngetik aneh aneh
-		if(pilih == 'y' || pilih == 'Y'){
-			putchar('y');
-			replace(content, pos, pjg, fname);
-		}
-		else if (pilih == 'n' || pilih == 'N'){
-			putchar('n');
-			getch();
-			system("cls");
-			main();
-		}	
-		}
+		pilih = _getch(); // Mencegah user ngetik aneh aneh
+			if(pilih == 'y' || pilih == 'Y'){
+				putchar('y');
+				replace(content, pos, pjg);
+				system("cls");
+				PullDownDisplay();
+				displayContent(content, &position);
+			}
+			else if (pilih == 'n' || pilih == 'N'){
+				putchar('n');
+				getch();	
+				system("cls");
+				PullDownDisplay();
+				displayContent(content, &position);
+			}	
 	}
 }
 
-void replace (List *content, int pos, int pjg, char fname[20]){
+void replace (List *content, int pos, int pjg){
 	int i = 0, j = 0, k = 0, selisih;
 	char kata[25];
 	
@@ -99,7 +107,7 @@ void replace (List *content, int pos, int pjg, char fname[20]){
 						temp = temp->next;
 					}
 					else if(j < k){
-						Node *P = nodeCtor(kata[j]);
+						Node *P = CreateNode(kata[j]);
 						temp->prev->next = P;
 						P->prev = temp->prev;
 						temp->prev = P;
@@ -114,25 +122,11 @@ void replace (List *content, int pos, int pjg, char fname[20]){
 			i++;
 		}
 	}
-
-	//tampil list baru
 	for(temp = content->head; NULL != temp; temp = temp->next)
     {
         printf("%c", temp->data);
     }
     
-    //save list baru
-    FILE *fp = fopen(fname, "w");
-    for(temp = content->head; NULL != temp; temp = temp->next)
-    {
-        putc(temp->data, fp);
-    }
-    fclose(fp);
 
-//	printf("\n %d i %d pos %d pjg %d k", i, pos, pjg, k);
-	getch();
-	system("cls");
-	main();
 }
 		
-              

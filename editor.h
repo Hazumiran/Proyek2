@@ -39,12 +39,18 @@ typedef struct ScreenPos_s
     int index;
 }Point;
 
+typedef struct Baris_Kolom{
+	int x;
+	int y;
+	int jml_char;
+};
+
 Point * pointCtor();
 void printListChars(List *list);
-void displayContent(List *list);
+void displayContent(List *list, Baris_Kolom *position);
 int lineLen(List *content, int line);
 int readFile(FILE *fp, List *content, Point *CursorPos);
-int KursorHandl(List *content, Point *CursorPos);
+int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position);
 int saveToFile(FILE *fp, List *content);
 int getHeight(List *content);
 int getLineLen(List *content, int lineNum);

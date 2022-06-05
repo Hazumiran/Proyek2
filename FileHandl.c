@@ -104,8 +104,10 @@ void Delete(){
 	fp=fopen(fn,"r");
 	
 	if(fp==NULL){
+
 		goto_xy(32,x+4);
 		printf("File not found!");
+
 	}
 	
 	fclose(fp);
@@ -113,4 +115,26 @@ void Delete(){
 	remove(fn);
 	goto_xy(32,x+4);
 	printf("File has been deleted successfully!");
+
 }	
+
+void rename(){
+	  char oldName[100], newName[100];
+
+    
+    printf("masukan nama file : ");
+    scanf("%s", oldName);
+
+    printf("masukan nama file baru: ");
+    scanf("%s", newName);
+
+    if (rename(oldName, newName) == 0)
+    {
+        printf("sukses mengubah nama file \n");
+    }
+    else
+    {
+        printf("gagal merubah nama file.\n");
+
+}
+}

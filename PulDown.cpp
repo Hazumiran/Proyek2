@@ -124,10 +124,10 @@ void PullDown(List *list, char fname[20]){
 				color(7);	
 				key2 = _getch();
 				
-				if(key2 == 72&& (counter2 >=1 && counter2 <= 4)){			
+				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){			
 					counter2 --;
 					
-				}if(key2 == 80 && (counter2 >=1 && counter2 <= 4)){			
+				}if(key2 == 80 && (counter2 >=0 && counter2 <= 3)){			
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
@@ -319,8 +319,8 @@ void PullDown(List *list, char fname[20]){
 				printf("                                                                                              ");
 				color(7);	
 // PANUTUP TAMPIL GAN	
-				int Set3[] = {543,543,543};
-				char counter3 = 2;
+				int Set3[] = {543,543};
+				char counter3 = 1;
 				char key3;
 						
 				for(int b ;;){
@@ -351,7 +351,7 @@ void PullDown(List *list, char fname[20]){
 				if(key3 == 72&& (counter3 >=2 && counter3 <= 3)){			
 					counter3 --;
 					
-				}if(key3 == 80 && (counter3 >=1 && counter3 <= 2)){			
+				}if(key3 == 80 && (counter3 >=0 && counter3 <= 1)){			
 					counter3 ++;
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
@@ -374,23 +374,18 @@ void PullDown(List *list, char fname[20]){
 					if(counter3 ==2){
 					printf("New Windows jalan");
 					}
-					if(counter3 ==3){
-					printf("New Windows jalan");
-					}
+				
 				}
 
 				Set3[0] =543;
 				Set3[1] =543;
-				Set3[2] =543;
+	
 		
 				if(counter3 == 1){
 						Set3[0] = 760;
 				}
 				if(counter3 == 2){
 						Set3[1] = 760;
-				}
-				if(counter3 == 3){
-						Set3[2] = 760;
 				}
 
 				}//panutup for

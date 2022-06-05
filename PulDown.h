@@ -4,6 +4,7 @@
 #include <conio.h>
 #include "editor.h"
 #include "Find.h"
+//#include "help.h"
 
 
 #define bb  201 // ╔
@@ -23,3 +24,4 @@ void Menu_Pertama();
 void PullDown(List *list, char fname[20]);
 int PullDownDisplay();
 void TextBox(int c, int d);
+void help();

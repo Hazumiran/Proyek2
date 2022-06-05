@@ -13,6 +13,7 @@ int main() {
    {
       // Build new console title string.
 
+
       StringCchPrintf(szNewTitle, MAX_PATH, TEXT("Node Js V1.1"), szOldTitle);
 
       // Set console title to new title

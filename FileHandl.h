@@ -16,6 +16,8 @@ void OpenFile(List *list);
 void Menu();
 void Delete();
 bool txt_exe(char const *name);
+
 void driver();
+
 
 #endif

@@ -480,10 +480,11 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 					system("Project4.exe");
 					break;
 				case 2:
-					printf("New Help");
+					help();
 					break;
 				case 3:
-					printf("New About");
+				TextBox(12,35 );
+					about();
 					break;
 				}
 			}
@@ -616,3 +617,99 @@ void TextBox(int c, int d){
 	}
 	goto_xy(a+3,b+3);
 }
+
+
+void help(){
+	
+	system("cls");
+	TextBox(30,70);
+	goto_xy(51,7);
+	printf("PANDUAN PENGGUNAAN APLIKASI");
+	goto_xy(32, 9);
+	printf("a. Penjelasan Mengenai Shortcut");
+	goto_xy(33,10);
+	printf("- Untuk masuk dan keluar dari Control Menu menggunakan CTRL + K");
+	goto_xy(33,11);
+	printf("- Untuk keluar dari Menu Pulldown menggunakan CTRL + T");
+	goto_xy(32,13);
+	printf("b. Penjelasan Mengenai Menu");
+	goto_xy(33,14);
+	printf("- File Menu");
+	goto_xy(34,15);
+	printf("Didalam file menu terdapat :");
+	goto_xy(35,16);
+	printf("1. Save");
+	goto_xy(35,17);
+	printf("Digunakan ketika setelah selesai mengetik dan ingin menyimpan");
+	goto_xy(35,18);
+	printf("hasil update dari file");
+	goto_xy(35,19);
+	printf("2. Open File");
+	goto_xy(35,20);
+	printf("Digunakan untuk membuka file yang diinginkan dan mengupdate");
+	goto_xy(35,21);
+	printf("file tersebut");
+	goto_xy(35,22);
+	printf("3. Delete File");
+	goto_xy(35,23);
+	printf("Digunakan untuk menghapus file yang diinginkan");
+	goto_xy(35,24);
+	printf("4. Exit");
+	goto_xy(35,25);
+	printf("Digunakan untuk keluar dari program");
+	goto_xy(33,26);
+	printf("- Edit Menu");
+	goto_xy(34,27);
+	printf("Didalam edit menu terdapat :");
+	goto_xy(35,28);
+	printf("1. Find and Replace");
+	goto_xy(35,29);
+	printf("Digunakan untuk mengetahui keberadaan kata yang dicari dan");
+	goto_xy(35,30);
+	printf("me-Replace kata tersebut");
+	goto_xy(35,31);
+	printf("2. Undo");
+	goto_xy(35,32);
+	printf("Digunakan untuk melakukan Undo pada isi file");
+	goto_xy(35,33);
+	printf("3. Redo");
+	goto_xy(35,34);
+	printf("Digunakan untuk melakukan Redo pada isi file");
+}
+
+void writeflush(char const *str, size_t len){
+  fwrite(str, 1, len, stdout);
+  fflush(stdout);
+}
+void about (){
+
+	goto_xy(31,8);
+	printf("TEXT EDITOR DIBUAT OLEH");
+	goto_xy(31,10);
+	printf(" Benny Yoga Suhardi    211511035");
+	goto_xy(31,11);
+	printf(" Muhamad Diaz Adhari   211511044");
+	goto_xy(31,12);
+	printf(" Muhamad Nauval Ardana 211511046");
+	goto_xy(31,13);
+	printf(" Nazwa Fitriyani Zahra 211511051");
+	goto_xy(31,14);
+	printf(" Tubagus Aji Prasetia  211511061");
+	goto_xy(31,16);
+	static const int second = 1000000;
+  	static char const *titletext ="N  O  D  E  J  S  V  2 ";
+   	writeflush(" ", 1);
+  
+  	
+
+//  clsscreen();
+ 	usleep(second / 2);
+  	 for (int i = 0; i < 23; ++i)
+{
+
+    writeflush(titletext + i, 1);
+    usleep(second / 30);	}               
+  	usleep(second / 2);
+	
+}
+

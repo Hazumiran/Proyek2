@@ -1,8 +1,8 @@
 <<<<<<< HEAD
 [Editors]
 <<<<<<< HEAD
-Order=4,3,2,1,0,5,6
-Focused=4
+Order=4,3,2,1,0,5,6,10,9
+Focused=9
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -126,19 +126,19 @@ TopLine=1
 LeftChar=1
 [Editor_4]
 CursorCol=1
-CursorRow=8
+CursorRow=34
 TopLine=1
 LeftChar=1
 [Editor_5]
-CursorCol=6
-CursorRow=13
-TopLine=7
+CursorCol=1
+CursorRow=114
+TopLine=42
 LeftChar=1
 [Editor_6]
 =======
 <<<<<<< HEAD
-CursorCol=19
-CursorRow=4
+CursorCol=1
+CursorRow=22
 =======
 <<<<<<< HEAD
 CursorCol=22
@@ -245,9 +245,9 @@ LeftChar=1
 [Editor_9]
 <<<<<<< HEAD
 <<<<<<< HEAD
-CursorCol=22
-CursorRow=486
-TopLine=467
+CursorCol=1
+CursorRow=626
+TopLine=626
 LeftChar=1
 [Editor_10]
 CursorCol=4

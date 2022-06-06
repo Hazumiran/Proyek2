@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <conio.h>
+#include <windows.h>
+#include <tchar.h>
+#include <strsafe.h>
+
 #include "linkedlist.H"
 #include "editor.H"
 #include "PulDown.h"
@@ -11,7 +15,10 @@ void CreateFile(List *list);
 void OpenFile(List *list);
 void Menu();
 void Delete();
+void rename();
 bool txt_exe(char const *name);
+
 void driver();
+
 
 #endif

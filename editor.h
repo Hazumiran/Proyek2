@@ -55,5 +55,7 @@ int saveToFile(FILE *fp, List *content);
 int getHeight(List *content);
 int getLineLen(List *content, int lineNum);
 int getIndex(List *content, Point *CursorPos);
+void paste(List *list, Point *CursorPos, List *copy_text);
+void copy(List *list, Point *CursorPos, List *copy_text);
 
 #endif

@@ -11,37 +11,56 @@ void find(List *content){
 	
 	char kata[25], pilih;
 	int pjg, pos;
-	printf("\nkata yang mau dicari : ");fflush(stdin);
-	gets(kata);
+	TextBox(5,45);
+	goto_xy(32,9);
+	printf("Kata yang mau dicari : ");fflush(stdin);
+	goto_xy(56,9);
+	gets(kata);fflush(stdin);
+	system("cls");
+	PullDownDisplay();
+ 	displayContent(content, &position);
 	pjg = strlen(kata);
 
     Node *temp = NULL;
     int i, j = 0;
 
-	for(temp = content->head; NULL != temp->next; temp = temp->next)
-    {
-		if(kata[i] == temp->data){
-			i++;
-			if(i == pjg){
-					break;
+	temp = content->head;
+	
+	if(temp != NULL){
+		for(temp = content->head; NULL != temp->next; temp = temp->next){
+			if(kata[i] == temp->data){
+				i++;
+				if(i == pjg){
+					if(temp->next->data == SPACEKEY || temp->next->data == NLINE){
+						break;
+					}
+				}
 			}
-		}
-		else{
-			i = 0;
-		}
-		j++;
-    }	
+			else{
+				i = 0;
+			}
+			j++;
+	    }
+	}
+	else{
+		i = 0;
+	}	
 
 	pos = j - pjg + 1;
 	if(i == 0){
-		printf("Kata yang dicari tidak ada\n");
-	getch();	
-	system("cls");
-	PullDownDisplay();
- 	displayContent(content, &position);
+		TextBox(5,45);
+		goto_xy(34,9);
+		printf("Kata yang dicari tidak ada");fflush(stdin);
+		getch();	
+		system("cls");
+		PullDownDisplay();
+ 		displayContent(content, &position);
 	}
 	else{
-		printf("\nApakah mau me-replace (y/n) ? ");
+		TextBox(5,45);
+		goto_xy(32,9);
+		printf("Apakah mau me-replace (y/n) ? ");
+		goto_xy(62,9);fflush(stdin);
 		pilih = _getch(); // Mencegah user ngetik aneh aneh
 			if(pilih == 'y' || pilih == 'Y'){
 				putchar('y');
@@ -64,9 +83,11 @@ void replace (List *content, int pos, int pjg){
 	int i = 0, j = 0, k = 0, selisih;
 	char kata[25];
 	
-	printf("\n");
+	TextBox(5,45);
+	goto_xy(32,9);
 	printf("Masukkan Kata pengganti : ");fflush(stdin);
-	gets(kata);
+	goto_xy(58,9);
+	gets(kata);fflush(stdin);
 	k = strlen(kata);
 	
 	Node *temp = NULL;

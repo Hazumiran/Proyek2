@@ -13,6 +13,7 @@ void find(List *content){
 	int pjg, pos;
 	TextBox(5,45);
 	goto_xy(32,9);
+	color(543);
 	printf("Kata yang mau dicari : ");fflush(stdin);
 	goto_xy(56,9);
 	gets(kata);fflush(stdin);
@@ -51,6 +52,7 @@ void find(List *content){
 
 		TextBox(5,45);
 		goto_xy(34,9);
+		color(543);
 		printf("Kata yang dicari tidak ada");fflush(stdin);
 		getch();	
 		system("cls");
@@ -60,6 +62,7 @@ void find(List *content){
 	else{
 		TextBox(5,45);
 		goto_xy(32,9);
+		color(543);
 		printf("Apakah mau me-replace (y/n) ? ");
 		goto_xy(62,9);fflush(stdin);
 		pilih = _getch(); // Mencegah user ngetik aneh aneh
@@ -78,6 +81,7 @@ void find(List *content){
 				displayContent(content, &position);
 			}	
 	}
+	color(7);
 }
 
 void replace (List *content, int pos, int pjg){
@@ -86,6 +90,7 @@ void replace (List *content, int pos, int pjg){
 	
 	TextBox(5,45);
 	goto_xy(32,9);
+	color(543);
 	printf("Masukkan Kata pengganti : ");fflush(stdin);
 	goto_xy(58,9);
 	gets(kata);fflush(stdin);
@@ -149,6 +154,6 @@ void replace (List *content, int pos, int pjg){
         printf("%c", temp->data);
     }
     
-
+color(7);
 }
 		

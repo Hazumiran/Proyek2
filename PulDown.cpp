@@ -44,8 +44,6 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 		
 		key = _getch();
 		if(key == 11){
-//			temp1 = position->x;
-//			temp2 = position->y;
 			position->x = position->x;
 			position->y = position->y;
 			break;
@@ -64,16 +62,16 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 				
 	//TAMPIL MENU SOALNYA LOH KOK GAADA ANEH
 				goto_xy(0,0);
-				color(Set[0]);	
+				color(760);	
 				printf("File     ");
 			
 				goto_xy(9,0);
-				color(Set[1]);	
+				color(543);	
 				printf("Edit     ");
 
 				
 				goto_xy(18,0);
-				color(Set[2]);	
+				color(543);	
 				printf("View    ");
 				color(543);
 				printf("                                                                                              ");
@@ -143,7 +141,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 					counter --;
 					goto balikmenu;
 					
-				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
+				}if(key2 == 77 && (counter2 >=1 && counter2 <= 5)){
 					displayContent(list, position);
 					counter ++;
 					goto balikmenu;
@@ -179,7 +177,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 					if(counter2 ==5){
 						//DIALOG BOX
 						
-							int Set4[] = {7,7};
+							int Set4[] = {543,543};
 							char counter4 = 1;
 							char key4;
 							for(int DialogCount = 0 ;;){									
@@ -193,22 +191,22 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 									
 									goto_xy(41,10);
 									color(543);
-									printf("%c",dd);
+									printf("%c                                ",dd);
 									goto_xy(41,11);
 									color(543);
-									printf("%c",dd);
+									printf("%c  ",dd);
 									goto_xy(41,12);
 									color(543);
-									printf("%c",dd);
+									printf("%c                                ",dd);
 									goto_xy(41,13);
 									color(543);
-									printf("%c",dd);
+									printf("%c                                ",dd);
 									goto_xy(41,14);
 									color(543);
-									printf("%c",dd);
+									printf("%c                                ",dd);
 									goto_xy(41,15);
 									color(543);
-									printf("%c",dd);	
+									printf("%c                                ",dd);	
 									goto_xy(41,16);
 									color(543);
 									printf("%c",ee);
@@ -243,7 +241,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 									//Text
 									goto_xy(44,11);
 									color(543);
-									printf("Apakah Yakin ingin Keluar ?");
+									printf("Apakah Yakin ingin Keluar ?  ");
 									goto_xy(43,15);		
 									color(Set4[0]);
 									printf("Yes");
@@ -321,15 +319,15 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 	//TAMPIL MENU SOALNYA LOH KOK GAADA ANEH
 				goto_xy(0,0);
 				goto_xy(0,0);
-				color(Set[0]);	
+				color(543);	
 				printf("File     ");
 			
 				goto_xy(9,0);
-				color(Set[1]);	
+				color(760);	
 				printf("Edit     ");
 			
 				goto_xy(18,0);
-				color(Set[2]);	
+				color(543);	
 				printf("View    ");
 				color(543);
 				printf("                                                                                              ");
@@ -370,7 +368,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 				}if(key3 == 80 && (counter3 >=0 && counter3 <= 1)){			
 					counter3 ++;
 					
-				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
+				}if(key3 == 75&& (counter3 >=1 && counter3 <= 3)){
 					displayContent(list, position);				
 					counter --;
 					goto balikmenu;
@@ -411,15 +409,15 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 				
 				goto_xy(0,0);
 				goto_xy(0,0);
-				color(Set[0]);	
+				color(543);	
 				printf("File     ");
 			
 				goto_xy(9,0);
-				color(Set[1]);	
+				color(543);	
 				printf("Edit     ");
 			
 				goto_xy(18,0);
-				color(Set[2]);	
+				color(760);	
 				printf("View    ");
 				color(543);
 				printf("                                                                                              ");
@@ -470,12 +468,12 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 					counter5 ++;
 					displayContent(list, position);
 					
-				}if(key5 == 75&& (counter5 >=2 && counter5 <= 3)){
+				}if(key5 == 75&& (counter5 >=1 && counter5 <= 3)){
 					displayContent(list, position);				
 					counter --;
 					goto balikmenu;
 					
-				}if(key5 == 77 && (counter5 >=0 && counter5 <= 3)){
+				}if(key5 == 77 && (counter5 >=1 && counter5 <= 2)){
 					displayContent(list, position);
 					counter ++;
 					goto balikmenu;
@@ -485,19 +483,10 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 				
 				//-----------------------------------------------------------------untuk Menu Edit Masukin sini functionnya
 				}if(key5 == '\r'){
-//					if(counter5 ==1){
-//					printf("New Windows jalan");
-//					}
-//					if(counter5 ==2){
-//					printf("New Help");
-//					}
-//					if(counter5 ==3){
-//					printf("New About");
-//					}
+
 			switch(counter5){
 				case 1:
-//					printf("New Win");
-					system("Project4.exe");
+					system("start Project4.exe");
 					break;
 				case 2:
 					help();
@@ -506,7 +495,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 					PullDownDisplay();
 					break;
 				case 3:
-					TextBox(12,35 );
+					TextBox(11,57 );
 					about();
 					getch();
 					system("cls");
@@ -623,11 +612,13 @@ void TextBox(int c, int d){
 	int y =6, b=y;
 	
 	goto_xy(x,y);
-	for(int i =0;i<c;i++){
+	color(543);
+	for(int i =0;i<c;i++){		
 		goto_xy(x,y+=1);
+		color(543);
 		for(int j=0; j<d;j++){
 			if(i==0){
-				if(j==0){
+				if(j==0){					
 					printf("%c",bb);
 				}
 				else if(j==(d-1)){
@@ -663,65 +654,95 @@ void TextBox(int c, int d){
 		printf("\n");
 	}
 	goto_xy(a+3,b+3);
+	color(7);
 }
 
+void TextBox2(int c, int d){
+	int x =24, a=x;
+	int y =1, b=y;
+	
+	goto_xy(x,y);
+	color(543);
+	for(int i =0;i<c;i++){		
+		goto_xy(x,y+=1);
+		color(543);
+		for(int j=0; j<d;j++){
+			if(i==0){
+				if(j==0){					
+					printf("%c",bb);
+				}
+				else if(j==(d-1)){
+					printf("%c",ii);
+				}
+				else{
+					printf("%c",cc);
+				}
+			}
+			else if(i == (c-1)){
+				if(j==0){
+					printf("%c",ee);
+				}
+				else if(j==(d-1)){
+					printf("%c",hh);
+				}
+				else{
+					printf("%c",cc);
+				}
+			}
+			else{
+				if(j==0){
+					printf("%c",dd);
+				}
+				else if(j==(d-1)){
+					printf("%c",dd);
+				}
+				else{
+					printf(" ");
+				}
+			}
+		}
+		printf("\n");
+	}
+	goto_xy(a+3,b+3);
+	color(7);
+}
 
 void help(){
 	
 	system("cls");
-	TextBox(30,70);
-	goto_xy(51,7);
+	TextBox2(17,80);
+	goto_xy(48,2);
+	color(543);
 	printf("PANDUAN PENGGUNAAN APLIKASI");
-	goto_xy(32, 9);
+	goto_xy(26, 3);
 	printf("a. Penjelasan Mengenai Shortcut");
-	goto_xy(33,10);
-	printf("- Untuk masuk dan keluar dari Control Menu menggunakan CTRL + K");
-	goto_xy(33,11);
-	printf("- Untuk keluar dari Menu Pulldown menggunakan CTRL + T");
-	goto_xy(32,13);
+	goto_xy(27,4);
+	printf("1 Untuk masuk dan keluar dari Control Menu menggunakan CTRL + K");
+	goto_xy(27,5);
+	printf("2 Untuk keluar dari Menu Pulldown menggunakan CTRL + T");
+	goto_xy(26,7);
 	printf("b. Penjelasan Mengenai Menu");
-	goto_xy(33,14);
-	printf("- File Menu");
-	goto_xy(34,15);
-	printf("Didalam file menu terdapat :");
-	goto_xy(35,16);
-	printf("1. Save");
-	goto_xy(35,17);
-	printf("Digunakan ketika setelah selesai mengetik dan ingin menyimpan");
-	goto_xy(35,18);
-	printf("hasil update dari file");
-	goto_xy(35,19);
-	printf("2. Open File");
-	goto_xy(35,20);
-	printf("Digunakan untuk membuka file yang diinginkan dan mengupdate");
-	goto_xy(35,21);
-	printf("file tersebut");
-	goto_xy(35,22);
-	printf("3. Delete File");
-	goto_xy(35,23);
-	printf("Digunakan untuk menghapus file yang diinginkan");
-	goto_xy(35,24);
-	printf("4. Exit");
-	goto_xy(35,25);
-	printf("Digunakan untuk keluar dari program");
-	goto_xy(33,26);
-	printf("- Edit Menu");
-	goto_xy(34,27);
-	printf("Didalam edit menu terdapat :");
-	goto_xy(35,28);
-	printf("1. Find and Replace");
-	goto_xy(35,29);
-	printf("Digunakan untuk mengetahui keberadaan kata yang dicari dan");
-	goto_xy(35,30);
-	printf("me-Replace kata tersebut");
-	goto_xy(35,31);
-	printf("2. Undo");
-	goto_xy(35,32);
-	printf("Digunakan untuk melakukan Undo pada isi file");
-	goto_xy(35,33);
-	printf("3. Redo");
-	goto_xy(35,34);
-	printf("Digunakan untuk melakukan Redo pada isi file");
+	goto_xy(27,8);
+	printf("1. Save = menyimpan ketikan ke dalam file");
+	goto_xy(27,9);
+	printf("2. Open File = membuka file yang diinginkan dan mengupdate");
+	goto_xy(27,10);
+	printf("3. Delete File = Digunakan untuk menghapus file yang diinginkan");
+	goto_xy(27,11);
+	printf("4. Exit = Digunakan untuk keluar dari program");
+	goto_xy(26,12);
+	printf("c Edit Menu");
+	goto_xy(27,13);
+	printf("1. Find and Replace = Digunakan untuk mengetahui keberadaan kata yang dicari");
+	goto_xy(27,14);
+	printf("2. Undo = Digunakan untuk melakukan Undo pada isi file");
+	goto_xy(26,15);
+	printf("d View");
+	goto_xy(27,16);
+	printf("1. New Windows = Digunakan untuk membuka jendela baru");
+	goto_xy(27,17);
+	printf("2. About = Tentang aplikasi");
+	color(7);
 }
 
 void writeflush(char const *str, size_t len){
@@ -731,21 +752,29 @@ void writeflush(char const *str, size_t len){
 void about (){
 
 	goto_xy(31,8);
-	printf("TEXT EDITOR DIBUAT OLEH");
+	color(543);
+	printf("THANKS TO :");
 	goto_xy(31,10);
+	color(543);
 	printf(" Benny Yoga Suhardi    211511035");
 	goto_xy(31,11);
+	color(543);
 	printf(" Muhamad Diaz Adhari   211511044");
 	goto_xy(31,12);
+	color(543);
 	printf(" Muhamad Nauval Ardana 211511046");
 	goto_xy(31,13);
+	color(543);
 	printf(" Nazwa Fitriyani Zahra 211511051");
 	goto_xy(31,14);
+	color(543);
 	printf(" Tubagus Aji Prasetia  211511061");
 	goto_xy(31,16);
+	color(543);
 	static const int second = 1000000;
-  	static char const *titletext ="N  O  D  E  J  S  V  2 ";
+  	static char const *titletext ="N  O  D  E  J  S  V  2.2 ";
    	writeflush(" ", 1);
+   	color(7);
   
   	
 

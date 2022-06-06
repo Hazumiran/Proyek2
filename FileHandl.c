@@ -40,6 +40,7 @@ void CreateFile(List *list){
 	
 	char tamp_name[20];
 	TextBox(5,  40);
+	color(543);
     printf("Masukkin nama filenya gan : ");
     scanf("%s",tamp_name);
     
@@ -47,11 +48,11 @@ void CreateFile(List *list){
 	fp = fopen(tamp_name, "w");
     saveToFile(fp, list);
     fclose(fp);
-    
+    color(7);
 }
 
 void OpenFile(List *list){
-	deleteList(list);
+deleteList(list);
 	list = CreateHead();
 		
 	char fname[20];
@@ -59,7 +60,7 @@ void OpenFile(List *list){
 		int tamp =1;
 	int x = 7;
 	
-    TextBox(11,45);
+    TextBox(9,57);
     
     	DIR *d;
 	struct dirent *dir;
@@ -68,44 +69,51 @@ void OpenFile(List *list){
 	while ((dir = readdir(d)) != NULL) {
 		if(txt_exe(dir->d_name)){ 
 			goto_xy(30+2,x+1);
+			color(543);
 			tamp+=1;
 			x+=1;   	
 			printf("%s\n", dir->d_name);
+			color(7);
 		}	
     }
     closedir(d);
 	}
 	
 	goto_xy(32,x+2);
+	color(543);
     printf("Masukkin nama filenya gan : ");
 	scanf("%s",fname);
+	color(7);
 		
     FILE *fp = fopen(fname, "r");
     Point *CursorPos = pointCtor();
     system("cls");
 	PullDownDisplay();
     readFile(fp, list, CursorPos);
-    fclose(fp);
+    fclose(fp);   
 }
 
 void Delete(){
+
 	int tamp =1;
 	int x = 7;
-    TextBox(15, 50);
+    TextBox(9,57);
     goto_xy(30,6);
     
 	DIR *d;
 	struct dirent *dir;
 	d = opendir(".");
 	if (d) {
-	while ((dir = readdir(d)) != NULL) {
-		if(txt_exe(dir->d_name)){ 
-			goto_xy(30+2,x+1);
-			tamp+=1;
-			x+=1;   	
-			printf("%s\n", dir->d_name);
-		}	
-    }
+		while ((dir = readdir(d)) != NULL) {
+			if(txt_exe(dir->d_name)){ 
+				goto_xy(30+2,x+1);
+				color(543);
+				tamp+=1;
+				x+=1;   	
+				printf("%s\n", dir->d_name);
+				color(7);
+			}	
+	    }
     closedir(d);
 	}
 	
@@ -116,15 +124,18 @@ void Delete(){
 	goto_xy(32,x+1);
 	printf("\n");
 	goto_xy(32,x+2);
+	color(543);
 	printf("pilih file yang akan dihapus: ");
 	scanf("%s",fn);
-	
+	color(7);
 	fp=fopen(fn,"r");
 	
 	if(fp==NULL){
 
 		goto_xy(32,x+4);
+		color(543);
 		printf("File not found!");
+		color(7);
 
 	}
 	
@@ -132,7 +143,9 @@ void Delete(){
 	
 	remove(fn);
 	goto_xy(32,x+4);
+	color(543);
 	printf("File has been deleted successfully!");
+	color(7);
 
 }	
 
@@ -142,7 +155,7 @@ void rename(){
 	int tamp =1;
 	int x = 7;
 	
-    TextBox(11,45);
+    TextBox(9,57);
     
     	DIR *d;
 	struct dirent *dir;
@@ -151,30 +164,36 @@ void rename(){
 	while ((dir = readdir(d)) != NULL) {
 		if(txt_exe(dir->d_name)){ 
 			goto_xy(30+2,x+1);
+			color(543);
 			tamp+=1;
 			x+=1;   	
 			printf("%s\n", dir->d_name);
+			color(7);
 		}	
     }
     closedir(d);
 	}
 	goto_xy(32,x+2);
+	color(543);
     printf("Nama File Yang ingin Dirubah : ");
-    scanf("%s", oldName);
+    scanf("%s", oldName);    
 	goto_xy(32,x+4);
-
+	color(543);
     printf("masukan nama file baru: ");
     scanf("%s", newName);
 
     if (rename(oldName, newName) == 0)
     {
     	goto_xy(32,x+5);
+    	color(543);
         printf("sukses mengubah nama file \n");
     }
     else
     {
     	goto_xy(32,x+5);
+    	color(543);
         printf("gagal merubah nama file.\n");
 
 }
+color(7);
 }

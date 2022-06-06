@@ -25,7 +25,7 @@ void Menu_Pertama();
 void PullDown(List *list, char fname[20], Baris_Kolom *position);
 int PullDownDisplay();
 void TextBox(int c, int d);
-
+void TextBox2(int c, int d);
 void help();
 
 void about();

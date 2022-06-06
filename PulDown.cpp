@@ -14,22 +14,17 @@ void goto_xy(int x, int y){
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-void PullDown(List *list, char fname[20]){
+void PullDown(List *list, char fname[20], Baris_Kolom *position){
 	HANDLE hConsole;
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
     int Set[] = { 543,543,543};
 	char counter = 2;
 	char key;
-	int baris = 0, kolom = 0, jml_char = 0;
-	
-	Baris_Kolom  position;
-	position.x = 0;
-	position.y = 0;
-	position.jml_char = 0;
+	int temp1, temp2;
 	
 	for(int i = 0 ;;){
-	displayContent(list, &position);
+	displayContent(list, position);
 	tampil:
 
 	goto_xy(0,0);
@@ -49,12 +44,16 @@ void PullDown(List *list, char fname[20]){
 		
 		key = _getch();
 		if(key == 11){
+//			temp1 = position->x;
+//			temp2 = position->y;
+			position->x = position->x;
+			position->y = position->y;
 			break;
 		}
 		
 		if(key == 75&& (counter >=2 && counter <= 3)){
 			counter --;
-			
+
 		}if(key == 77 && (counter >=1 && counter <= 2)){
 			counter ++;
 			
@@ -124,19 +123,19 @@ void PullDown(List *list, char fname[20]){
 				color(7);	
 				key2 = _getch();
 				
-				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){			
+				if(key2 == 72&& (counter2 >=2 && counter2 <= 4)){		
 					counter2 --;
 					
 				}if(key2 == 80 && (counter2 >=0 && counter2 <= 3)){			
 					counter2 ++;
 					
 				}if(key2 == 75&& (counter2 >=2 && counter2 <= 3)){
-					displayContent(list,&position);
+					displayContent(list, position);
 					counter --;
 					goto balikmenu;
 					
 				}if(key2 == 77 && (counter2 >=1 && counter2 <= 2)){
-					displayContent(list, &position);
+					displayContent(list, position);
 					counter ++;
 					goto balikmenu;
 				}if(key2 == 20){	//ctrl + T		
@@ -355,12 +354,12 @@ void PullDown(List *list, char fname[20]){
 					counter3 ++;
 					
 				}if(key3 == 75&& (counter3 >=2 && counter3 <= 3)){
-					displayContent(list, &position);				
+					displayContent(list, position);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key3 == 77 && (counter3 >=0 && counter3 <= 3)){
-					displayContent(list, &position);
+					displayContent(list, position);
 					counter ++;
 					goto balikmenu;
 				}if(key3 == 20){	//ctrl + T		
@@ -453,12 +452,12 @@ void PullDown(List *list, char fname[20]){
 					counter5 ++;
 					
 				}if(key5 == 75&& (counter5 >=2 && counter5 <= 3)){
-					displayContent(list, &position);				
+					displayContent(list, position);				
 					counter --;
 					goto balikmenu;
 					
 				}if(key5 == 77 && (counter5 >=0 && counter5 <= 3)){
-					displayContent(list, &position);
+					displayContent(list, position);
 					counter ++;
 					goto balikmenu;
 				}if(key5 == 20){	//ctrl + T		
@@ -533,7 +532,7 @@ void PullDown(List *list, char fname[20]){
 }
 
 int PullDownDisplay(){
-		HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hOut == INVALID_HANDLE_VALUE)
     {
         return GetLastError();
@@ -552,7 +551,7 @@ int PullDownDisplay(){
     }
     goto_xy(0,21);
     color(543);
-    printf("\nBaris : 0       Kolom : 0                                                                                               "); 
+    printf("\nBaris : 1       Kolom : 1                                                                                               "); 
 	color(7);
 	goto_xy(0,0);
 	color(543);	

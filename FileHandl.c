@@ -12,7 +12,7 @@ void driver(){
 		Baris_Kolom  position;
 		position.x = 1;
 		position.y = 1;
-//		position.jml_char = 0;
+
 		
 		char fname[20];
 		

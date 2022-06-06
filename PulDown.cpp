@@ -19,7 +19,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     baliksini:
     int Set[] = { 543,543,543};
-	char counter = 2;
+	char counter = 1;
 	char key;
 	int temp1, temp2;
 	
@@ -543,7 +543,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 		Set[0] =543;
 		Set[1] =543;
 		Set[2] =543;
-		Set[3] =15;
+		Set[3] =543;
 		
 
 		if(counter == 1){
@@ -555,10 +555,14 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 		if(counter == 3){
 				Set[2] = 760;
 		}
+		if(counter == 4){
+				Set[2] = 760;
+		}
 	 }
 }
 
 int PullDownDisplay(){
+	int count_tahan;
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hOut == INVALID_HANDLE_VALUE)
     {
@@ -580,6 +584,21 @@ int PullDownDisplay(){
 //    color(543);
 //    printf("\nBaris : 1       Kolom : 1                                                                                               "); 
 //	color(7);
+
+	if(count_tahan == 0){
+	goto_xy(0,21);
+	color(543);
+    printf("\nKolom : 0   "); 
+    color(543);
+	printf("Baris : 0   ");
+	color(543);
+	printf("Jumlah Karakter : 0                                                                             ");
+	color(7);
+	count_tahan = count_tahan+1;
+}
+	count_tahan = count_tahan+1;
+
+
 	goto_xy(0,0);
 	color(543);	
 	printf("File     ");
@@ -595,6 +614,7 @@ int PullDownDisplay(){
 	printf("                                                                                              \n");
 	color(7);
 
+	
 
 }
 

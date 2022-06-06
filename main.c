@@ -15,17 +15,17 @@ int main() {
       // Build new console title string.
 
 
-      StringCchPrintf(szNewTitle, MAX_PATH, TEXT("Node Js V1.1"), szOldTitle);
+      StringCchPrintf(szNewTitle, MAX_PATH, TEXT("Node Js V2.2"), szOldTitle);
 
       // Set console title to new title
       if( !SetConsoleTitle(szNewTitle) )
       {
-         _tprintf(TEXT("SetConsoleTitle failed (%d)\n"), GetLastError());
+         _tprintf(TEXT("failed (%d)\n"), GetLastError());
          return 1;
       }
       else
       {
-         _tprintf(TEXT("SetConsoleTitle succeeded.\n"));
+         _tprintf(TEXT("Loading....\n"));
       }
    }
 

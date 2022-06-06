@@ -29,13 +29,13 @@ void gotoxy(Point *point)
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD Cord;
     Cord.X = point->x;
-    Cord.Y = point->y+1;
+    Cord.Y = point->y;
     SetConsoleCursorPosition(hStdout, Cord);
 }
 
 void displayContent(List *list,Baris_Kolom *position)
 {
-
+	char key;
 	List *content;
 	Node *temp = NULL;
 	system("cls");
@@ -45,10 +45,10 @@ void displayContent(List *list,Baris_Kolom *position)
         putchar(temp->data);
     }
 
-	goto_xy(0,28);
-    printf("\nBaris : %d\t",position->x); 
-	printf("Kolom : %d\t",position->y);
-	printf("Jumlah Karakter : %d", position->jml_char);
+//	goto_xy(0,21);
+//    printf("\nBaris : %d\t",position->x); 
+//	printf("Kolom : %d\t",position->y);
+//	printf("Jumlah Karakter : %d", position->jml_char);
 
 }
 
@@ -78,7 +78,8 @@ int readFile(FILE *fp, List *content, Point *CursorPos)
 
 int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
 //	unsigned char key;
-//	CursorPos->y=3;
+	CursorPos->y +=1;
+	gotoxy(CursorPos);
     signed char key;
     List *copy_text;
 	while(ESC != (key = getch()))
@@ -138,7 +139,6 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
                 if(CursorPos->y == getHeight(content))
                 {
                 	position->y = position->y;
-                	
 					position->x = CursorPos->x;
         			position->y = CursorPos->y;
         			position->jml_char = getIndex(content,CursorPos);
@@ -345,6 +345,13 @@ int KursorHandl(List *content, Point *CursorPos, Baris_Kolom *position){
         	system("cls");
 		}
         else if(key == 11){
+//        	position->x = getLineLen(content, CursorPos->x);
+//        	position->y = getLineLen(content, CursorPos->y);
+//        	displayContent(content,position);
+//        	CursorPos->x = 0;
+//        	CursorPos->y = 0;
+//        	CursorPos->index = getIndex(content, CursorPos);
+//          gotoxy(CursorPos);
         	return 2;
 		}
         else

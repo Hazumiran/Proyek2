@@ -112,6 +112,7 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 				color(543);
 				printf("%c",dd);
 				color(Set2[3]);
+				
 				printf("Rename File");	
 				color(543);
 				printf("%c",dd);
@@ -296,7 +297,6 @@ void PullDown(List *list, char fname[20], Baris_Kolom *position){
 				Set2[3] =543;
 				Set2[4] =543;
 
-		
 				if(counter2 == 1){
 						Set2[0] = 760;					
 				}
@@ -576,10 +576,10 @@ int PullDownDisplay(){
     {
         return GetLastError();
     }
-    goto_xy(0,21);
-    color(543);
-    printf("\nBaris : 1       Kolom : 1                                                                                               "); 
-	color(7);
+//    goto_xy(0,21);
+//    color(543);
+//    printf("\nBaris : 1       Kolom : 1                                                                                               "); 
+//	color(7);
 	goto_xy(0,0);
 	color(543);	
 	printf("File     ");

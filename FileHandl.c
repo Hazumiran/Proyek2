@@ -137,6 +137,7 @@ void Delete(){
 }	
 
 void rename(){
+
 	char oldName[100], newName[100];
 	int tamp =1;
 	int x = 7;
@@ -161,6 +162,7 @@ void rename(){
     printf("Nama File Yang ingin Dirubah : ");
     scanf("%s", oldName);
 	goto_xy(32,x+4);
+
     printf("masukan nama file baru: ");
     scanf("%s", newName);
 
